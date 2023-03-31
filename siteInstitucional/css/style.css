@@ -5,6 +5,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 
 body {
     margin: 0;
@@ -14,6 +18,9 @@ body {
 .header {
     background-image: linear-gradient(to left, #91A6FF , #3F53AA);
     height: 100px;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
 }
 
 .container {
@@ -52,7 +59,7 @@ body {
 
 .home {
     background-image: url(../assets/img/fundoHome.png);
-    height: 90vh;
+    height: 100vh;
 }
 
 .textoHome {
@@ -61,6 +68,7 @@ body {
     justify-content: space-around;
     width: 750px;
     height: 450px;
+    margin-top: 160px;
 }
 
 .textoHome h1{
@@ -75,6 +83,7 @@ body {
 }
 
 .medicoHome {
+    margin-top: 160px;
     height: 640px;
 }
 
@@ -103,11 +112,11 @@ body {
     font-weight: bold;
 }
 
-.informacoes{
+#informacoes{
     height: 100vh;
 }
 
-.informacoes .container {
+#informacoes .container {
     display: flex;
     height: 100vh;
     justify-content: space-between;
@@ -123,6 +132,11 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    margin-top: 50px;
+}
+
+#medicoInformacoes {
+    margin-top: 50px;
 }
 
 .textoAlerta h3 {
@@ -180,3 +194,158 @@ body {
     
 }
 
+.simulador {
+    height: 90vh;
+    background-image: linear-gradient(to right, rgba(41,70,194, 0.60), rgba(105,217,150));
+}
+
+.simulador .container {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.textoSimulador {
+    display: flex;
+    flex-direction: column;
+}
+
+.textoSimulador h1{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 60px;
+}
+
+.textoSimulador p{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 20px;
+    width: 600px;
+    margin: 0;
+}
+
+.botaoSimulador {
+    background-color: #50C37E;
+    border:none!important;
+    border-radius: 15px;
+    height: 70px;
+    color: white;
+    width: 350px;
+    font-size: 27px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.simuladorDinheiro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 650px;
+}
+
+.medicoSimulador {
+    height: 710px;
+}
+
+.blob {
+    display: flex;
+    justify-content: center;
+    background-image: url(../assets/img/blob.svg);
+    width: 600px;
+    height: 700px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+
+#faleConosco {
+    height: 90vh;
+}
+
+#faleConosco .container {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#form {
+    background-color: rgb(94, 114, 202, 0.04);
+    width: 550px;
+    height: 700px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteudoForm {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+
+.textoForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conteudoForm h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #91A6FF;
+    font-size: 48px;
+    margin: 0px 0 20px 0;
+}
+
+.conteudoForm p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    text-align: center;
+}
+
+.inputFaleConosco , .mensagem {
+    background-color: #DEDEDE;
+    border: none;
+    height: 50px;
+    margin: 15px 0;
+    border-radius: 8px;
+    padding-inline: 10px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.mensagem{
+    height: 160px !important;
+    resize: none;
+    padding: 15px 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.inputForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.botaoForm {
+    background-color: #91A6FF;
+    color: white;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    height: 45px;
+    border: none;
+    border-radius: 8px;
+    width: 60%;
+    align-self: center;
+    margin-top: 15px;
+}
+
+#medicoFaleConosco {
+    height: 600px;
+}
