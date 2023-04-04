@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 html {
     scroll-behavior: smooth;
@@ -13,6 +14,20 @@ html {
 body {
     margin: 0;
     padding: 0;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+}
+  
+body::-webkit-scrollbar-track {
+    background: #becaff;        /* color of the tracking area */
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: #3F53AA;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 2px solid #becaff;  /* creates padding around scroll thumb */
 }
 
 .header {
@@ -52,12 +67,12 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    width: 180px;
-    height: 110px;
-    margin-top: 10px;
+    width: 130px;
+    height: 80px;
+    margin-bottom: 10px;
 }
 
-.home {
+#home {
     background-image: url(../assets/img/fundoHome.png);
     height: 100vh;
 }
@@ -87,7 +102,7 @@ body {
     height: 640px;
 }
 
-.home .container {
+#home .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -137,6 +152,7 @@ body {
 
 #medicoInformacoes {
     margin-top: 50px;
+    width: 570px;
 }
 
 .textoAlerta h3 {
@@ -194,12 +210,12 @@ body {
     
 }
 
-.simulador {
+#simulador {
     height: 90vh;
     background-image: linear-gradient(to right, rgba(41,70,194, 0.60), rgba(105,217,150));
 }
 
-.simulador .container {
+#simulador .container {
     height: 90vh;
     display: flex;
     align-items: center;
@@ -257,9 +273,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
-
-
-
 
 #faleConosco {
     height: 90vh;
@@ -349,3 +362,57 @@ body {
 #medicoFaleConosco {
     height: 600px;
 }
+
+#footer {
+    background-image: linear-gradient(to left, #91A6FF , #3F53AA);
+    height: 25vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+#footer li {
+    list-style: none;
+}
+
+#footer a {
+    font-weight: 300;
+}
+
+#footer ul {
+    padding: 0;
+}
+
+.listaFooter {
+    display: flex;
+    justify-content: space-around;
+    width: 700px;
+}
+
+#imgGithub {
+    width: 35px;
+}
+
+#imgInstagram {
+    width: 35px;
+    margin-left: 15px;
+}
+
+#imgLinkedin {
+    width: 35px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#imgTwitter {
+    width: 35px;
+}
+
+.redesSociais {
+    display: flex;
+    align-items: flex-start;
+    height: 13vh;
+}
+
