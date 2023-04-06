@@ -17,17 +17,17 @@ body {
 }
 
 body::-webkit-scrollbar {
-    width: 10px;               /* width of the entire scrollbar */
+    width: 10px;              
 }
   
 body::-webkit-scrollbar-track {
-    background: #becaff;        /* color of the tracking area */
+    background: #becaff;        
 }
   
 body::-webkit-scrollbar-thumb {
-    background-color: #3F53AA;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 2px solid #becaff;  /* creates padding around scroll thumb */
+    background-color: #3F53AA;   
+    border-radius: 20px;      
+    border: 2px solid #becaff;  
 }
 
 .header {
@@ -43,6 +43,14 @@ body::-webkit-scrollbar-thumb {
     width: 80%;
     height: 100px;
     margin: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 130px;
+    height: 80px;
+    margin-bottom: 10px;
 }
 
 .header .container {
@@ -62,15 +70,18 @@ body::-webkit-scrollbar-thumb {
     color: white;
     font-size: 22px;
     font-family: 'League Spartan', sans-serif;
+    transition: all .4s ease-in-out;
+    cursor: pointer;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    width: 130px;
-    height: 80px;
-    margin-bottom: 10px;
+.itemLista a:hover{
+    color: #3F53AA;
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 8px;
+    transition: 250ms;
 }
+
 
 #home {
     background-image: url(../assets/img/fundoHome.png);
@@ -125,7 +136,16 @@ body::-webkit-scrollbar-thumb {
     font-size: 27px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
+    cursor: pointer;
+    box-shadow: 5px 5px 12px  #a8b8ff;
 }
+
+.botaoHome:hover{ 
+    box-shadow: 5px 5px 12px 5px #a8b8ff;
+    margin-left: 1px;
+    transition: 200ms;
+}
+
 
 #informacoes{
     height: 100vh;
@@ -220,11 +240,24 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 
 .textoSimulador {
     display: flex;
     flex-direction: column;
+}
+
+.textoSimulador ::before {
+    content: '';
+    position: absolute;
+    background-color: #82ffb4;
+    width: 657px;
+    height: 15px;
+    top: 296px;
+    left: -10px;
+    z-index: -1;
+    border-radius: 6px;
 }
 
 .textoSimulador h1{
