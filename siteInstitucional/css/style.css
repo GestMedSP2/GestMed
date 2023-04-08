@@ -70,7 +70,7 @@ body::-webkit-scrollbar-thumb {
 
 .navbar {
     display: flex;
-    width: 500px;
+    width: 700px;
     justify-content: space-around;
     list-style: none;
 }
@@ -89,6 +89,23 @@ body::-webkit-scrollbar-thumb {
     padding: 5px 10px;
     background-color: var(--white);
     border-radius: 8px;
+    transition: 250ms;
+}
+
+.areaCliente a{
+    text-decoration: none;
+    color: var(--white);
+    font-size: 22px;
+    font-family: 'League Spartan', sans-serif;
+    transition: all .4s ease-in-out;
+    cursor: pointer;
+    padding: 12px 10px;
+    background-color: #338f57;
+    border-radius: 8px;
+}
+
+.areaCliente a:hover {
+    background-color: #04a745d0;
     transition: 250ms;
 }
 
@@ -153,7 +170,7 @@ body::-webkit-scrollbar-thumb {
 
 .botaoHome:hover{ 
     box-shadow: 5px 5px 12px 5px #a8b8ff;
-    margin-left: 1px;
+    margin-left: 3px;
 }
 
 
@@ -178,6 +195,13 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     position: relative;
     margin-top: 50px;
+}
+
+.fundoAlerta:hover {
+    margin-right: 3px;
+    margin-bottom: 3px;
+    transition: all .5s ease-in-out;
+    box-shadow: 5px 5px 10px 2px #505677;
 }
 
 #medicoInformacoes {
@@ -258,29 +282,17 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
 }
 
-.textoSimulador ::before {
-    content: '';
-    position: absolute;
-    background-color: #82ffb4;
-    width: 657px;
-    height: 15px;
-    top: 296px;
-    left: -10px;
-    z-index: -1;
-    border-radius: 6px;
-}
-
 .textoSimulador h1{
     font-family: 'Poppins', sans-serif;
     color: var(--white);
-    font-size: 60px;
+    font-size: 65px;
 }
 
 .textoSimulador p{
     font-family: 'Poppins', sans-serif;
     color: var(--white);
-    font-size: 20px;
-    width: 600px;
+    font-size: 23px;
+    width: 630px;
     margin: 0;
 }
 
@@ -294,6 +306,15 @@ body::-webkit-scrollbar-thumb {
     font-size: 27px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    box-shadow: -5px 5px 12px  #419e66;
+}
+
+.botaoSimulador:hover{ 
+    box-shadow: -5px 5px 12px 5px #419e66;
+    margin-left: 2px;
+    margin-bottom: 2px;
 }
 
 .simuladorDinheiro {
@@ -354,7 +375,7 @@ body::-webkit-scrollbar-thumb {
     font-family: 'Poppins', sans-serif;
     color: var(--lightBlue);
     font-size: 48px;
-    margin: 0px 0 20px 0;
+    margin: 0px 0 5px 0;
 }
 
 .conteudoForm p {
@@ -475,6 +496,26 @@ input {
 }
 
 input:focus {
+    outline: none;
+    box-shadow: 2px 3px 10px 0px #a8b8ff;
+}
+
+textarea {
+        padding: 15px 20px;
+        margin-block: 15px;
+        
+        border-radius: 10px;
+        border: 4px solid #7e96ff;
+    
+        color: var(--lightBlue);
+        
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.2rem;
+    
+        transition: 200ms;
+}
+
+textarea:focus {
     outline: none;
     box-shadow: 2px 3px 10px 0px #a8b8ff;
 }
