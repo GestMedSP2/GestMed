@@ -1,0 +1,232 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.antesComecar, .simulador {
+    display: flex;
+    height: 100vh;
+}
+
+.antesComecar .container {
+    align-items: center;
+    height: 100%;
+}
+
+.antesComecar .container > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    height: 100%;
+    width: 50%;
+}
+
+.formDesperdico > div {
+    display: flex;
+}
+
+.formDesperdico h1, .formLote h1 {
+    font-size: 4rem;
+    margin: 0;
+    color: var(--lightBlue);
+}
+
+.formDesperdico p, .formLote p {
+    font-size: 1.2rem;
+    margin-block: 10px;
+}
+
+.formDesperdico input {
+    width: 60%;
+}
+
+button {
+    cursor: pointer;
+    padding: .8rem 1.8rem;
+    margin-inline: 10px;
+
+    border-radius: 10px;
+    border: 2px solid transparent;
+
+    color: var(--white);
+
+    font-size: 1rem;
+
+    transition: .8s;
+}
+
+.formDesperdico .botaoVermelho {
+    background-color: #ED6969;
+}
+
+.formDesperdico .botaoVermelho:hover {
+    border-color: #ED6969;
+    background-color: transparent;
+    color: #ED6969;
+}
+
+.botaoVerde {
+    display: flex;
+    justify-content: center;
+    background-color: var(--green);
+}
+
+.botaoVerde:hover {
+    border-color: var(--green);
+    background-color: transparent;
+    color: var(--green);
+}
+
+#buttonSimular span {
+    width: 20px;
+    height: 20px;
+
+    border-radius: 100%;
+
+    border: 5px solid var(--white);
+    border-right: 5px solid #4aaa70;
+
+    animation: spinner 1s ease-in-out infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#buttonSimular:hover span {
+    border: 5px solid var(--green);
+    border-right: 5px solid var(--white);
+}
+
+.antesComecar .blob {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 70%;
+    height: 80%;
+
+    background-size: contain;
+    background-position: bottom;
+}
+
+#formSimulador {
+    display: none;
+}
+
+.simulador .container {
+    justify-content: center;
+}
+
+.formLote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 50%;
+}
+
+.formLote input {
+    width: 60%;
+}
+
+.formLote button {
+    width: 30%;
+    margin-top: 10px;
+}
+
+.vantagens {
+    display: none;
+    flex-direction: column;
+
+    height: 100vh;
+    background-image: url(../assets/img/fundoHome.png);
+}
+
+.vantagens .lucro {
+    height: 25vh;
+    background: linear-gradient(to right, rgba(41,70,194, 0.60), rgba(105,217,150));
+}
+
+.lucro .container {
+    height: 100%;
+}
+
+.vantagem {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding-inline: 50px;
+}
+
+.vantagem h2 {
+    color: var(--white);
+    margin: 0;
+    font-size: 2rem;
+}
+
+.vantagem p {
+    color: #ffffff80;
+    margin: 0;
+}
+
+.beneficios {
+    height: 80vh;
+}
+
+.beneficios .container {
+    height: 100%;
+}
+
+.painelBeneficios {
+    height: fit-content;
+    width: 40%;
+
+    padding: 1.5rem 2rem;
+
+    background: rgba(211, 0, 0, 0.11);
+    border: 4px solid rgba(211, 0, 0, 0.05);
+
+    backdrop-filter: blur(5px);
+    border-radius: 35px;
+
+    margin: auto 0 auto auto;
+}
+
+.painelBeneficios h2 {
+    text-align: center;
+    color: var(--blue);
+    font-size: 1.8rem;
+    margin-block: .5rem;
+}
+
+.beneficio {
+    display: flex;
+    align-items: center;
+}
+
+.iconify {
+    color: var(--green);
+    margin-right: 10px;
+}
+
+.beneficio p {
+    font-size: 1.4rem;
+    margin-block: 1rem;
+}
+
+.beneficio span { 
+    font-weight: 600;
+    color: var(--green);
+}

@@ -6,6 +6,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
+:root {
+    --blue: #3F53AA;
+    --lightBlue: #91A6FF;
+    --green: #50C37E; 
+    --white: #FFF;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -31,17 +38,20 @@ body::-webkit-scrollbar-thumb {
 }
 
 .header {
-    background-image: linear-gradient(to left, #91A6FF , #3F53AA);
+    background-image: linear-gradient(to left, var(--lightBlue) , var(--blue));
     height: 100px;
     width: 100%;
     position: fixed;
     z-index: 5;
 }
 
+.header .container {
+    height: 100px;
+}
+
 .container {
     display: flex;
     width: 80%;
-    height: 100px;
     margin: auto;
 }
 
@@ -67,7 +77,7 @@ body::-webkit-scrollbar-thumb {
 
 .itemLista a{
     text-decoration: none;
-    color: white;
+    color: var(--white);
     font-size: 22px;
     font-family: 'League Spartan', sans-serif;
     transition: all .4s ease-in-out;
@@ -75,9 +85,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .itemLista a:hover{
-    color: #3F53AA;
+    color: var(--blue);
     padding: 5px 10px;
-    background-color: white;
+    background-color: var(--white);
     border-radius: 8px;
     transition: 250ms;
 }
@@ -99,13 +109,13 @@ body::-webkit-scrollbar-thumb {
 
 .textoHome h1{
     font-family: 'League Spartan', sans-serif;
-    color: #91A6FF;
+    color: var(--lightBlue);
     font-size: 80px;
     margin: 0;
 }
 
 .tituloVerde {
-    color: #50C37E;
+    color: var(--green);
 }
 
 .medicoHome {
@@ -127,23 +137,23 @@ body::-webkit-scrollbar-thumb {
 }
 
 .botaoHome {
-    background-color: #91A6FF;
+    background-color: var(--lightBlue);
     border:none!important;
     border-radius: 15px;
     height: 70px;
-    color: white;
+    color: var(--white);
     width: 350px;
     font-size: 27px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 5px 5px 12px  #a8b8ff;
+    transition: 200ms;
 }
 
 .botaoHome:hover{ 
     box-shadow: 5px 5px 12px 5px #a8b8ff;
     margin-left: 1px;
-    transition: 200ms;
 }
 
 
@@ -159,7 +169,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .fundoAlerta {
-    background-image: linear-gradient(to left, #91A6FF , #3F53AA);
+    background-image: linear-gradient(to left, var(--lightBlue) , var(--blue));
     height: 650px;
     width: 550px;
     border-radius: 50px;
@@ -179,13 +189,13 @@ body::-webkit-scrollbar-thumb {
     font-family: 'Poppins', sans-serif;
     font-size: 40px;
     font-weight: 800;
-    color: #91A6FF;
+    color: var(--lightBlue);
     margin: 10px 0px;
 }
 
 .textoAlerta ul {
     font-family: 'Poppins', sans-serif;
-    color: white;
+    color: var(--white);
     font-weight: 500;
 }
 
@@ -199,7 +209,7 @@ body::-webkit-scrollbar-thumb {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     font-weight: 800;
-    color: #91A6FF;
+    color: var(--lightBlue);
     width: 80%;
 }
 
@@ -214,7 +224,7 @@ body::-webkit-scrollbar-thumb {
 .textoAlerta p {
     font-family: 'Poppins', sans-serif;
     font-size: 15px;
-    color: white;
+    color: var(--white);
 }
 
 .fundoAlerta ::before {
@@ -262,13 +272,13 @@ body::-webkit-scrollbar-thumb {
 
 .textoSimulador h1{
     font-family: 'Poppins', sans-serif;
-    color: white;
+    color: var(--white);
     font-size: 60px;
 }
 
 .textoSimulador p{
     font-family: 'Poppins', sans-serif;
-    color: white;
+    color: var(--white);
     font-size: 20px;
     width: 600px;
     margin: 0;
@@ -279,7 +289,7 @@ body::-webkit-scrollbar-thumb {
     border:none!important;
     border-radius: 15px;
     height: 70px;
-    color: white;
+    color: var(--white);
     width: 350px;
     font-size: 27px;
     font-family: 'Poppins', sans-serif;
@@ -342,7 +352,7 @@ body::-webkit-scrollbar-thumb {
 
 .conteudoForm h3 {
     font-family: 'Poppins', sans-serif;
-    color: #91A6FF;
+    color: var(--lightBlue);
     font-size: 48px;
     margin: 0px 0 20px 0;
 }
@@ -379,8 +389,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .botaoForm {
-    background-color: #91A6FF;
-    color: white;
+    background-color: var(--lightBlue);
+    color: var(--white);
     font-size: 18px;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
@@ -397,13 +407,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 #footer {
-    background-image: linear-gradient(to left, #91A6FF , #3F53AA);
+    background-image: linear-gradient(to left, var(--lightBlue) , var(--blue));
     height: 25vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
     font-family: 'Poppins', sans-serif;
-    color: white;
+    color: var(--white);
 }
 
 #footer li {
@@ -449,3 +459,22 @@ body::-webkit-scrollbar-thumb {
     height: 13vh;
 }
 
+input {
+    padding: 15px 20px;
+    margin-block: 15px;
+    
+    border-radius: 10px;
+    border: 4px solid #7e96ff;
+
+    color: var(--lightBlue);
+    
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+
+    transition: 200ms;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 2px 3px 10px 0px #a8b8ff;
+}
