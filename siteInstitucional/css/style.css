@@ -495,7 +495,7 @@ body::-webkit-scrollbar-thumb {
     height: 13vh;
 }
 
-input {
+input, select {
     padding: 15px 20px;
     margin-block: 15px;
     
@@ -510,7 +510,7 @@ input {
     transition: 200ms;
 }
 
-input:focus {
+input:focus, select:focus {
     outline: none;
     box-shadow: 2px 3px 10px 0px #a8b8ff;
 }

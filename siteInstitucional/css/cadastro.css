@@ -1,0 +1,143 @@
+body {
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+.menu {
+    width: 8vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #7791FF, #6381FF);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu img {
+    width: 70%;
+    margin-top: 1.5rem;
+}
+
+.menu nav {
+    margin: auto;
+}
+
+.menu ul {
+    list-style: none;
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.menu li {
+    cursor: pointer;
+}
+
+.conteudo {
+    width: 100%;
+}
+
+.headerCadastro {
+    display: flex;
+    background-color: var(--white);
+    height:20vh;
+    align-items: center;
+    padding-inline: 3rem;
+    justify-content: space-between;
+    
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+}
+
+.perfil div {
+    width: 35px;
+    height: 35px;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 10px;
+    color: var(--green);
+}
+
+.perfil span {
+    color: var(--green);
+}
+
+.headerCadastro h2{
+    background: url('../assets/img/sublinhadotexto.svg') no-repeat;
+    background-position: bottom;
+    background-size: contain;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 80vh;
+}
+
+.form select {
+    width: 35%;
+}
+
+.form::-webkit-scrollbar {
+    width: 10px;              
+}
+  
+.form::-webkit-scrollbar-track {
+    background: #becaff;        
+}
+  
+.form::-webkit-scrollbar-thumb {
+    background-color: #3F53AA;   
+    border-radius: 20px;      
+    border: 2px solid #becaff;  
+}
+
+.form h1 {
+    color: var(--lightBlue);
+    margin: 0;
+    font-size: 3rem;    
+}
+
+.form p {
+    color: #383838;
+    width: 50%;
+    text-align: center;
+}
+
+.form button {
+    width: 20%;
+    padding-block: 1rem;
+    background-color: var(--green) ;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--white);
+    transition: .5s;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.form button:hover {
+    color: var(--green);
+    background-color: var(--white);   
+    border-color: var(--green); 
+}
+
+
