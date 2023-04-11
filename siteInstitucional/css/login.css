@@ -1,0 +1,71 @@
+body {
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+}
+
+body > div {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.form h1 {
+    font-size: 3.5rem;
+    color: var(--lightBlue);
+}
+
+.form p {
+    text-align: right;
+    color: var(--green);
+    margin-top: 0;
+}
+
+.form button {
+    width: 50%;
+    height: 3rem;
+    margin: auto;
+    background-color: var(--green);
+    border-radius: 10px;
+    color: var(--white);
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: .5s;
+    margin-top: 10px;
+}
+
+.form button:hover{
+    color: var(--green);
+    background-color: var(--white);
+    border-color: var(--green);
+}
+
+.banner{
+    background-image: linear-gradient(to bottom, var(--blue), var(--lightBlue));
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    color: var(--white);
+}
+
+.banner .logo{
+    width: 50%;
+}
+
+.imagemBanner{
+    width: 30%;
+}
+
+.banner h2{
+    font-size: 2rem;
+    text-align: center;
+}
