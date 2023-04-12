@@ -1,4 +1,3 @@
-src="https://cdn.jsdelivr.net/npm/chart.js"
 const horario = [
         '12:00',
         '13:00',
@@ -12,6 +11,23 @@ const horario = [
     const umidade = [80, 82, 80, 85, 80, 83];
 
     const lineChart = document.getElementById('myLineChart');
+
+    const horizontalDottedLine = {
+        id: 'horizontalDottedLine', 
+        beforeDatasetsDraw(chart, args, options) {
+            const { ctx, chartArea: { top, right, bottom, left, width, height },
+                scales: { x, y } } = chart;
+
+            ctx.save();
+
+            ctx.strokeStyle = '#00000030';
+            ctx.setLineDash([10, 6]);
+            ctx.strokeRect(left, y.getPixelForValue(52), width, 0);
+            ctx.restore();
+        }
+    }
+
+    Chart.defaults.font.family = 'Poppins';
 
     new Chart(lineChart, {
         data: {
@@ -32,10 +48,10 @@ const horario = [
                 }
             ],
             labels: horario,
-            options: {
-
-            }
         },
+        options: {
+        },
+        plugins: [horizontalDottedLine]
     });
 
     const mes = [

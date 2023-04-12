@@ -86,30 +86,28 @@ body {
 .setor span{
     color: var(--green);
 }
+
 .dashboard {
     display: flex;
-    align-items: center;
-    flex-direction: column;
+    justify-content: space-evenly;
     overflow-y: scroll;
     height: 80vh;
 }
 
-
-.dashboard .grafico{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.dashboard::-webkit-scrollbar {
+    width: 10px;              
+}
+  
+.dashboard::-webkit-scrollbar-track {
+    background: #becaff;        
+}
+  
+.dashboard::-webkit-scrollbar-thumb {
+    background-color: #3F53AA;   
+    border-radius: 20px;      
+    border: 2px solid #becaff;  
 }
 
-.dashboard .graficoLinha{
-    width: 900px;
-    height: 500px;
-    margin-top: 50px;
-    padding: 20px;
-    background-color: aliceblue;
-    justify-content: center;
-    align-items: center;
-    border: 10px solid #0d7b8b;
-    border-radius: 8px;
+.dashboard > div {
+    width: 40%;
 }
-
