@@ -89,9 +89,11 @@ body {
 
 .dashboard {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: space-between;
     overflow-y: scroll;
-    height: 80vh;
+    height: 70vh;
+    margin-left: 50px;
 }
 
 .dashboard::-webkit-scrollbar {
