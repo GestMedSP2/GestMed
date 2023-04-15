@@ -89,6 +89,8 @@ button {
     border-right: 5px solid #4aaa70;
 
     animation: spinner 1s ease-in-out infinite;
+
+    transition: .5s;
 }
 
 @keyframes spinner {
@@ -152,6 +154,7 @@ button {
 
 .vantagens .lucro {
     height: 25vh;
+    padding-block: 2rem;
     background: linear-gradient(to right, rgba(41,70,194, 0.60), rgba(105,217,150));
 }
 
