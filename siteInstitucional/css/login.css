@@ -58,6 +58,8 @@ body > div {
 }
 
 .banner .logo{
+    display: flex;
+    justify-content: center;
     width: 50%;
 }
 
