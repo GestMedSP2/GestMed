@@ -89,3 +89,31 @@ const horario = [
             labels: mes
         },
     });
+
+
+    
+    const lineChart2 = document.getElementById('myLineChart2');
+    new Chart(lineChart2, {
+        data: {
+            datasets: [
+                {
+                    type: 'line',
+                    label: 'Temperatura',
+                    data: temperatura,
+                    backgroundColor: '#50C37E',
+                    borderColor: '#50C37E'
+                },
+                {
+                    type: 'line',
+                    label: 'Umidade',
+                    data: umidade,
+                    backgroundColor: '#708BFF',
+                    borderColor: '#708BFF'
+                }
+            ],
+            labels: horario,
+        },
+        options: {
+        },
+        plugins: [horizontalDottedLine]
+    });

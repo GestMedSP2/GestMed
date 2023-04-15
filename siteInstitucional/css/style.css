@@ -647,11 +647,10 @@ textarea:focus {
 .headerDashboard {
     display: flex;
     background-color: var(--white);
-    height: 20vh;
+    height: 10vh;
     align-items: center;
     padding-inline: 3rem;
     justify-content: space-between;
-    
 }
 
 .headerDashboard h2{
