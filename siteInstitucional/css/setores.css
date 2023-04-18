@@ -63,7 +63,7 @@ body {
 }
 
 .containerSetor {
-    
+    text-decoration: none;
     width: 23vw;
     height: 23vh;
     border-radius: 10px;

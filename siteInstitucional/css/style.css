@@ -572,7 +572,9 @@ textarea:focus {
     gap: 1rem;
 }
 
-.menu li {
+.menu li a {
+    text-decoration: none;
+    color: var(--white);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -582,7 +584,7 @@ textarea:focus {
     transition: .5s;
 }
 
-.menu li:hover {
+.menu li:hover a {
     background-color: #ffffff50;
 }
 
@@ -604,7 +606,7 @@ textarea:focus {
     margin-left: 1.2rem;
 }
 
-.menu:hover li {
+.menu:hover li a {
     padding: 0 1rem;
 }
 
@@ -648,11 +650,7 @@ textarea:focus {
 .headerDashboard {
     display: flex;
     background-color: var(--white);
-<<<<<<< HEAD
-    height: 10vh;
-=======
     height: 15vh;
->>>>>>> afb10494c2cb7ec736f6467c732f0025f23b7cb2
     align-items: center;
     padding-inline: 3rem;
     justify-content: space-between;
