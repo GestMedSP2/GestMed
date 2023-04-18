@@ -181,26 +181,24 @@ body::-webkit-scrollbar-thumb {
 
 .fundoAlerta {
     background-image: linear-gradient(to left, var(--lightBlue) , var(--blue));
-    height: 650px;
-    width: 550px;
+    width: 40%;
     border-radius: 50px;
+    padding: 1.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-top: 50px;
+    transform: scale(1);
+    transition: all .3s ease-in-out;
 }
 
 .fundoAlerta:hover {
-    height: 655px;
-    width: 555px;
-    transition: all .3s ease-in-out;
+    transform: scale(1.02);
     box-shadow: 4px 4px 10px 2px #505677;
 }
 
 #medicoInformacoes {
-    margin-top: 50px;
-    width: 570px;
+    height: 90%;
 }
 
 .textoAlerta h3 {
@@ -345,8 +343,8 @@ body::-webkit-scrollbar-thumb {
 
 #form {
     background-color: rgb(94, 114, 202, 0.04);
-    width: 550px;
-    height: 700px;
+    width: 40%;
+    padding-block: 1.5rem;
     border-radius: 30px;
     display: flex;
     justify-content: center;
@@ -368,13 +366,14 @@ body::-webkit-scrollbar-thumb {
 .conteudoForm h3 {
     font-family: 'Poppins', sans-serif;
     color: var(--lightBlue);
-    font-size: 48px;
+    font-size: 3rem;
     margin: 0px 0 5px 0;
 }
 
 .conteudoForm p {
     font-family: 'Poppins', sans-serif;
-    font-size: 17px;
+    font-size: 1rem;
+    margin: 0;
     text-align: center;
 }
 
@@ -391,7 +390,7 @@ body::-webkit-scrollbar-thumb {
 
 
 .mensagem{
-    height: 160px !important;
+    height: 15vh !important;
     resize: none;
     padding: 15px 10px;
     font-family: 'Poppins', sans-serif;
@@ -427,7 +426,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 #medicoFaleConosco {
-    height: 600px;
+    height: 90%;
 }
 
 #footer {
@@ -648,14 +647,11 @@ textarea:focus {
 .headerDashboard {
     display: flex;
     background-color: var(--white);
-<<<<<<< HEAD
-    height: 10vh;
-=======
     height: 15vh;
->>>>>>> afb10494c2cb7ec736f6467c732f0025f23b7cb2
     align-items: center;
     padding-inline: 3rem;
     justify-content: space-between;
+    
 }
 
 .headerDashboard h2{
@@ -687,7 +683,7 @@ textarea:focus {
     color: var(--green);
 }
 
-@media(max-width: 1280px) {
+@media(max-width: 1400px) {
     html {
         font-size: 90%;
     }
