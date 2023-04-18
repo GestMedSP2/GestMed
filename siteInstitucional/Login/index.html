@@ -11,12 +11,12 @@
 <body>
     <div class="form">
         <h1>Login</h1>
-        <form action="">
-            <input placeholder="E-mail" type="text" name="" id="">
-            <input placeholder="Senha" type="password" name="" id="">
+        <div class="formContainer">
+            <input placeholder="E-mail" type="text" name="" id="input_email">
+            <input placeholder="Senha" type="password" name="" id="input_senha">
             <p>Precisa de ajuda?</p>
-            <button>Entrar</button>
-        </form>
+            <button onclick="acessar()">Entrar</button>
+        </div>
     </div>
     <div class="banner">
         <a href="../index.html" class="logo"><img  src="../assets/img/logoGestmed.svg" alt="logo"></a>
@@ -25,3 +25,26 @@
     </div>
 </body>
 </html>
+
+<script>
+    function acessar() {
+        var email = input_email.value;
+        var senha = input_senha.value;
+        
+        if(email == "" || senha == "") {
+            alert("Por favor, preencha todos os campos");
+        }
+
+        else if(!email.includes("@")) {
+            alert("Por favor, informe um E-mail válido");
+        }
+
+        else if(senha.length < 8) {
+            alert("A senha deve conter pelo menos 8 caracteres");
+        } 
+        else if (email == "admin@gestmed.com" && senha == 
+        "acessoGM") {
+            window.location.href = '../dashboard/index.html';
+        }
+    }
+</script>

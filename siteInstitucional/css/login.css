@@ -12,7 +12,7 @@ body > div {
     align-items: center;
 }
 
-.form form {
+.form .formContainer {
     display: flex;
     flex-direction: column;
     width: 60%;
