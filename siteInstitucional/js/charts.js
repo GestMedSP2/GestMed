@@ -20,9 +20,22 @@ const horario = [
 
             ctx.save();
 
-            ctx.strokeStyle = '#00000030';
+            var chartId = chart.ctx.canvas.id; 
+            var max = 0;
+            var min = 0;
+
+            if(chartId == 'chartTemperatura') {
+                max = 8;
+                min = 2;
+            } else if (chartId ==  'chartUmidade') {
+                max = 70;
+                min = 40;
+            }
+
+            ctx.strokeStyle = 'red';
             ctx.setLineDash([10, 6]);
-            ctx.strokeRect(left, y.getPixelForValue(52), width, 0);
+            ctx.strokeRect(left, y.getPixelForValue(max), width, 0);
+            ctx.strokeRect(left, y.getPixelForValue(min), width, 0);
             ctx.restore();
         }
     }
@@ -30,7 +43,7 @@ const horario = [
    
 // Gráfico temperatura
 
-    const lineChart = document.getElementById('myLineChart');
+    const lineChart = document.getElementById('chartTemperatura');
     const temperatura = [5, 5, 3, 4, 6, 10];
     new Chart(lineChart, {
         data: {
@@ -46,6 +59,12 @@ const horario = [
             labels: horario
         },
         options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 12,
+                }
+            }
         },
         plugins: [horizontalDottedLine]
     });
@@ -53,7 +72,7 @@ const horario = [
 // Gráfico umidade
 
     const umidade = [42, 50, 50, 55, 62, 66];
-    const lineChart2 = document.getElementById('myLineChart2');
+    const lineChart2 = document.getElementById('chartUmidade');
     new Chart(lineChart2, {
         data: {
             datasets: [
@@ -68,6 +87,12 @@ const horario = [
             labels: horario
         },
         options: {
+            scales: {
+                y: {
+                    min: 25,
+                    max: 80,
+                }
+            }
         },
         plugins: [horizontalDottedLine]
     });

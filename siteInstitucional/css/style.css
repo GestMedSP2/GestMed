@@ -571,7 +571,9 @@ textarea:focus {
     gap: 1rem;
 }
 
-.menu li {
+.menu li a {
+    text-decoration: none;
+    color: var(--white);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -581,7 +583,7 @@ textarea:focus {
     transition: .5s;
 }
 
-.menu li:hover {
+.menu li:hover a {
     background-color: #ffffff50;
 }
 
@@ -603,7 +605,7 @@ textarea:focus {
     margin-left: 1.2rem;
 }
 
-.menu:hover li {
+.menu:hover li a {
     padding: 0 1rem;
 }
 
