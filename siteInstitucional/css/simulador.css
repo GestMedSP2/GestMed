@@ -19,12 +19,20 @@
     align-items: center;
     text-align: center;
 
+    margin-top: 5vh;
+
     height: 100%;
     width: 50%;
 }
 
 .formDesperdico > div {
     display: flex;
+}
+
+#formSimulador .container {
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .formDesperdico h1, .formLote h1 {
@@ -57,11 +65,11 @@ button {
     transition: .8s;
 }
 
-.formDesperdico .botaoVermelho {
+.botaoVermelho {
     background-color: #ED6969;
 }
 
-.formDesperdico .botaoVermelho:hover {
+.botaoVermelho:hover {
     border-color: #ED6969;
     background-color: transparent;
     color: #ED6969;
@@ -119,6 +127,10 @@ button {
     background-position: bottom;
 }
 
+.antesComecar .blob img {
+    height: 100%;
+}
+
 #formSimulador {
     display: none;
 }
@@ -131,6 +143,8 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    margin-top: 10vh;
 
     width: 50%;
 }
@@ -153,8 +167,7 @@ button {
 }
 
 .vantagens .lucro {
-    height: 25vh;
-    padding-block: 2rem;
+    height: 28vh;
     background: linear-gradient(to right, rgba(41,70,194, 0.60), rgba(105,217,150));
 }
 
@@ -185,7 +198,7 @@ button {
 }
 
 .beneficios {
-    height: 80vh;
+    height: 72vh;
 }
 
 .beneficios .container {
@@ -219,7 +232,7 @@ button {
     align-items: center;
 }
 
-.iconify {
+.beneficio .iconify {
     color: var(--green);
     margin-right: 10px;
 }
@@ -232,4 +245,15 @@ button {
 .beneficio span { 
     font-weight: 600;
     color: var(--green);
+}
+
+@media (max-width: 1400px) {
+    .painelBeneficios h2 {
+        font-size: 1.4rem;
+    }
+    
+    .beneficio p {
+        font-size: 1.1rem;
+        margin-block: .8rem;
+    }
 }
