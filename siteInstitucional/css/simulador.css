@@ -65,11 +65,11 @@ button {
     transition: .8s;
 }
 
-.formDesperdico .botaoVermelho {
+.botaoVermelho {
     background-color: #ED6969;
 }
 
-.formDesperdico .botaoVermelho:hover {
+.botaoVermelho:hover {
     border-color: #ED6969;
     background-color: transparent;
     color: #ED6969;
@@ -232,7 +232,7 @@ button {
     align-items: center;
 }
 
-.iconify {
+.beneficio .iconify {
     color: var(--green);
     margin-right: 10px;
 }
