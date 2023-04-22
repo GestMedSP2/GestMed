@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GestMed | setores</title>
+    <title>GestMed | Setores</title>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="../js/setores.js" defer></script>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/setores.css">
     <link rel="stylesheet" href="../css/simulador.css">
 </head>
 <body>
-  <button class="criarSetor">
+  <button class="criarSetor" onclick="abrirModal()">
     <span class="iconify" data-icon="mingcute:add-fill"></span>
   </button>
 
-  <div class="modalCriarSetor">
+  <div class="modalCriarSetor modalCriarSetorInativo" id="modalCriarSetor">
     <div class="overlay">
       <div class="modal">
         <div class="modalContainer">
@@ -28,7 +29,7 @@
           </select>
           <div>
             <button id="buttonCadastrar" class="botaoVerde">Simular</button>
-            <button id="buttonCancelar" class="botaoVermelho">Cancelar</button>
+            <button id="buttonCancelar" class="botaoVermelho" onclick="fecharModal()">Cancelar</button>
           </div>
         </div>
       </div>

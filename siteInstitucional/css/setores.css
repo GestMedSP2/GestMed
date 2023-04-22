@@ -22,8 +22,16 @@ body {
 }
 
 .filtragem button {
-    width:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50px;
     height: 50px;
+
+    margin: 0;
+    padding: 0;
+
     border-radius: 10px;
     border: 2px solid var(--lightBlue);
     background-color: white;
@@ -67,7 +75,7 @@ body {
     width: 23vw;
     height: 23vh;
     border-radius: 10px;
-    padding: 1rem;
+    padding: 1.5rem;
     margin-top: 20px;
     
 }
@@ -168,6 +176,9 @@ body {
     justify-content: center;
     align-items: center;
 
+    margin: 0;
+    padding: 0;
+
     position: absolute;
     z-index: 2;
     right: 2rem;
@@ -181,7 +192,7 @@ body {
     width: 4rem;
     height: 4rem;
 
-    font-size: 2rem;
+    font-size: 1.6rem;
 
     opacity: .6;
     transition: .5s;
@@ -251,4 +262,12 @@ body {
     justify-content: center;
 
     margin-top: 1.5rem;
+}
+
+.modalCriarSetorAtivo {
+    display: flex;
+}
+
+.modalCriarSetorInativo {
+    display: none;
 }
