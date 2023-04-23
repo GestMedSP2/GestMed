@@ -2,13 +2,23 @@
 Chart.defaults.font.family = 'Poppins';
 
 const horario = [
-        '12:00',
-        '13:00',
-        '14:00',
-        '15:00',
-        '16:00',
-        '17:00',
-    ]
+    '12:00',
+    '12:15',
+    '12:30',
+    '12:45',
+    '13:00',
+    '13:15',
+]
+
+const semana = [
+    'Dom',
+    'Seg',
+    'Ter',
+    'Qua',
+    'Qui',
+    'Sex',
+    'Sab'
+]
 
 //Linha pontilhada
 
@@ -33,7 +43,7 @@ const horario = [
             }
 
             ctx.strokeStyle = 'red';
-            ctx.setLineDash([10, 6]);
+            ctx.setLineDash([15, 10]);
             ctx.strokeRect(left, y.getPixelForValue(max), width, 0);
             ctx.strokeRect(left, y.getPixelForValue(min), width, 0);
             ctx.restore();
@@ -101,8 +111,8 @@ const horario = [
 
 // Gráfico média
 
-    const temperaturaMedia = [22, 24, 27, 23, 20,18];
-    const umidadeMedia = [90, 89, 93, 87, 88 , 70];
+    const temperaturaMedia = [22, 24, 27, 23, 20, 18, 22];
+    const umidadeMedia = [90, 89, 93, 87, 88 , 70, 75];
 
     const barChart = document.getElementById('myBarChart');
 
@@ -124,6 +134,6 @@ const horario = [
                     borderRadius: 10,
                 }
             ],
-            labels: horario
+            labels: semana
         },
     });
