@@ -14,11 +14,9 @@ body {
 
 .dashboard {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column;
     height: 85vh;
-    margin-left: 10px;
+    overflow-y: scroll;
 }
 
 .dashboard::-webkit-scrollbar {
@@ -35,22 +33,32 @@ body {
     border: 2px solid #becaff;  
 }
 
+.graficosSuperiores {
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+}
 
+.indicadoresInferiores {
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+}
 
 .conteudoGrafico {
     display: flex;
-    background-color: #f8f8f8;
     width: 49%;
-    height: 49%;
     border-radius: 12px;
+    background-color: #f8f8f8;
+    padding-block: 1rem;
 }
 
 #conteudoGraficoBarra {
     display: flex;
-    background-color: #f8f8f8;
     width: 60%;
-    height: 47%;
+    background-color: #f8f8f8;
     border-radius: 12px;
+    padding-block: 1rem;
 }
 
 #conteudoAtual {
@@ -60,7 +68,6 @@ body {
     align-items: center;
     background-color: #f8f8f8;
     width: 35%;
-    height: 47%;
     border-radius: 12px;
 }
 
@@ -69,8 +76,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 100%;
     width: 35%;
+    gap: 1rem;
+}
+
+.conteudoEsquerda .quadradoSetorSuporta {
+    padding-block: 1rem;
 }
 
 .quadradoSetorSuporta {
@@ -80,7 +91,6 @@ body {
     align-items: center;
     background-color: white;
     width: 80%;
-    height: 40%;
     border-radius: 15px;
     box-shadow: 2px 4px #8888;
 }
@@ -88,18 +98,20 @@ body {
 .alerta {
     display: flex;
     flex-direction: column;
+    text-align: center;
     align-items: center;
     background-color: #FF4B4B;
     width: 80%;
-    height: 40%;
+    padding-block: 1rem;
     border-radius: 15px;
     box-shadow: 2px 4px #8888;
     
 }
 
 .alerta h2 {
-    margin: 15px 10px;
-    font-size: 16px;
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
     color: yellow;
     
 }
@@ -114,17 +126,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     background-color: #50C37E;
     width: 80%;
-    height: 40%;
+    padding-block: 1rem;
     border-radius: 15px;
     box-shadow: 2px 4px #8888;
     
 }
 
 .alertaIdeal h2 {
-    margin: 15px 10px;
-    font-size: 16px;
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
     color: white;
     
 }
@@ -145,8 +159,13 @@ body {
     flex-direction: column;
 }
 
+.colunaQuadradinho h4{
+    font-size: 1rem;
+}
+
 .quadradoSetorSuporta h3{
-    font-size: 15px;
+    text-align: center;
+    font-size: .9rem;
     margin-bottom: 0;
 }
 
@@ -155,8 +174,8 @@ body {
     align-items: center;
     justify-content: center;
     background-color: white;
-    width: 75px;
-    height: 50px;
+    width: 100%;
+    padding-block: .8rem;
     box-shadow: 2px 4px 4px #FF4B4B;
     border-radius: 10px;
 }
@@ -166,18 +185,18 @@ body {
     align-items: center;
     justify-content: center;
     background-color: white;
-    width: 75px;
-    height: 50px;
+    width: 100%;
+    padding-block: .8rem;
     box-shadow: 2px 4px 4px var(--green);
     border-radius: 10px;
 }
 
 .quadradinhoMinimo h1 {
-    font-size: 20px;
+    font-size: 1.2rem;
 }
 
 .quadradinhoMaximo h1 {
-    font-size: 20px;
+    font-size: 1.2rem;
 }
 
 h3, .conteudo h4, h1{
@@ -196,16 +215,18 @@ h3, .conteudo h4, h1{
     align-items: center;
     background-color: white;
     width: 80px;
-    height: 60px;
     box-shadow: 2px 4px 4px #8888;
     border-radius: 10px;
 }
 
+.alinhaGraficoBarra .maiorMenorDadoObtido h2 {
+    font-size: 1.5rem;
+}
+
 .conteudoEsquerda select{
     width: 100%;
-    height: 48px;
-    font-size: 16px;
-    padding: 0;
+    font-size: 1rem;
+    padding: .5rem .5rem;
     margin: 0;
 }
 
@@ -216,7 +237,6 @@ h3, .conteudo h4, h1{
 }
 
 .tamanhoMenor {
-    height: 32%;
     width: 75%;
 }
 
@@ -235,7 +255,6 @@ h3, .conteudo h4, h1{
     align-items: center;
     background-color: #f8f8f8;
     width: 63%;
-    height: 100%;
 }
 
 .grafico h2{
@@ -255,15 +274,18 @@ h3, .conteudo h4, h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
 
     background-color: white;
     width: 100%;
-    height: 85%;
     border-radius: 10px;
 }
 
-.areaGrafico div {
+.areaGrafico div { 
     width: 90%;
+    display: flex;
+    height: 100%;
+    align-items: center;
 }
 
 
@@ -284,10 +306,10 @@ h3, .conteudo h4, h1{
 .conteudoDireita {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
     height: 100%;
     width: 45%;
+    padding-block: 1rem;
 }
 
 .tamanhoAtual {
@@ -309,9 +331,20 @@ h3, .conteudo h4, h1{
 }
 
 .temperaturaUmidadeAtual {
-    font-size: 50px;
+    font-size: 2.6rem;
 }
 
 .conteudoDireita h3 {
     font-size: 18px;
+}
+
+@media (max-width: 1284px) {
+    .areaGrafico div {
+        width: 95%;
+        /* height: 80%; */
+    }
+
+    .alertaIdeal h2, .alerta h2 {
+        margin-bottom: .5rem;
+    }
 }
