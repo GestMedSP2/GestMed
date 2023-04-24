@@ -63,176 +63,175 @@
         </div>
 
         <div class="dashboard">
-
+            <div class="graficosSuperiores">
             <!--Gráfico de Temperatura-->
-            <div class="conteudoGrafico">
-                <div class="conteudoEsquerda">
-                    <div class="quadradoSetorSuporta">
-                        <h3>Temperatura ideal do setor:</h3>
-                        <div class="minimoMaximo">
-                            
-                            <div class="colunaQuadradinho">
-                                <h4>Mínimo:</h4>
-                                <div class="quadradinhoMinimo">
-                                    <h1>1°C</h1>
-                                </div>
-                            </div>
-
-                            <div class="colunaQuadradinho">
-                                <h4>Máximo:</h4>
-                                <div class="quadradinhoMaximo">
-                                    <h1>8°C</h1>
-                                </div>
+                <div class="conteudoGrafico">
+                    <div class="conteudoEsquerda">
+                        <div class="quadradoSetorSuporta">
+                            <h3>Temperatura ideal do setor:</h3>
+                            <div class="minimoMaximo">
                                 
-                            </div>
-                        </div>
-                    </div>
+                                <div class="colunaQuadradinho">
+                                    <h4>Mínimo:</h4>
+                                    <div class="quadradinhoMinimo">
+                                        <h1>1°C</h1>
+                                    </div>
+                                </div>
 
-                    <div class="alerta">
-                        <h2>ALERTA DE TEMPERATURA</h2>
-                        <p>A temperatura ideal do setor foi utrapassada exatamente no minuto 5:00, passando de 8°C para 10°C.</p>
-                    </div>
-
-                </div>
-
-
-                <div class="grafico">
-                    <h2 class="corVerde">Gráfico de Temperatura</h2>
-                    <div class="areaGrafico">
-                        <div id="graficoLinha">
-                            <canvas id="chartTemperatura"></canvas>
-                        </div>
-                    </div>
-                </div>
-                
-
-            </div>
-
-
-            <!--Gráfico de Umidade-->
-            <div class="conteudoGrafico">
-                <div class="conteudoEsquerda">
-                    <div class="quadradoSetorSuporta">
-                        <h3>Umidade ideal do setor:</h3>
-                        <div class="minimoMaximo">
-                            
-                            <div class="colunaQuadradinho">
-                                <h4>Mínimo:</h4>
-                                <div class="quadradinhoMinimo">
-                                    <h1>1°C</h1>
+                                <div class="colunaQuadradinho">
+                                    <h4>Máximo:</h4>
+                                    <div class="quadradinhoMaximo">
+                                        <h1>8°C</h1>
+                                    </div>
+                                    
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="colunaQuadradinho">
-                                <h4>Máximo:</h4>
-                                <div class="quadradinhoMaximo">
-                                    <h1>8°C</h1>
-                                </div>
-                                
+                        <div class="alerta">
+                            <h2>ALERTA DE TEMPERATURA</h2>
+                            <p>A temperatura ideal do setor foi utrapassada exatamente no minuto 5:00, passando de 8°C para 10°C.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="grafico">
+                        <h2 class="corVerde">Gráfico de Temperatura</h2>
+                        <div class="areaGrafico">
+                            <div id="graficoLinha">
+                                <canvas id="chartTemperatura"></canvas>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="alertaIdeal">
-                        <h2>UMIDADE IDEAL</h2>
-                        <p>A temperatura ideal do setor foi utrapassada exatamente no minuto 5:00, passando de 8°C para 10°C.</p>
-                    </div>
-
-                </div>
-
-                <div class="grafico">
-                    <h2 class="corAzul">Gráfico de Umidade</h2>
-                    <div class="areaGrafico">
-                        <div id="graficoLinha">
-                            <canvas id="chartUmidade"></canvas>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-
-
-            <!--Gráfico de Barra-->
-            <div id="conteudoGraficoBarra">
-                <div class="conteudoEsquerda">
-                    <div class="periodoEscolha">
-                        <label><b>Dados coletados no período:</b></label>
-                        <select name="selectPeriodo" id="select_periodo">
-                            <option value="Mes">Mês</option>
-                            <option value="Semana" selected>Semana</option>
-                            <option value="Dia">Dia</option>
-                        </select>
                     </div>
                     
-                    <div class="quadradoSetorSuporta tamanhoMenor">
-                        <h3>Temperatura mais alta obtida:</h3>
-                        <div class="alinhaGraficoBarra">
-                            <img class="imgTemperaturaUmidade" src="../assets/img/termometro.png">
-                            <div class="maiorMenorDadoObtido">
-                                <h2>42°C</h2>
-                            </div>
-                        </div>
 
-                    </div>
-
-                    <div class="quadradoSetorSuporta tamanhoMenor">
-                        <h3>Umidade mais alta obtida:</h3>
-                        <div class="alinhaGraficoBarra">
-                            <img class="imgTemperaturaUmidade" src="../assets/img/umidade.png">
-                            <div class="maiorMenorDadoObtido">
-                                <h2>42°C</h2>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
 
-                <div class="grafico">
-                    <h2 class="corVerde">Gráfico da Média de Temperatura e Umidade</h2>
-                    <div class="areaGrafico">
-                        <div id="graficoBarra">
-                            <canvas id="myBarChart"></canvas>
+                <!--Gráfico de Umidade-->
+                <div class="conteudoGrafico">
+                    <div class="conteudoEsquerda">
+                        <div class="quadradoSetorSuporta">
+                            <h3>Umidade ideal do setor:</h3>
+                            <div class="minimoMaximo">
+                                
+                                <div class="colunaQuadradinho">
+                                    <h4>Mínimo:</h4>
+                                    <div class="quadradinhoMinimo">
+                                        <h1>1°C</h1>
+                                    </div>
+                                </div>
+
+                                <div class="colunaQuadradinho">
+                                    <h4>Máximo:</h4>
+                                    <div class="quadradinhoMaximo">
+                                        <h1>8°C</h1>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alertaIdeal">
+                            <h2>UMIDADE IDEAL</h2>
+                            <p>A temperatura ideal do setor foi utrapassada exatamente no minuto 5:00, passando de 8°C para 10°C.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="grafico">
+                        <h2 class="corAzul">Gráfico de Umidade</h2>
+                        <div class="areaGrafico">
+                            <div id="graficoLinha">
+                                <canvas id="chartUmidade"></canvas>
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
-                
-                
             </div>
 
+            <div class="indicadoresInferiores">
+                <!--Gráfico de Barra-->
+                <div id="conteudoGraficoBarra">
+                    <div class="conteudoEsquerda">
+                        <div class="periodoEscolha">
+                            <label><b>Dados coletados no período:</b></label>
+                            <select name="selectPeriodo" id="select_periodo">
+                                <option value="Mes">Mês</option>
+                                <option value="Semana" selected>Semana</option>
+                                <option value="Dia">Dia</option>
+                            </select>
+                        </div>
+                        
+                        <div class="quadradoSetorSuporta tamanhoMenor">
+                            <h3>Temperatura mais alta obtida:</h3>
+                            <div class="alinhaGraficoBarra">
+                                <img class="imgTemperaturaUmidade" src="../assets/img/termometro.png">
+                                <div class="maiorMenorDadoObtido">
+                                    <h2>42°C</h2>
+                                </div>
+                            </div>
 
-            <!--Temperatura e umidade atuais-->
-            <div id="conteudoAtual">
+                        </div>
 
-                <div class="quadradoSetorSuporta alinhamentoAtual">
-                    <div class="listraEsquerda"></div>
-                    <div class="conteudoDireita">
-                        <h3>Temperatura Atual:</h3>
-                        <img class="imgTemperaturaUmidade tamanhoAtual" src="../assets/img/termometro.png">
+                        <div class="quadradoSetorSuporta tamanhoMenor">
+                            <h3>Umidade mais alta obtida:</h3>
+                            <div class="alinhaGraficoBarra">
+                                <img class="imgTemperaturaUmidade" src="../assets/img/umidade.png">
+                                <div class="maiorMenorDadoObtido">
+                                    <h2>42°C</h2>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="conteudoDireitaTemperaturaUmidade">
-                        <div class="maiorMenorDadoObtido maiorTamanho">
-                            <h2 class="temperaturaUmidadeAtual">42°C</h2>
+
+                    <div class="grafico">
+                        <h2 class="corVerde">Gráfico da Média de Temperatura e Umidade</h2>
+                        <div class="areaGrafico">
+                            <div id="graficoBarra">
+                                <canvas id="myBarChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Temperatura e umidade atuais-->
+                <div id="conteudoAtual">
+
+                    <div class="quadradoSetorSuporta alinhamentoAtual">
+                        <div class="listraEsquerda"></div>
+                        <div class="conteudoDireita">
+                            <h3>Temperatura Atual:</h3>
+                            <img class="imgTemperaturaUmidade tamanhoAtual" src="../assets/img/termometro.png">
+                        </div>
+
+                        <div class="conteudoDireitaTemperaturaUmidade">
+                            <div class="maiorMenorDadoObtido maiorTamanho">
+                                <h2 class="temperaturaUmidadeAtual">42°C</h2>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quadradoSetorSuporta alinhamentoAtual">
+                        <div class="listraEsquerda"></div>
+                        <div class="conteudoDireita">
+                            <h3>Umidade Atual:</h3>
+                            <img class="imgTemperaturaUmidade tamanhoAtual" src="../assets/img/umidade.png">
+                        </div>
+
+                        <div class="conteudoDireitaTemperaturaUmidade">
+                            <div class="maiorMenorDadoObtido maiorTamanho">
+                                <h2 class="temperaturaUmidadeAtual">80%</h2>
+                            </div>
                         </div>
                     </div>
 
                 </div>
-
-
-                <div class="quadradoSetorSuporta alinhamentoAtual">
-                    <div class="listraEsquerda"></div>
-                    <div class="conteudoDireita">
-                        <h3>Umidade Atual:</h3>
-                        <img class="imgTemperaturaUmidade tamanhoAtual" src="../assets/img/umidade.png">
-                    </div>
-
-                    <div class="conteudoDireitaTemperaturaUmidade">
-                        <div class="maiorMenorDadoObtido maiorTamanho">
-                            <h2 class="temperaturaUmidadeAtual">80%</h2>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
         </div>    
