@@ -1,61 +1,102 @@
-CREATE DATABASE gestMed;
+CREATE DATABASE gestmed;
 
-USE gestMed;
+USE gestmed;
 
-CREATE TABLE usuario(
-id INT PRIMARY KEY NOT NULL, 
-cargo CHAR(3) NOT NULL,
-nome_completo VARCHAR(150) NOT NULL,
-email VARCHAR(150) NOT NULL,
-senha VARCHAR(100) NOT NULL,
-CONSTRAINT chkCargo CHECK (cargo in('ADM', 'CMM'))
+CREATE TABLE endereco(
+idEndereco INT auto_increment primary key, 
+cep CHAR(9),
+logradouro VARCHAR(100),
+numero INT,
+bairro VARCHAR(45), 
+cidade VARCHAR(45),
+estado VARCHAR(45),
+complemento VARCHAR(45)
 );
 
-DESC usuario;
+INSERT INTO endereco VALUES
+	(null, '01234-567', 'Rua da Consolação', 123, 'Consolação', 'São Paulo', 'SP', 'Apt 101'),
+    (null, '04567-890', 'Avenida Faria Lima', 2000, 'Itaim Bibi', 'São Paulo', 'SP', 'Sala 301');
 
-INSERT INTO usuario values
-('0123111', 'CMM', 'José Pereira Pinto da silva', 'josepereira243@gmail.com', 'josé123'),
-('0123222', 'ADM', 'Maria Soares da Silva', 'mari.soares@outlook.com', 'M@riajojo2543'),
-('0123333', 'CMM', 'Tadeu Bartolomeu Silva de Nogueira', 'tadeu.bartolomeu@sptech.school', '487236'),
-('0123444', 'CMM', 'Jacinto Oliveira de Ramos', 'jacinto.oliveira@hotmail.com.br', '19912003');
-
-DESC usuario;
-
-SELECT * FROM usuario;
-
-CREATE TABLE dados_sensor (
-	codigoSensor VARCHAR(50) PRIMARY KEY,
-    sttSensor VARCHAR(20) CONSTRAINT chkStatus CHECK (sttSensor IN('Ativo', 'Inativo', 'Em manutenção')),
-    temperaturaMin DECIMAL(4, 2), 
-    temperaturaMax DECIMAL(4, 2),
-    umidadeMin TINYINT, 
-    umidadeMax TINYINT
+CREATE TABLE empresa (
+idEmpresa INT auto_increment primary key,
+nome VARCHAR(45),
+cnpj CHAR(18),
+telefone BIGINT,
+email VARCHAR(100),
+fkEndereco INT,
+CONSTRAINT fkEnd FOREIGN KEY (fkEndereco)
+REFERENCES endereco(idEndereco)
 );
 
-DESC dados_sensor;
+INSERT INTO empresa VALUES
+	 (null, 'Empresa A', '11.111.111/0001-01', 11999990000, 'empresaA@example.com', 1),
+     (null, 'Empresa B', '22.222.222/0001-02', 21999990000, 'empresaB@example.com', 2);
 
-INSERT INTO dados_sensor VALUES
-('0223', 'Ativo', '6', '20', '50', '80'),
-('0224', 'Inativo', '6', '20', '50', '80'),
-('0225', 'Em manutenção', '6', '20', '50', '80');
-
-SELECT * FROM dados_sensor;
-SELECT * FROM dados_sensor WHERE codigoSensor = '0223';
-
-CREATE TABLE controle (
-id INT PRIMARY KEY AUTO_INCREMENT,
-dtColeta DATETIME DEFAULT CURRENT_TIMESTAMP, 
-temperatura DECIMAL(4,2),
-umidade TINYINT,
-codigoSensor VARCHAR (50) 
+CREATE TABLE funcionario(
+idFuncionario INT,
+fkEmpresa INT,
+nome VARCHAR(45),
+sobrenome VARCHAR (50),
+cargo VARCHAR(10),
+email VARCHAR(45),
+senha VARCHAR(16),
+CONSTRAINT fkEmp FOREIGN KEY (fkEmpresa)
+REFERENCES empresa (idEmpresa),
+CONSTRAINT chkCar CHECK (cargo in ('ADM','CMM')),
+CONSTRAINT pkCompostaEmp PRIMARY KEY (idFuncionario, fkEmpresa)
 );
 
-DESC controle;
+CREATE TABLE setor(
+idSetor INT auto_increment primary key,
+fkEmpresaS INT,
+nome VARCHAR(45),
+armazenaTermolabeis BOOLEAN,
+CONSTRAINT fkEmpS FOREIGN KEY (fkEmpresaS)
+REFERENCES empresa (idEmpresa)
+);
 
-INSERT INTO controle (codigoSensor, temperatura, umidade) VALUES
-('0223', '20', '60'),
-('0224', '15', '55'),
-('0223', '18', '70');
+INSERT INTO setor VALUES
+	(null, 1, 'Produção de Paracetamol', true),
+	(null, 1, 'Controle de Qualidade de Aspirina', false),
+	(null, 2, 'Pesquisa e Desenvolvimento de Insulina', false),
+	(null, 2, 'Comercialização de Amoxicilina', false);
+    
+SELECT * FROM setor;
 
-SELECT * FROM controle;
-SELECT * FROM controle WHERE codigoSensor = '0223';
+CREATE TABLE sensor (
+idSensor INT,
+fkSetor INT,
+fkEmpresaE INT,
+status VARCHAR(20),
+CONSTRAINT chckStatus CHECK (status IN('Ativo', 'Inativo', 'Em manutenção')),
+CONSTRAINT fkEmpE FOREIGN KEY (fkEmpresaE)
+REFERENCES empresa (idEmpresa),
+CONSTRAINT fkSetor FOREIGN KEY (fkSetor)
+REFERENCES setor (idSetor),
+CONSTRAINT pkCompostaSensor PRIMARY KEY (idSensor, fkSetor)
+);
+
+INSERT INTO sensor VALUES 
+	('012344', 1, 1, 'Ativo'),
+	('012358', 1, 1, 'Inativo'),
+	('012348', 2, 2, 'Em manutenção'),
+	('012357', 2, 2, 'Ativo');
+
+CREATE TABLE dados (
+idDados INT AUTO_INCREMENT,
+fkSensor INT,
+temperatura DECIMAL (4,2),
+umidade DECIMAL (4,2),
+dataColeta DATETIME DEFAULT CURRENT_TIMESTAMP,
+CONSTRAINT fkSen FOREIGN KEY (fkSensor)
+REFERENCES sensor(idSensor),
+CONSTRAINT pkCompostaDados PRIMARY KEY (idDados, fkSensor)
+); 
+
+INSERT INTO dados VALUES
+	(NULL, '012344', (0.29 * 25.30) - 1.54, (0.88 * 70) - 3.92, '2023-04-15 10:15:00'), -- Simulando temperatura de medicamento termolabel com a equação (0,29 * x - 1,54) e umidade (0,88 * x - 3,92)
+    (NULL, '012358', 20.20, (0.88 * 80) - 3.92, '2023-04-15 10:20:00'),
+    (NULL, '012348', 27.40, (0.88 * 65) - 3.92, '2023-04-15 10:25:00'),
+    (NULL, '012357', 22.10, (0.88 * 75) - 3.92, '2023-04-15 10:30:00');
+   
+SELECT * FROM dados;
