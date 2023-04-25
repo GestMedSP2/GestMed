@@ -64,7 +64,8 @@
         <div class="form">
             <div class="container">
                 <h1>Cadastro de funcionário</h1>
-                <p>Insira os dados do funcionário para cadastrá-lo no sistema Insira os dados do funcionário para cadastrá-lo no.</p>
+                <p>Insira os dados do funcionário para cadastrá-lo no sistema.</p>
+                <input type="text" placeholder="Identificação" id="input_identificacao">
                 <input type="text" placeholder="Nome" id="input_nome">
                 <input type="text" placeholder="Sobrenome" id="input_sobrenome">
                 <select name="select" id="select_cargo">
@@ -84,6 +85,7 @@
 
 <script> 
     function logar() {
+            var Identificacao = input_identificacao.value;
             var Nome = input_nome.value;
             var Sobrenome = input_sobrenome.value;
             var Email = input_email.value;
@@ -94,7 +96,7 @@
             var selectValue = select.options[select.selectedIndex].value;
 
 
-            if (Nome == "" || Sobrenome == "" || Email == "" || Senha == "" || ConfSenha == "" || selectValue == "Cargo") {
+            if (Identificacao == "" || Nome == "" || Sobrenome == "" || Email == "" || Senha == "" || ConfSenha == "" || selectValue == "Cargo") {
                 alert ("Preencha todos os campos")
             }
 
