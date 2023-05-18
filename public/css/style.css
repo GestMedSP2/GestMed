@@ -1,0 +1,710 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+:root {
+    --blue: #3F53AA;
+    --lightBlue: #91A6FF;
+    --green: #50C37E; 
+    --white: #FFF;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;              
+}
+  
+body::-webkit-scrollbar-track {
+    background: #becaff;        
+}
+  
+body::-webkit-scrollbar-thumb {
+    background-color: #3F53AA;   
+    border-radius: 20px;      
+    border: 2px solid #becaff;  
+}
+
+.header {
+    background-image: linear-gradient(to left, var(--lightBlue) , var(--blue));
+    height: 15vh;
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+}
+
+.header .container {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    width: 85%;
+    margin: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 130px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.header .container {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    width: 700px;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.itemLista a{
+    text-decoration: none;
+    color: var(--white);
+    font-size: 22px;
+    font-family: 'League Spartan', sans-serif;
+    transition: all .4s ease-in-out;
+    cursor: pointer;
+}
+
+.itemLista a:hover{
+    color: var(--blue);
+    padding: 5px 10px;
+    background-color: var(--white);
+    border-radius: 8px;
+    transition: 250ms;
+}
+
+.areaCliente a{
+    text-decoration: none;
+    color: var(--white);
+    font-size: 22px;
+    font-family: 'League Spartan', sans-serif;
+    transition: all .4s ease-in-out;
+    cursor: pointer;
+    padding: 12px 10px;
+    background-color: #338f57;
+    border-radius: 8px;
+}
+
+.areaCliente a:hover {
+    background-color: #04a745ab;
+    transition: 250ms;
+}
+
+
+#home {
+    background-image: url(../assets/img/fundoHome.png);
+    height: 85vh;
+    padding-top: 15vh;
+}
+
+.textoHome {
+    width: 50%;
+}
+
+.textoHome h1{
+    font-family: 'League Spartan', sans-serif;
+    color: var(--lightBlue);
+    font-size: 5rem;
+    margin: 0;
+}
+
+.tituloVerde {
+    color: var(--green);
+}
+
+.medicoHome {
+    height: 90%;
+}
+
+#home .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.textoHome p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+}
+
+.botaoHome {
+    background-color: var(--lightBlue);
+    border:none!important;
+    border-radius: 15px;
+    height: 70px;
+    color: var(--white);
+    width: 40%;
+    font-size: 27px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 5px 5px 12px  #a8b8ff;
+    transition: 200ms;
+}
+
+.botaoHome:hover{ 
+    box-shadow: 5px 5px 12px 5px #a8b8ff;
+    margin-left: 3px;
+}
+
+
+#informacoes{
+    height: 100vh;
+}
+
+#informacoes .container {
+    display: flex;
+    height: 100vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fundoAlerta {
+    background-image: linear-gradient(to left, var(--lightBlue) , var(--blue));
+    width: 40%;
+    border-radius: 50px;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform: scale(1);
+    transition: all .3s ease-in-out;
+}
+
+.fundoAlerta:hover {
+    transform: scale(1.02);
+    box-shadow: 4px 4px 10px 2px #505677;
+}
+
+#medicoInformacoes {
+    height: 90%;
+}
+
+.textoAlerta h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--lightBlue);
+    margin: 10px 0px;
+}
+
+.textoAlerta ul {
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+    font-weight: 500;
+}
+
+.dadoVermelho {
+    color: #FF5252;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.textoAlerta h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--lightBlue);
+    width: 80%;
+}
+
+.textoAlerta {
+    width: 84%;
+}
+
+.textoAlerta ul {
+    padding-left: 20px;
+}
+
+.textoAlerta p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: var(--white);
+}
+
+.fundoAlerta ::before {
+    content: '';
+    background-image: url(../assets/img/alerta\ 1.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: -50px;
+    right: -35px;
+}
+
+#simulador {
+    height: 90vh;
+    background-image: linear-gradient(to right, rgba(41,70,194, 0.60), rgba(105,217,150));
+}
+
+#simulador .container {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.textoSimulador {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.textoSimulador h1{
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+    font-size: 4rem;
+}
+
+.textoSimulador p{
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.botaoSimulador {
+    background-color: #50C37E;
+    border: none !important;
+    border-radius: 15px;
+    height: 70px;
+    color: var(--white);
+    width: 350px;
+    font-size: 27px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    box-shadow: -5px 5px 12px  #419e66;
+}
+
+.botaoSimulador:hover{ 
+    box-shadow: -5px 5px 12px 5px #419e66;
+    margin-left: 2px;
+    margin-bottom: 2px;
+}
+
+.simuladorDinheiro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.medicoSimulador {
+    width: 100%;
+}
+
+.blob {
+    display: flex;
+    justify-content: center;
+    background-image: url(../assets/img/blob.svg);
+    height: 80%;
+    width: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#faleConosco {
+    height: 90vh;
+}
+
+#faleConosco .container {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#form {
+    background-color: rgb(94, 114, 202, 0.04);
+    width: 40%;
+    padding-block: 1.5rem;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteudoForm {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+}
+
+.textoForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conteudoForm h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--lightBlue);
+    font-size: 3rem;
+    margin: 0px 0 5px 0;
+}
+
+.conteudoForm p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    margin: 0;
+    text-align: center;
+}
+
+.inputFaleConosco , .mensagem {
+    background-color: #DEDEDE;
+    border: none;
+    height: 30px;
+    margin: 15px 0;
+    border-radius: 8px;
+    padding-inline: 10px;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.mensagem{
+    height: 15vh !important;
+    resize: none;
+    padding: 15px 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.inputForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.botaoForm {
+    background-color: var(--lightBlue);
+    color: var(--white);
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    height: 55px;
+    border: none;
+    border-radius: 8px;
+    width: 60%;
+    align-self: center;
+    margin-top: 15px;
+    cursor: pointer;
+    box-shadow: 5px 4px 12px #a8b8ff;
+
+    transition: 200ms;
+}
+
+.botaoForm:hover{ 
+    box-shadow: 5px 5px 12px 4px #a8b8ff;
+    margin-left: 2px;
+}
+
+#medicoFaleConosco {
+    height: 90%;
+}
+
+#footer {
+    background-image: linear-gradient(to left, var(--lightBlue) , var(--blue));
+    height: 25vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+}
+
+#footer li {
+    list-style: none;
+}
+
+#footer a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 300;
+}
+
+#footer a:hover {
+    color: #ffffff91;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+#footer ul {
+    padding: 0;
+}
+
+.listaFooter {
+    display: flex;
+    justify-content: space-around;
+    width: 700px;
+}
+
+#imgGithub {
+    width: 35px;
+}
+
+#imgInstagram {
+    width: 35px;
+    margin-left: 15px;
+}
+
+#imgLinkedin {
+    width: 35px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#imgTwitter {
+    width: 35px;
+}
+
+.redesSociais {
+    display: flex;
+    align-items: flex-start;
+    height: 13vh;
+}
+
+input, select {
+    padding: 15px 20px;
+    margin-block: 15px;
+    
+    border-radius: 10px;
+    border: 4px solid #7e96ff;
+
+    color: var(--lightBlue);
+    
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+
+    width: 100%;
+
+    transition: 200ms;
+}
+
+select {
+    width: calc(100% + 48px);
+}
+
+input:focus, select:focus {
+    outline: none;
+    box-shadow: 2px 3px 10px 0px #a8b8ff;
+}
+
+textarea {
+    padding: 15px 20px;
+    margin-block: 15px;
+                        
+    border-radius: 10px;
+    border: 4px solid #7e96ff;
+                    
+    color: var(--lightBlue);
+                        
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+                    
+    transition: 200ms;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 2px 3px 10px 0px #a8b8ff;
+}
+
+.menu {
+    position: absolute;
+    width: 6vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #7791FF, #6381FF);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    transition: .5s;
+}
+
+.menu img {
+    width: 50%;
+    margin-top: 1.5rem;
+}
+
+.menu nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+
+.menu ul {
+    list-style: none;
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px;
+
+    transition: .5s;
+}
+
+.menu li:hover a {
+    background-color: #ffffff50;
+}
+
+.menu h4 {
+    width: 0px;
+    transform: scale(0);
+
+    transition: .5s;
+}
+
+.menu:hover {
+    width: 14vw;
+    padding-inline: 1rem;
+}
+
+.menu:hover h4 {
+    width: auto;
+    transform: scale(1);
+    margin-left: 1.2rem;
+}
+
+.menu:hover li a {
+    padding: 0 1rem;
+}
+
+.menu {
+    width: 8vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #7791FF, #6381FF);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu img {
+    width: 50%;
+    margin-top: 1.5rem;
+}
+
+.menu nav {
+    margin: auto;
+}
+
+.menu ul {
+    list-style: none;
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.menu li {
+    cursor: pointer;
+}
+
+.conteudo {
+    width: 100%;
+    padding-left: 8vw;
+}
+
+.headerDashboard {
+    display: flex;
+    background-color: var(--white);
+    height: 15vh;
+    align-items: center;
+    padding-inline: 3rem;
+    justify-content: space-between;
+    
+}
+
+.headerDashboard h2{
+    background: url('../assets/img/sublinhadotexto.svg') no-repeat;
+    background-position: bottom;
+    background-size: contain;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+}
+
+.perfil div {
+    width: 35px;
+    height: 35px;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 10px;
+    color: var(--green);
+}
+
+.perfil span {
+    color: var(--green);
+}
+
+@media(max-width: 1400px) {
+    html {
+        font-size: 90%;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .textoHome {
+        width: 70%;
+    }
+}
+
+@media(max-width: 820px) {
+    html {
+        font-size: 83.5%;
+    }
+}
+
+@media(max-width: 500px) {
+    html {
+        font-size: 60.5%;
+    }
+}

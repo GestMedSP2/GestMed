@@ -1,0 +1,273 @@
+body {
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+}
+
+.setores {
+    width: 90%;
+    margin: auto;
+}
+
+.setores h1 {
+    color: var(--lightBlue);
+    margin: 0;
+    font-size: 3rem
+}
+
+.filtragem {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    
+}
+
+.filtragem button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50px;
+    height: 50px;
+
+    margin: 0;
+    padding: 0;
+
+    border-radius: 10px;
+    border: 2px solid var(--lightBlue);
+    background-color: white;
+    cursor: pointer;
+} 
+
+.filtragem button .iconify {
+    color: var(--lightBlue);
+    font-size: 1.5rem;
+}
+
+
+.filtragem .BarraPesquisa {
+    border: 2px solid var(--lightBlue);
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+.filtragem .BarraPesquisa input {
+    padding: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--lightBlue);
+    font-family: 'Poppins', sans-serif;
+    box-shadow: none !important;
+}
+
+.filtragem .BarraPesquisa .iconify {
+    font-size: 1.2rem;
+    color: var(--lightBlue);
+    padding-inline: .8rem;
+}
+
+.containerSetor {
+    text-decoration: none;
+    width: 23vw;
+    height: 23vh;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 20px;
+    
+}
+
+.containerSetor h2 {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+.containerSetor p {
+    margin: 0;
+    color: white;
+
+}
+
+.statusContainer {
+    margin-top: 1rem;
+}
+
+.statusContainer .status {
+    display: flex;
+    align-items: center;
+    gap:.5rem;
+}
+
+.statusContainer .status div {
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+}
+
+.statusAtivo div{
+    background-color: #307E4F;
+
+}
+
+.statusAtivo span {
+    color: #307E4F;
+    font-weight: 600;
+}
+
+.statusManutencao div {
+    background-color: #F3F565;
+}
+
+.statusManutencao span {
+    color: #F3F565;
+    font-weight: 600;
+}
+
+.statusInativo div {
+    background-color: #E7584F;
+}
+
+.statusInativo span {
+    color: #E7584F;
+    font-weight: 600;
+}
+
+.containerSetores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.setorAtivo {
+    background-color: #50C37E;
+}
+
+.setorManutencao {
+    background-color:#E9EB88;
+}
+
+.setorManutencao .statusManutencao span {
+    color: #86804A !important;
+}
+
+.setorManutencao .statusManutencao div {
+    background-color: #86804A;
+}
+
+.setorInativo {
+    background-color: #E7584F;
+}
+
+.setorInativo .statusInativo span {
+    color: #BA3931 !important;
+}
+
+.setorInativo .statusInativo div {
+    background-color: #BA3931;
+}
+
+.criarSetor {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    position: absolute;
+    z-index: 2;
+    right: 2rem;
+    bottom: 2rem;
+
+    background-color: var(--lightBlue);
+    color: var(--white);
+    border: 0;
+    border-radius: 100%;
+
+    width: 4rem;
+    height: 4rem;
+
+    font-size: 1.6rem;
+
+    opacity: .6;
+    transition: .5s;
+}
+
+.criarSetor:hover {
+    opacity: 1;
+}
+
+.modalCriarSetor .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    z-index: 3;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #00000030;
+}
+
+.modalCriarSetor .modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 30%;
+    background-color: var(--white);
+    border-radius: 15px;
+}
+
+.modal::before {
+    content: '';
+
+    background-color: var(--green);
+    border-radius: 15px 15px 0 0;
+
+    width: 100%;
+    height: 3rem;
+}
+
+.modal .modalContainer {
+    flex-direction: column;
+    padding: 0rem 4rem 4rem 4rem;
+}
+
+.modal h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-block: 1rem;
+    color: var(--lightBlue);
+}
+
+.modal input {
+    width: calc(100% - 48px);
+}
+
+.modal select {
+    width: 100%;
+}
+
+.modal div {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 1.5rem;
+}
+
+.modalCriarSetorAtivo {
+    display: flex;
+}
+
+.modalCriarSetorInativo {
+    display: none;
+}

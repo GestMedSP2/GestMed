@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>GestMed</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="#home"><img class="logo" src="./assets/img/logoGestmed.svg"></a>
+            <ul class="navbar">
+                <li class="itemLista"><a href="#home">Home</a></li>
+                <li class="itemLista"><a href="#informacoes">Informações</a></li>
+                <li class="itemLista"><a href="#simulador">Simulador</a></li>
+                <li class="itemLista"><a href="#faleConosco">Contato</a></li>
+                <li class="areaCliente"><a href="./Login/index.html">Área do Cliente</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="home">
+        <div class="container">
+            <div class="textoHome">
+                <h1>Conheça a <span class="tituloVerde">GestMed</span></h1>
+                <p>Em primeiro lugar, uma pergunta, os remédios cuidam de toda a população, mas quem cuida dos remédios?
+                    A resposta é a GestMed. Nosso sistema fornece monitoramento
+                    de temperatura e umidade dos locais onde são armazenados remédios e assim evita o desperdício de
+                    medicamentos e insumos. </p>
+                <a href="#informacoes"><button class="botaoHome">Saiba Mais!</button></a>
+            </div>
+            <img class="medicoHome" src="./assets/img/bonequinhoHome.svg">
+        </div>
+    </div>
+
+    <div id="informacoes">
+        <div class="container">
+            <img id="medicoInformacoes" src="./assets/img/medicoInformacoes.png">
+            <div class="fundoAlerta">
+                <div class="textoAlerta">
+                    <h3>Você sabia?</h3>
+                    <ul>
+                        <li><span class="dadoVermelho">43%</span> dos medicamentos são desperdiçados por problemas com
+                            temperatura ou umidade.</li>
+                        <li><span class="dadoVermelho">20%</span> dos medicamentos comprados todos os anos são
+                            desperdiçados no Brasil.</li>
+                        <li><span class="dadoVermelho">R$ 1 bilhão</span> são jogados fora todos os anos pelo
+                            desperdício de medicamentos no Brasil.</li>
+                    </ul>
+                    <h4>E como isso afeta a marca do medicamento?</h4>
+                    <p>Problemas durante esse processo prejudicam a sua credibilidade, pois após qualquer problema com a
+                        eficácia e qualidade de medicamentos e
+                        vacinas a primeira mudança do cliente é a marca do medicamento. Logo, nosso sistema assegura a
+                        sua credibilidade e potencializa o ganho de seus clientes e consequentemente o de sua empresa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="simulador">
+        <div class="container">
+            <div class="textoSimulador">
+            <h1>Simulador Financeiro</h1>
+            <p>Deseja saber o quanto de dinheiro você poderia estar ganhando utilizando o nosso sistema? Calcule agora!
+               Clique no botão abaixo e responda um simples questionário.</p>
+
+               <div class="simuladorDinheiro">
+                <a href="./Simulador/index.html"><button class="botaoSimulador">Simule agora!</button></a>
+                <img src="./assets/img/dinheiro 1.svg">
+               </div>
+            </div>
+
+            <div class="blob">
+                <img class="medicoSimulador"  src="./assets/img/medicoSimulador.svg">
+            </div>
+        
+        </div>
+    </div>
+
+    <div id="faleConosco">
+        <div class="container">
+            <img id="medicoFaleConosco" src="./assets/img/medicoFaleConosco.svg">
+            <div id="form">
+                <div class="conteudoForm">
+                    
+                    <div class="textoForm">
+                        <h3>Fale Conosco</h3>
+                        <p>Caso tenha alguma dúvida sobre o sistema ou esteja interessado em adquiri-lo.</p>
+                    </div>
+
+                    <div class="inputForm">
+                        <input class="inputFaleConosco" type="text" placeholder="Nome da Empresa">
+                    <input class="inputFaleConosco" type="text" placeholder="Assunto">
+                    <textarea class="mensagem" type="text" placeholder="Mensagem"></textarea>
+                    </div>
+                    
+                    <button class="botaoForm">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="footerLogo">
+            <a href="#home"><img src="assets/img/logoGestmed.svg"></a>
+            <h4>© GestMed 2023</h4>
+        </div>
+
+        <div class="listaFooter">
+            <div class="lista1">
+                <h4>Início</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#informacoes">Informações</a></li>
+                    <li><a href="#simulador">Simulador</a></li>
+                    <li><a href="#faleConosco">Fale Conosco</a></li>
+                </ul>
+            </div>
+
+            <div class="lista2">
+                <h4>Sobre Nós</h4>
+                <ul>
+                    <li><a href="#">Empresa</a></li>
+                </ul>
+            </div>
+
+            <div class="lista3">
+                <h4>Suporte</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Telefones</a></li>
+                    <li><a href="#">Chat</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="redesSociais">
+            <a href="#"><img id="imgGithub" src="assets/img/github.svg"></a>
+            <a href="#"><img id="imgInstagram" src="assets/img/instagram.svg"></a>
+            <a href="#"><img id="imgLinkedin" src="assets/img/linkedin.png"></a>
+            <a href="#"><img id="imgTwitter" src="assets/img/twitter.svg"></a>
+        </div>
+    </footer>
+</body>
+
+</html>

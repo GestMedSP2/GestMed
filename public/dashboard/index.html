@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GestMed | Dashboard</title>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/charts.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <div class="menu">
+        <img src="../assets/img/logosemtexto.svg" alt="logo">
+        <nav class="opcoes">
+            <ul> 
+                <li>
+                   <a href="../setores/index.html"> <span class="iconify" data-icon="ci:chart-bar-vertical-01" data-width="30"></span>
+                    <h4>Setores</h4>
+                  </a>
+                </li>
+                <li>
+                    <a href="#"><span class="iconify" data-icon="ci:bell-ring" data-width="30"></span>
+                    <h4>Alertas</h4>
+                  </a>
+                </li>
+                <li>
+                   <a href="../funcionarios/index.html">
+                      <span class="iconify" data-icon="ci:user-add" data-width="30"></span>
+                      <h4>Funcionários</h4>
+                    </a> 
+                </li>
+                <li>
+                   <a href="#"> <span class="iconify" data-icon="ci:car-auto" data-width="30"></span>
+                    <h4>Transporte</h4>
+                  </a>
+                </li>
+                <li>
+                    <a href="#"><span class="iconify" data-icon="ci:settings" data-width="30"></span>
+                    <h4>Configurações</h4>
+                  </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="conteudo">
+        <div class="headerDashboard">
+            <h2 class="empresa">Pfizer</h2>
+            <div class="setor">
+                <h1> Setor <span>Dorflex</span> </h1>
+            </div>
+            <div class="perfil">
+                <h4>Olá, <span>funcionário</span></h4>
+                <div>
+                    <span class="iconify" data-icon="majesticons:settings-cog-line" data-width="20"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="dashboard">
+            <div class="graficosSuperiores">
+            <!--Gráfico de Temperatura-->
+                <div class="conteudoGrafico">
+                    <div class="conteudoEsquerda">
+                        <div class="quadradoSetorSuporta">
+                            <h3>Temperatura ideal do setor:</h3>
+                            <div class="minimoMaximo">
+                                
+                                <div class="colunaQuadradinho">
+                                    <h4>Mínimo:</h4>
+                                    <div class="quadradinhoMinimo">
+                                        <h1>3°C</h1>
+                                    </div>
+                                </div>
+
+                                <div class="colunaQuadradinho">
+                                    <h4>Máximo:</h4>
+                                    <div class="quadradinhoMaximo">
+                                        <h1>7°C</h1>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alerta">
+                            <h2>ALERTA DE TEMPERATURA</h2>
+                            <p>A temperatura ideal do setor foi utrapassada exatamente ás 13:08, passando de 6°C para 10°C.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="grafico">
+                        <h2 class="corVerde">Gráfico de Temperatura</h2>
+                        <div class="areaGrafico">
+                            <div id="graficoLinha">
+                                <canvas id="chartTemperatura"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+
+                <!--Gráfico de Umidade-->
+                <div class="conteudoGrafico">
+                    <div class="conteudoEsquerda">
+                        <div class="quadradoSetorSuporta">
+                            <h3>Umidade ideal do setor:</h3>
+                            <div class="minimoMaximo">
+                                
+                                <div class="colunaQuadradinho">
+                                    <h4>Mínimo:</h4>
+                                    <div class="quadradinhoMinimo">
+                                        <h1>40%</h1>
+                                    </div>
+                                </div>
+
+                                <div class="colunaQuadradinho">
+                                    <h4>Máximo:</h4>
+                                    <div class="quadradinhoMaximo">
+                                        <h1>70%</h1>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alertaIdeal">
+                            <h2>UMIDADE IDEAL</h2>
+                            <p>Esse setor apresenta a umidade ideal.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="grafico">
+                        <h2 class="corAzul">Gráfico de Umidade</h2>
+                        <div class="areaGrafico">
+                            <div id="graficoLinha">
+                                <canvas id="chartUmidade"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="indicadoresInferiores">
+                <!--Gráfico de Barra-->
+                <div id="conteudoGraficoBarra">
+                    <div class="conteudoEsquerda">
+                        <div class="periodoEscolha">
+                            <label><b>Dados coletados no período:</b></label>
+                            <select name="selectPeriodo" id="select_periodo">
+                                <option value="Mes">Mês</option>
+                                <option value="Semana" selected>Semana</option>
+                                <option value="Dia">Dia</option>
+                            </select>
+                        </div>
+                        
+                        <div class="quadradoSetorSuporta tamanhoMenor">
+                            <h3>Temperatura mais alta obtida:</h3>
+                            <div class="alinhaGraficoBarra">
+                                <img class="imgTemperaturaUmidade" src="../assets/img/termometro.png">
+                                <div class="maiorMenorDadoObtido">
+                                    <h2>42°C</h2>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="quadradoSetorSuporta tamanhoMenor">
+                            <h3>Umidade mais alta obtida:</h3>
+                            <div class="alinhaGraficoBarra">
+                                <img class="imgTemperaturaUmidade" src="../assets/img/umidade.png">
+                                <div class="maiorMenorDadoObtido">
+                                    <h2>66%</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="grafico">
+                        <h2 class="corVerde">Gráfico da Média de Temperatura e Umidade</h2>
+                        <div class="areaGrafico">
+                            <div id="graficoBarra">
+                                <canvas id="myBarChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Temperatura e umidade atuais-->
+                <div id="conteudoAtual">
+
+                    <div class="quadradoSetorSuporta alinhamentoAtual">
+                        <div class="listraEsquerda"></div>
+                        <div class="conteudoDireita">
+                            <h3>Temperatura Atual:</h3>
+                            <img class="imgTemperaturaUmidade tamanhoAtual" src="../assets/img/termometro.png">
+                        </div>
+
+                        <div class="conteudoDireitaTemperaturaUmidade">
+                            <div class="maiorMenorDadoObtido maiorTamanho">
+                                <h2 class="temperaturaUmidadeAtual">10°C</h2>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quadradoSetorSuporta alinhamentoAtual">
+                        <div class="listraEsquerda"></div>
+                        <div class="conteudoDireita">
+                            <h3>Umidade Atual:</h3>
+                            <img class="imgTemperaturaUmidade tamanhoAtual" src="../assets/img/umidade.png">
+                        </div>
+
+                        <div class="conteudoDireitaTemperaturaUmidade">
+                            <div class="maiorMenorDadoObtido maiorTamanho">
+                                <h2 class="temperaturaUmidadeAtual">66%</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>    
+
+    </div>
+</body>
+</html>

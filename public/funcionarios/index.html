@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GestMed | Cadastro</title>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="../js/validarSessao.js" defer></script>
+    <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body onload="validarSessao()">
+    <div class="menu">
+        <img src="../assets/img/logosemtexto.svg" alt="logo">
+        <nav class="opcoes">
+            <ul>
+                <li>
+                    <a href="../setores/index.html">
+                        <span class="iconify" data-icon="ci:chart-bar-vertical-01" data-width="30"></span>
+                        <h4>Setores</h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="iconify" data-icon="ci:bell-ring" data-width="30"></span>
+                        <h4>Alertas</h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Cadastro/index.html">
+                        <span class="iconify" data-icon="ci:user-add" data-width="30"></span>
+                        <h4>Funcionários</h4>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="iconify" data-icon="ci:car-auto" data-width="30"></span>
+                        <h4>Transporte</h4>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <span class="iconify" data-icon="ci:settings" data-width="30"></span>
+                        <h4>Configurações</h4>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="conteudo">
+        <div class="headerDashboard">
+            <h2 id="nome_empresa"> Pfizer</h2>
+            <div class="perfil">
+                <h4>Olá, <span id="nome_usuario">funcionário</span></h4>
+                <div>
+                    <span class="iconify" data-icon="majesticons:settings-cog-line" data-width="20"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form">
+            <div class="container">
+                <h1>Cadastro de funcionário</h1>
+                <p>Insira os dados do funcionário para cadastrá-lo no sistema.</p>
+                <input type="text" placeholder="Identificação" id="input_identificacao">
+                <input type="text" placeholder="Nome" id="input_nome">
+                <input type="text" placeholder="Sobrenome" id="input_sobrenome">
+                <select name="select" id="select_cargo">
+                    <option value="Cargo" disabled selected hidden>Cargo</option>
+                    <option value="ADM">Administrador</option>
+                    <option value="CMM">Comum</option>
+                </select>
+                <input type="text" placeholder="Email" id="input_email">
+                <input type="password" placeholder="Senha" id="input_senha">
+                <input type="password" placeholder="Confirmar senha" id="input_conf">
+                <button onclick="logar()">Cadastrar</button>
+                </d>
+            </div>
+        </div>
+</body>
+
+</html>
+
+<script>
+    function logar() {
+        var idFuncionario = input_identificacao.value;
+        var idEmpresa = sessionStorage.ID_EMPRESA;
+        var nome = input_nome.value;
+        var sobrenome = input_sobrenome.value;
+        var email = input_email.value;
+        var senha = input_senha.value;
+        var confSenha = input_conf.value;
+
+        var select = document.getElementById('select_cargo');
+        var cargo = select.options[select.selectedIndex].value;
+
+        if (idFuncionario == "" || nome == "" || sobrenome == "" || email == "" || senha == "" || confSenha == "" || cargo == "Cargo") {
+            alert("Preencha todos os campos")
+        }
+
+        else if (!email.includes("@")) {
+            alert("Insera um E-mail válido")
+        }
+
+        else if (senha.length < 8) {
+            alert("Senha fraca, tente novamente")
+        }
+
+        else if (confSenha != senha) {
+            alert("Senhas diferentes, corrija o campo de confirmação")
+        }
+
+        else {
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    idFuncionario,
+                    idEmpresa,
+                    nome,
+                    sobrenome,
+                    cargo,
+                    email,
+                    senha
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    alert('Funcionário cadastrado com sucesso!');
+
+                    //limparFormulario();
+                    //finalizarAguardar();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                //finalizarAguardar();
+            });
+        }
+    }
+</script>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <title>GestMed | Login</title>
+</head>
+
+<body>
+    <div class="form">
+        <h1>Login</h1>
+        <div class="formContainer">
+            <input placeholder="E-mail" type="text" name="" id="input_email">
+            <input placeholder="Senha" type="password" name="" id="input_senha">
+            <p>Precisa de ajuda?</p>
+            <button onclick="acessar()">Entrar</button>
+        </div>
+    </div>
+    <div class="banner">
+        <a href="../index.html" class="logo"><img src="../assets/img/logoGestmed.svg" alt="logo"></a>
+        <h2>Queremos fazer a diferença!</h2>
+        <img class="imagemBanner" src="../assets/img/médicoPílula.svg" alt="">
+    </div>
+</body>
+
+</html>
+
+<script>
+    function acessar() {
+        var email = input_email.value;
+        var senha = input_senha.value;
+
+        if (email == "" || senha == "") {
+            alert("Por favor, preencha todos os campos");
+        }
+
+        else if (!email.includes("@")) {
+            alert("Por favor, informe um E-mail válido");
+        }
+
+        else if (senha.length < 8) {
+            alert("A senha deve conter pelo menos 8 caracteres");
+        }
+        else {
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email,
+                    senha
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.idFuncionario;
+                        sessionStorage.EMPRESA_USUARIO = json.nomeEmpresa;
+                        sessionStorage.ID_EMPRESA = json.idEmpresa;
+
+                        setTimeout(function () {
+                            window.location = "../setores/index.html";
+                        }, 1000); // apenas para exibir o loading
+
+                    });
+
+                } else {
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+        }
+    }
+</script>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/simulador.css">
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="../js/simulador.js" defer></script>
+    <title>GestMed | Simulador</title>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <a href="../index.html"><img class="logo" src="../assets/img/logoGestmed.svg"></a>
+            <ul class="navbar">
+                <li class="itemLista"><a href="../index.html">Home</a></li>
+                <li class="itemLista"><a href="../index.html#informacoes">Informações</a></li>
+                <li class="itemLista"><a href="../index.html#simulador">Simulador</a></li>
+                <li class="itemLista"><a href="../index.html#faleConosco">Contato</a></li>
+                <li class="areaCliente"><a href="../Login/index.html">Área do Cliente</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="antesComecar" class="antesComecar">
+        <div class="container">
+            <div class="formDesperdico">
+                <h1>Antes de começar...</h1>
+                <p>
+                    Você sabe quanto você tem de prejuizo por você ou seus compradores não terem um monitoramento adequado?
+                    Caso não saiba, clique em “Não”.
+                </p>
+                <input id="inputPrejuizo" type="text" placeholder="Ex: 20">
+                <div>
+                    <button onclick="irParaSimulador('Sim')" class="botaoVerde">Sim</button>
+                    <button onclick="irParaSimulador('Nao')" class="botaoVermelho">Não</button>
+                </div>
+            </div>
+            <div class="imagem">
+                <div class="blob">
+                    <img src="../assets/img/medicoInjecao.svg" alt="medico com injeção">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='formSimulador' class="simulador">
+        <div class="container">
+            <div class="formLote">
+                <h1>Simule aqui!</h1>
+                <p>Insira os dados de algum lote de seus medicamentos vendidos ao decorrer do mês e calcule o valor que você poderá lucrar utilizando nosso sistema</p>
+                <input id="inputNomeMedicamento" type="text" placeholder="Nome do medicamento">
+                <input id="inputValorLote" type="text" placeholder="Valor do lote">
+                <input id="inputQtdLotes" type="text" placeholder="Quantidade de lotes">
+                <button id="buttonSimular" class="botaoVerde">Simular</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="vantagens" class="vantagens">
+        <div class="lucro">
+            <div class="container">
+                <div class="vantagem">
+                    <h2 id="porcentagemLucro">+10%</h2>
+                    <p id="textoPorcentagemLucro">de lucro com a venda dos lotes de Dorflex desse medicamento</p>
+                </div>
+                <div class="vantagem">
+                    <h2 id="valorLucro">+R$12000</h2>
+                    <p id="textoValorLucro">de lucro anual com a venda dos lotes de Dorflex utilizando o nosso sistema</p>
+                </div>
+                <div class="vantagem">
+                    <h2 id="qtdLotes">+1200 lotes</h2>
+                    <p id="textoQtdLotes">de Dorflex que terão seu desperdício evitado</p>
+                </div>
+                <div class="vantagem">
+                    <h2>+Credibilidade</h2>
+                    <p>porque após qualquer problema de eficácia com medicamentos a primeira ação é a troca de marca do medicamento.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="beneficios">
+            <div class="container">
+                <img src="../assets/img/medicoApontando.svg" alt="medico apontando">
+                
+                <div class="painelBeneficios">
+                    <h2>Contratando a GestMed você obterá:</h2>
+
+                    <div class="beneficio">
+                        <span class="iconify" data-width="40" data-height="40" data-icon="material-symbols:check-small-rounded"></span>
+                        <p><span>Mais lucro</span>, com mais medicamentos a disposição.</p>
+                    </div>
+
+                    <div class="beneficio">
+                        <span class="iconify" data-width="40" data-height="40" data-icon="material-symbols:check-small-rounded"></span>
+                        <p><span>Maior qualidade</span> em seus medicamentos.</p>
+                    </div>
+
+                    <div class="beneficio">
+                        <span class="iconify" data-width="40" data-height="40" data-icon="material-symbols:check-small-rounded"></span>
+                        <p><span>Mais credibilidade</span> de sua marcar.</p>
+                    </div>
+
+                    <div class="beneficio">
+                        <span class="iconify" data-width="40" data-height="40" data-icon="material-symbols:check-small-rounded"></span>
+                        <p><span>Potencialização</span>, com mais medicamentos a disposição.</p>
+                    </div>
+
+                    <div class="beneficio">
+                        <span class="iconify" data-width="40" data-height="40" data-icon="material-symbols:check-small-rounded"></span>
+                        <p><span>Maior controle</span> sobre a eficácia de seus medicamentos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="footerLogo">
+            <img src="../assets/img/logoGestmed.svg">
+            <h4>© GestMed 2023</h4>
+        </div>
+
+        <div class="listaFooter">
+            <div class="lista1">
+            <h4>Início</h4>
+            <ul>
+                <li class="lista"><a>Home</a></li>
+                <li><a>Informações</a></li>
+                <li><a>Simulador</a></li>
+                <li><a>Fale Conosco</a></li>
+            </ul>
+            </div>
+
+            <div class="lista2">
+            <h4>Sobre Nós</h4>
+            <ul>
+                <li><a>Informações</a></li>
+            </ul>
+            </div>
+
+            <div class="lista3">
+            <h4>Suporte</h4>
+            <ul>
+                <li><a>FAQ</a></li>
+                <li><a>Telefones</a></li>
+                <li><a>Chat</a></li>
+            </ul>
+            </div>
+        </div>
+
+            <div class="redesSociais">
+                <img id="imgGithub" src="../assets/img/github.svg">
+                <img id="imgInstagram" src="../assets/img/instagram.svg">
+                <img id="imgLinkedin" src="../assets/img/linkedin.png">
+                <img id="imgTwitter" src="../assets/img/twitter.svg">
+            </div>
+    </footer>
+</body>
+</html>
