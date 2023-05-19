@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GestMed | Alertas</title>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/alertas.css">
+
+</head>
+<body>
+    <div class="menu">
+        <img src="../assets/img/logosemtexto.svg" alt="logo">
+        <nav class="opcoes">
+            <ul> 
+                <li>
+                   <a href="../setores/index.html"> <span class="iconify" data-icon="ci:chart-bar-vertical-01" data-width="30"></span>
+                    <h4>Setores</h4>
+                  </a>
+                </li>
+                <li>
+                    <a href="../alertas/index.html"><span class="iconify" data-icon="ci:bell-ring" data-width="30"></span>
+                    <h4>Alertas</h4>
+                  </a>
+                </li>
+                <li>
+                   <a href="../funcionarios/index.html">
+                      <span class="iconify" data-icon="ci:user-add" data-width="30"></span>
+                      <h4>Funcionários</h4>
+                    </a> 
+                </li>
+                <li>
+                   <a href="#"> <span class="iconify" data-icon="ci:car-auto" data-width="30"></span>
+                    <h4>Transporte</h4>
+                  </a>
+                </li>
+                <li>
+                    <a href="#"><span class="iconify" data-icon="ci:settings" data-width="30"></span>
+                    <h4>Configurações</h4>
+                  </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="conteudo">
+        <div class="headerDashboard">
+            <h2 class="empresa">Pfizer</h2>
+            <div class="perfil">
+                <h4>Olá, <span>funcionário</span></h4>
+                <div>
+                    <span class="iconify" data-icon="majesticons:settings-cog-line" data-width="20"></span>
+                </div>
+            </div>
+
+        </div>  
+
+        <div class="areaAlerta">
+            <h1>Alertas</h1>
+            <div class="conteudoAlerta">
+                <div class="topoConteudoAlerta">
+                    <div class="quadradoAlerta">
+                        <h2>Alertas Críticos</h2>
+                        <div class="quadradoNumeroAlerta alertaCritico">
+                            <span>3</span>
+                        </div>
+                        <button class="btnFiltrar">Filtrar</button>
+                    </div>
+
+                    <div class="quadradoAlerta">
+                        <h2>Alertas Urgentes</h2>
+                        <div class="quadradoNumeroAlerta alertaUrgente">
+                            <span>5</span>
+                        </div>
+                        <button class="btnFiltrar">Filtrar</button>
+                    </div>
+
+                    <div class="quadradoAlerta">
+                        <h2>Alertas Ideais</h2>
+                        <div class="quadradoNumeroAlerta alertaIdeais">
+                            <span>10</span>
+                        </div>
+                        <button class="btnFiltrar">Filtrar</button>
+                    </div>
+                </div>
+
+                <div class="areaTabela">
+                    <table id="tabelaAlerta">
+                        <thead>
+                            <tr>
+                                <th id="colunaResolvido">Resolvido</th>
+                                <th>Setor</th>
+                                <th id="colunaPrioridade">Prioridade</th>
+                                <th id="colunaDataHora">Data/Hora</th>
+                                <th id="colunaDescricao">Descrição</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeCritica">
+                                        <text>Crítico</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeCritica">
+                                        <text>Crítico</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeUrgente">
+                                        <text>Urgente</text>
+                                    </div>
+                                </td class="centralizarPrioridade">
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeUrgente">
+                                        <text>Urgente</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeUrgente">
+                                        <text>Urgente</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeUrgente">
+                                        <text>Urgente</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeIdeal">
+                                        <text>Ideal</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeIdeal">
+                                        <text>Ideal</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeIdeal">
+                                        <text>Ideal</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeIdeal">
+                                        <text>Ideal</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeIdeal">
+                                        <text>Ideal</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeIdeal">
+                                        <text>Ideal</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>Dorflex</td>
+                                <td class="centralizarPrioridade">
+                                    <div class="caixaPrioridade prioridadeIdeal">
+                                        <text>Ideal</text>
+                                    </div>
+                                </td>
+                                <td>12/04/2023 13:40:20</td>
+                                <td>Temperatura ultrapassada para 80ºC</td>
+                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

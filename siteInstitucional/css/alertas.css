@@ -1,0 +1,162 @@
+body {
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.areaAlerta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 85vh;
+}
+
+.areaAlerta h1 {
+    color: var(--lightBlue);
+    margin: 0;
+    font-size: 3rem;
+}
+
+.conteudoAlerta {
+    background-color: rgb(248, 248, 248);
+    width: 90%;
+    height: 88%;
+    border-radius: 15px;
+    box-shadow: -6px 6px 4px #8888;
+}
+
+.topoConteudoAlerta {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 28%;
+}
+
+.quadradoAlerta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 17%;
+    height: 72%;
+    border-radius: 15px;
+    box-shadow: -6px 6px 4px #8888; 
+}
+
+.quadradoNumeroAlerta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    width: 40%;
+    border-radius: 15px;
+    margin: 5px 0 12px 0;
+}
+
+.alertaCritico {
+    background-color: #E7584F;
+}
+
+.alertaUrgente {
+    background-color: #D1D43A;
+}
+
+.alertaIdeais {
+    background-color: #50C37E;
+}
+
+.quadradoAlerta h2 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--lightBlue);
+    font-size: 1.4rem;
+}
+
+.btnFiltrar {
+    background-color: #F8F8F8;
+    border: 1px solid #939393;
+    border-radius: 4px;
+    width: 80px;
+    height: 22px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.quadradoNumeroAlerta span {
+    font-weight: 800;
+    color: white;
+    font-size: 3rem;
+}
+
+.areaTabela {
+    overflow-y: auto;
+    height: 72%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+#tabelaAlerta{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+
+#tabelaAlerta td, th{
+    border: 2px solid rgb(0, 0, 0, 0.3);
+}
+
+#tabelaAlerta th {
+    height: 2rem;
+    color: var(--lightBlue);
+    font-size: 1.3rem;
+}
+
+#tabelaAlerta td {
+    text-align: center;
+    height: 2.5rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.caixaPrioridade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 70%;
+    border-radius: 18px;
+}
+
+#colunaResolvido {
+    width: 10%;
+}
+
+#colunaPrioridade {
+    width: 15%;
+}
+
+#colunaDataHora {
+    width: 25%;
+}
+
+#colunaDescricao {
+    width: 30%;
+}
+
+.prioridadeCritica {
+    background-color: #E7584F;
+}
+
+.prioridadeUrgente {
+    background-color: #D1D43A;
+}
+
+.prioridadeIdeal {
+    background-color: #50C37E;
+}
+
+.centralizarPrioridade {
+    padding-left: 45px;
+}
