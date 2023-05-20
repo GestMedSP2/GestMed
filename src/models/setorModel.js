@@ -9,7 +9,6 @@ function criar(idEmpresa, nomeSetor, armazenaTermolabeis) {
     return database.executar(instrucao);
 }
 
-
 module.exports = {
     criar,
 }

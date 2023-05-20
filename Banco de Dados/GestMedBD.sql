@@ -62,10 +62,6 @@ CONSTRAINT fkEmpS FOREIGN KEY (fkEmpresaS)
 REFERENCES empresa (idEmpresa)
 );
 
-ALTER TABLE setor RENAME COLUMN nome TO nomeSetor;
-
-DESC setor;
-
 INSERT INTO setor VALUES
 	(null, 1, 'Produção de Paracetamol', true),
 	(null, 1, 'Controle de Qualidade de Aspirina', false),
@@ -109,7 +105,14 @@ INSERT INTO dados VALUES
     (NULL, '012358', 20.20, (0.88 * 80) - 3.92, '2023-04-15 10:20:00'),
     (NULL, '012348', 27.40, (0.88 * 65) - 3.92, '2023-04-15 10:25:00'),
     (NULL, '012357', 22.10, (0.88 * 75) - 3.92, '2023-04-15 10:30:00');
+    
+INSERT INTO dados VALUES
+	(NULL, '012357', 21.10, (0.88 * 75) - 3.82, '2023-04-15 10:30:50');
    
 SELECT * FROM dados;
+
+SELECT DATE_FORMAT(dataColeta, '%H:%i') as DataColeta, TRUNCATE(AVG(temperatura), 1) as Temperatura, TRUNCATE(AVG(umidade), 1) as Umidade FROM dados 
+WHERE DATE_FORMAT(dataColeta, '%H:%i') IN ('10:30', '10:25') GROUP BY DATE_FORMAT(dataColeta, '%H:%i'); 
+
 SELECT * FROM setor;
 SELECT * FROM funcionario;

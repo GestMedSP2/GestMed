@@ -8,11 +8,13 @@
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/validarSessao.js" defer></script>
     <script src="../js/charts.js" defer></script>
+    <script src="../js/dashboard.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
-<body>
+<body onload="{validarSessao(); chamarDados()}">
     <div class="menu">
         <img src="../assets/img/logosemtexto.svg" alt="logo">
         <nav class="opcoes">
@@ -49,12 +51,12 @@
 
     <div class="conteudo">
         <div class="headerDashboard">
-            <h2 class="empresa">Pfizer</h2>
+            <h2 class="empresa" id="nome_empresa">Pfizer</h2>
             <div class="setor">
                 <h1> Setor <span>Dorflex</span> </h1>
             </div>
             <div class="perfil">
-                <h4>Olá, <span>funcionário</span></h4>
+                <h4>Olá, <span id="nome_usuario">funcionário</span></h4>
                 <div>
                     <span class="iconify" data-icon="majesticons:settings-cog-line" data-width="20"></span>
                 </div>
@@ -210,7 +212,7 @@
 
                         <div class="conteudoDireitaTemperaturaUmidade">
                             <div class="maiorMenorDadoObtido maiorTamanho">
-                                <h2 class="temperaturaUmidadeAtual">10°C</h2>
+                                <h2 class="temperaturaUmidadeAtual" id="temperaturaAtual">10°C</h2>
                             </div>
                         </div>
 
@@ -226,7 +228,7 @@
 
                         <div class="conteudoDireitaTemperaturaUmidade">
                             <div class="maiorMenorDadoObtido maiorTamanho">
-                                <h2 class="temperaturaUmidadeAtual">66%</h2>
+                                <h2 class="temperaturaUmidadeAtual" id="umidadeAtual">66%</h2>
                             </div>
                         </div>
                     </div>
