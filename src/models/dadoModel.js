@@ -15,7 +15,7 @@ function buscarUltimosDados(idSetor) {
     } */
     if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `SELECT temperatura, umidade FROM dados JOIN sensor
-        ON idSensor = fkSensor JOIN Setor
+        ON idSensor = fkSensor JOIN setor
         ON idSetor = fkSetor
         WHERE idSetor = ${idSetor} ORDER BY dataColeta DESC LIMIT 1;`;
     } else {
@@ -42,7 +42,7 @@ function buscarUltimosDadosGrafico(idSetor, horarios) {
     } */
     if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `SELECT DATE_FORMAT(dataColeta, '%H:%i') AS DataColeta, TRUNCATE(AVG(temperatura), 1) AS Temperatura, TRUNCATE(AVG(umidade), 1) as Umidade FROM dados JOIN sensor
-        ON idSensor = fkSensor JOIN Setor
+        ON idSensor = fkSensor JOIN setor
         ON idSetor = fkSetor
         WHERE DATE_FORMAT(dataColeta, '%H:%i') IN ('${horarios.replaceAll(",", "','")}') AND idSetor = ${idSetor} GROUP BY DATE_FORMAT(dataColeta, '%H:%i') ORDER BY dataColeta;`;
     } else {
@@ -69,7 +69,7 @@ function buscarUltimoDadoGrafico(idSetor) {
     } */
     if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `SELECT DATE_FORMAT(dataColeta, '%H:%i') AS DataColeta, TRUNCATE(AVG(temperatura), 1) AS Temperatura, TRUNCATE(AVG(umidade), 1) as Umidade FROM dados JOIN sensor
-        ON idSensor = fkSensor JOIN Setor
+        ON idSensor = fkSensor JOIN setor
         ON idSetor = fkSetor
         WHERE idSetor = ${idSetor} GROUP BY DATE_FORMAT(dataColeta, '%H:%i') ORDER BY dataColeta DESC LIMIT 1;`;
     } else {

@@ -20,17 +20,18 @@ void loop() {
   //Verifca se há alguma leitura inválida -> Um dado que não é número Nan(Not a Number)
   if (isnan(temperatura) or isnan(umidade))
   {
-    Serial.println("Erro ao ler o DHT");
+    Serial.println(0); // Assim, a variavel umidade é convertida no tipo string e por ser exibida dentro de uma concatenação
+    Serial.println(0);
   }
   // Se estiver tudo certo a temperatura e a umidade é exibida
   else
   {
     //Dados vão ser exibidos no monitor serial
-    Serial.println("Umidade: " + (String)umidade + "%;"); // Assim, a variavel umidade é convertida no tipo string e por ser exibida dentro de uma concatenação
-    Serial.println("Temperatura: " +(String)temperatura + "Cº; \n");
+    Serial.println(umidade); // Assim, a variavel umidade é convertida no tipo string e por ser exibida dentro de uma concatenação
+    Serial.println(temperatura);
   }
 
   //Estabelece o tempo em que o código voltará a ser executado -> Tempo em que o looping vai repitindo
-  delay(1950);
+  delay(2000);
 }
 ```

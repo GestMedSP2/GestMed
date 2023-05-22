@@ -11,6 +11,6 @@ function validarSessao() {
         nomeUsuario.innerHTML = nome;
         nomeEmpresa.innerHTML = empresa;
     } else {
-        window.location = "../login.html";
+        window.location = "../Login";
     }
 }

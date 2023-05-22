@@ -57,13 +57,13 @@ function gerarHorarios() {
     var dataAtual = new Date();
 
     for(var i = 1; i <= 4; i++) {
-        dataAtual.setMinutes(dataAtual.getMinutes() - 15);
-
         var hora = new Date(dataAtual).getHours() > 9 ? new Date(dataAtual).getHours() : '0' + new Date(dataAtual).getHours();
         var minuto = new Date(dataAtual).getMinutes() > 9 ? new Date(dataAtual).getMinutes() : '0' + new Date(dataAtual).getMinutes();
         var horario = hora + ':' + minuto;
 
         horarios.push(horario);
+
+        dataAtual.setMinutes(dataAtual.getMinutes() - 15);
     }
     
     return horarios;
