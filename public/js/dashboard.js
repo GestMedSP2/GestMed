@@ -1,8 +1,24 @@
 let proximaAtualizacao;
+var graficoBarra;
+
+var textoTemperaturaMaisAltaObtida = document.getElementById('temperaturaMaisAltaObtida');
+var textoUmidadeMaisAltaObtida = document.getElementById('umidadeMaisAltaObtida');
 
 function chamarDados() {
     obterUltimosDados();
     obterUltimosDadosGraficoLinha();
+    obterDadosSemana();
+
+    document.getElementById('select_periodo').addEventListener('change', () => {
+        var select = document.getElementById('select_periodo');
+        var value = select.options[select.selectedIndex].value;
+
+        if(value == 'Dia') {
+            obterDadosUltimas12Horas();
+        } else {
+            atualizarDadosSemana();
+        }
+    });
 }
 
 function obterUltimosDados() {
@@ -23,6 +39,8 @@ function obterUltimosDados() {
                 temperaturaAtual.innerHTML = Number(resposta[0].temperatura).toFixed(1) + 'ºC';
                 umidadeAtual.innerHTML = Number(resposta[0].umidade).toFixed(1) + '%';
             })    
+
+            setTimeout(() => obterUltimosDados(), 4000);
         } else if (response.status == 404) {
             window.alert("Deu 404!");
         } else {
@@ -30,14 +48,33 @@ function obterUltimosDados() {
         }
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        // finalizarAguardar();
     });
+}
+
+function gerarHorarios() {
+    var horarios = [];
+
+    var dataAtual = new Date();
+
+    for(var i = 1; i <= 4; i++) {
+        dataAtual.setMinutes(dataAtual.getMinutes() - 15);
+
+        var hora = new Date(dataAtual).getHours() > 9 ? new Date(dataAtual).getHours() : '0' + new Date(dataAtual).getHours();
+        var minuto = new Date(dataAtual).getMinutes() > 9 ? new Date(dataAtual).getMinutes() : '0' + new Date(dataAtual).getMinutes();
+        var horario = hora + ':' + minuto;
+
+        horarios.push(horario);
+    }
+    
+    return horarios;
 }
 
 function obterUltimosDadosGraficoLinha() {
     var idSetor = 1;
 
-    fetch(`/dado/graficosLinha/${idSetor}`, {
+    var horarios = gerarHorarios();
+
+    fetch(`/dado/graficosLinha/${idSetor}/${horarios}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json"
@@ -49,6 +86,7 @@ function obterUltimosDadosGraficoLinha() {
                 var label = [];
                 var temperatura = [];
                 var umidade = [];
+                console.log(resposta);
 
                 for(var i = 0; i < resposta.length; i++) {
                     label.push(resposta[i].DataColeta);
@@ -149,6 +187,186 @@ function obterUltimosDadosGraficoLinha() {
     });
 }
 
+function obterDadosSemana() {
+    var idSetor = 1;
+
+    var diaSemana = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'];
+
+    fetch(`/dado/semana/${idSetor}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json"
+        },
+    }).then(function (response) {
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+                var labels = [];
+                var temperaturas = [];
+                var umidades = [];
+
+                for(var i = 0; i < resposta.length; i++) {
+                    labels.push(diaSemana[resposta[i].DataColeta]);
+                    temperaturas.push(resposta[i].Temperatura);
+                    umidades.push(resposta[i].Umidade);
+                }
+
+                // Gráfico médi
+                const barChart = document.getElementById('myBarChart');
+
+                graficoBarra = new Chart(barChart, {
+                    data: {
+                        datasets: [
+                            {
+                                type: 'bar',
+                                label: 'Temperatura média',
+                                data: temperaturas,
+                                backgroundColor: '#50C37E',
+                                borderRadius: 10,
+                            },
+                            {
+                                type: 'bar',
+                                label: 'Umidade média',
+                                data: umidades,
+                                backgroundColor: '#708BFF',
+                                borderRadius: 10,
+                            }
+                        ],
+                        labels: labels
+                    },
+                });
+
+                fetch(`/dado/dadoMaisAltoSemana/${idSetor}`, {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                }).then(response => {
+                    if(response.ok) {
+                        response.json().then(data => {
+                            textoTemperaturaMaisAltaObtida.innerHTML = data[0].Temperatura + 'ºC';
+                            textoUmidadeMaisAltaObtida.innerHTML = data[0].Umidade + '%';
+                        })
+                    }
+                });
+            });
+        } else if (response.status == 404) {
+            window.alert("Deu 404!");
+        } else {
+            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + response.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
+
+function obterDadosUltimas12Horas() {
+    var idSetor = 1;
+
+    fetch(`/dado/ultimas12horas/${idSetor}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json"
+        },
+    }).then(function (response) {
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+                var labels = [];
+                var temperaturas = [];
+                var umidades = [];
+
+                for(var i = 0; i < resposta.length; i++) {
+                    labels.push(resposta[i].DataColeta + 'h');
+                    temperaturas.push(resposta[i].Temperatura);
+                    umidades.push(resposta[i].Umidade);
+                }
+
+                // Gráfico médi
+                graficoBarra.data.labels = labels;
+                graficoBarra.data.datasets[0].data = temperaturas;
+                graficoBarra.data.datasets[1].data = umidades;
+
+                graficoBarra.update();
+
+                fetch(`/dado/dadoMaisAlto24Horas/${idSetor}`, {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                }).then(response => {
+                    if(response.ok) {
+                        response.json().then(data => {
+                            textoTemperaturaMaisAltaObtida.innerHTML = data[0].Temperatura + 'ºC';
+                            textoUmidadeMaisAltaObtida.innerHTML = data[0].Umidade + '%';
+                        })
+                    }
+                });
+            });
+        } else if (response.status == 404) {
+            window.alert("Deu 404!");
+        } else {
+            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + response.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
+
+function atualizarDadosSemana() {
+    var idSetor = 1;
+
+    var diaSemana = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'];
+
+    fetch(`/dado/semana/${idSetor}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json"
+        },
+    }).then(function (response) {
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+                var labels = [];
+                var temperaturas = [];
+                var umidades = [];
+
+                for(var i = 0; i < resposta.length; i++) {
+                    labels.push(diaSemana[resposta[i].DataColeta]);
+                    temperaturas.push(resposta[i].Temperatura);
+                    umidades.push(resposta[i].Umidade);
+                }
+
+                // Gráfico médi
+                graficoBarra.data.labels = labels;
+                graficoBarra.data.datasets[0].data = temperaturas;
+                graficoBarra.data.datasets[1].data = umidades;
+
+                graficoBarra.update();
+
+                fetch(`/dado/dadoMaisAltoSemana/${idSetor}`, {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                }).then(response => {
+                    if(response.ok) {
+                        response.json().then(data => {
+                            textoTemperaturaMaisAltaObtida.innerHTML = data[0].Temperatura + 'ºC';
+                            textoUmidadeMaisAltaObtida.innerHTML = data[0].Umidade + '%';
+                        })
+                    }
+                });
+            });
+        } else if (response.status == 404) {
+            window.alert("Deu 404!");
+        } else {
+            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + response.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
 
 function atualizarGraficoLinha(idSetor, graficoUmidade, graficoTemperatura, dadoUmidade, dadoTemperatura) {
     fetch(`/dado/graficosLinhaAtualizado/${idSetor}`, { cache: 'no-store' }).then(function (response) {

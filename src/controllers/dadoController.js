@@ -17,9 +17,9 @@ function buscarUltimosDados(req, res) {
 }
 
 function buscarUltimosDadosGrafico(req, res) {
-    var { idSetor } = req.params;
+    var { idSetor, horarios } = req.params;
 
-    dadoModel.buscarUltimosDadosGrafico(idSetor).then(function (resultado) {
+    dadoModel.buscarUltimosDadosGrafico(idSetor, horarios).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -48,49 +48,76 @@ function buscarUltimoDadoGrafico(req, res) {
     });
 }
 
-// function buscarUltimasMedidas(req, res) {
+function buscarDadosSemana(req, res) {
+    var { idSetor } = req.params;
 
-//     const limite_linhas = 7;
+    dadoModel.buscarDadosSemana(idSetor).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas da semana.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
-//     var idSetor = req.params.idSetor;
+function buscarDadosUltimas12Horas(req, res) {
+    var { idSetor } = req.params;
 
-//     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
+    dadoModel.buscarDadosUltimas12Horas(idSetor).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas da semana.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
-//     medidaModel.buscarUltimasMedidas(idSetor, limite_linhas).then(function (resultado) {
-//         if (resultado.length > 0) {
-//             res.status(200).json(resultado);
-//         } else {
-//             res.status(204).send("Nenhum resultado encontrado!")
-//         }
-//     }).catch(function (erro) {
-//         console.log(erro);
-//         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-//         res.status(500).json(erro.sqlMessage);
-//     });
-// }
+function dadoMaisAlto12Horas(req, res) {
+    var { idSetor } = req.params;
 
+    dadoModel.dadoMaisAlto12Horas(idSetor).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas da semana.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
-// function buscarMedidasEmTempoReal(req, res) {
+function dadoMaisAltoSemana(req, res) {
+    var { idSetor } = req.params;
 
-//     var idSetor = req.params.idSetor;
-
-//     console.log(`Recuperando medidas em tempo real`);
-
-//     medidaModel.buscarMedidasEmTempoReal(idSetor).then(function (resultado) {
-//         if (resultado.length > 0) {
-//             res.status(200).json(resultado);
-//         } else {
-//             res.status(204).send("Nenhum resultado encontrado!")
-//         }
-//     }).catch(function (erro) {
-//         console.log(erro);
-//         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-//         res.status(500).json(erro.sqlMessage);
-//     });
-// }
+    dadoModel.dadoMaisAltoSemana(idSetor).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas da semana.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 module.exports = {
     buscarUltimosDados,
     buscarUltimosDadosGrafico,
-    buscarUltimoDadoGrafico
+    buscarUltimoDadoGrafico,
+    buscarDadosSemana,
+    buscarDadosUltimas12Horas,
+    dadoMaisAlto12Horas,
+    dadoMaisAltoSemana
 }

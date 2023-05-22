@@ -161,9 +161,8 @@
                         <div class="periodoEscolha">
                             <label><b>Dados coletados no período:</b></label>
                             <select name="selectPeriodo" id="select_periodo">
-                                <option value="Mes">Mês</option>
-                                <option value="Semana" selected>Semana</option>
-                                <option value="Dia">Dia</option>
+                                <option value="Semana" selected>Última semana</option>
+                                <option value="Dia">Últimas 12 horas</option>
                             </select>
                         </div>
                         
@@ -172,7 +171,7 @@
                             <div class="alinhaGraficoBarra">
                                 <img class="imgTemperaturaUmidade" src="../assets/img/termometro.png">
                                 <div class="maiorMenorDadoObtido">
-                                    <h2>42°C</h2>
+                                    <h2 id="temperaturaMaisAltaObtida">-°C</h2>
                                 </div>
                             </div>
 
@@ -183,7 +182,7 @@
                             <div class="alinhaGraficoBarra">
                                 <img class="imgTemperaturaUmidade" src="../assets/img/umidade.png">
                                 <div class="maiorMenorDadoObtido">
-                                    <h2>66%</h2>
+                                    <h2 id="umidadeMaisAltaObtida">-%</h2>
                                 </div>
                             </div>
                         </div>
@@ -212,7 +211,7 @@
 
                         <div class="conteudoDireitaTemperaturaUmidade">
                             <div class="maiorMenorDadoObtido maiorTamanho">
-                                <h2 class="temperaturaUmidadeAtual" id="temperaturaAtual">10°C</h2>
+                                <h2 class="temperaturaUmidadeAtual" id="temperaturaAtual">-°C</h2>
                             </div>
                         </div>
 
@@ -228,7 +227,7 @@
 
                         <div class="conteudoDireitaTemperaturaUmidade">
                             <div class="maiorMenorDadoObtido maiorTamanho">
-                                <h2 class="temperaturaUmidadeAtual" id="umidadeAtual">66%</h2>
+                                <h2 class="temperaturaUmidadeAtual" id="umidadeAtual">-%</h2>
                             </div>
                         </div>
                     </div>

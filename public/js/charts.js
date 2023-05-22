@@ -20,31 +20,31 @@ const semana = [
     'Sab'
 ]
 
-// Gráfico média
+// // Gráfico média
 
-    const temperaturaMedia = [22, 24, 27, 23, 20, 18, 22];
-    const umidadeMedia = [90, 89, 93, 87, 88 , 70, 75];
+//     const temperaturaMedia = [22, 24, 27, 23, 20, 18, 22];
+//     const umidadeMedia = [90, 89, 93, 87, 88 , 70, 75];
 
-    const barChart = document.getElementById('myBarChart');
+//     const barChart = document.getElementById('myBarChart');
 
-    new Chart(barChart, {
-        data: {
-            datasets: [
-                {
-                    type: 'bar',
-                    label: 'Temperatura média',
-                    data: temperaturaMedia,
-                    backgroundColor: '#50C37E',
-                    borderRadius: 10,
-                },
-                {
-                    type: 'bar',
-                    label: 'Umidade média',
-                    data: umidadeMedia,
-                    backgroundColor: '#708BFF',
-                    borderRadius: 10,
-                }
-            ],
-            labels: semana
-        },
-    });
+//     new Chart(barChart, {
+//         data: {
+//             datasets: [
+//                 {
+//                     type: 'bar',
+//                     label: 'Temperatura média',
+//                     data: temperaturaMedia,
+//                     backgroundColor: '#50C37E',
+//                     borderRadius: 10,
+//                 },
+//                 {
+//                     type: 'bar',
+//                     label: 'Umidade média',
+//                     data: umidadeMedia,
+//                     backgroundColor: '#708BFF',
+//                     borderRadius: 10,
+//                 }
+//             ],
+//             labels: semana
+//         },
+//     });
