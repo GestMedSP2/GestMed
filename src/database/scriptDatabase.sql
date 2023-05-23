@@ -28,10 +28,6 @@ CONSTRAINT fkEnd FOREIGN KEY (fkEndereco)
 REFERENCES endereco(idEndereco)
 );
 
-ALTER TABLE empresa RENAME COLUMN nome TO nomeEmpresa;
-ALTER TABLE empresa RENAME COLUMN email TO emailEmpresa;
-
-
 INSERT INTO empresa VALUES
 	 (null, 'Empresa A', '11.111.111/0001-01', 11999990000, 'empresaA@example.com', 1),
      (null, 'Empresa B', '22.222.222/0001-02', 21999990000, 'empresaB@example.com', 2);
@@ -55,10 +51,10 @@ INSERT INTO funcionario VALUES
 
 CREATE TABLE setor(
 idSetor INT auto_increment primary key,
-fkEmpresaS INT,
+fkEmpresaSetor INT,
 nomeSetor VARCHAR(45),
 armazenaTermolabeis BOOLEAN,
-CONSTRAINT fkEmpS FOREIGN KEY (fkEmpresaS)
+CONSTRAINT fkEmpS FOREIGN KEY (fkEmpresaSetor)
 REFERENCES empresa (idEmpresa)
 );
 
@@ -69,7 +65,7 @@ INSERT INTO setor VALUES
 	(null, 2, 'Comercialização de Amoxicilina', false);
 
 CREATE TABLE sensor (
-idSensor INT,
+idSensor VARCHAR(45),
 fkSetor INT,
 fkEmpresaE INT,
 status VARCHAR(20),
@@ -89,7 +85,7 @@ INSERT INTO sensor VALUES
 
 CREATE TABLE dados (
 idDados INT AUTO_INCREMENT,
-fkSensor INT,
+fkSensor VARCHAR(45),
 temperatura DECIMAL (4,2),
 umidade DECIMAL (4,2),
 dataColeta DATETIME DEFAULT CURRENT_TIMESTAMP,
