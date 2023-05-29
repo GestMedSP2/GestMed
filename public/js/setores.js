@@ -22,13 +22,21 @@ function obterSetores() {
     fetch(`/setor/listar/${idEmpresa}`, {
         method: 'GET'
     }).then((response) => {
-        if(response.ok) {
+        if (response.ok) {
             response.json().then((resposta) => {
-                console.log(resposta);
+                for (var i = 0; i < resposta.length; i++) {
+                    var background;
 
-                for(var i = 0; i < resposta.length; i++) {
+                    if (resposta[i].Temperatura > resposta[i].temperaturaAlertaMaxima || resposta[i].Umidade > resposta[i].UmidadeAlertaMaxima) {
+                        background = '#FF5F5F';
+                    } else if (resposta[i].Temperatura > resposta[i].temperaturaMaxima || resposta[i].Umidade > resposta[i].umidadeMaxima) {
+                        background = '#F3F565';
+                    } else {
+                        background = '#50C37E';
+                    }
+
                     containerSetores.innerHTML += `
-                        <a href="../dashboard/index.html?idSetor=${resposta[i].idSetor}" class="containerSetor setorAtivo">
+                        <a style='background-color: ${background}' href="../dashboard/index.html?idSetor=${resposta[i].idSetor}" class="containerSetor setorAtivo">
                             <h2>${resposta[i].nomeSetor}</h2>
                             <p>${resposta[i].enderecoSetor}</p>
                             <div class="statusContainer">
@@ -37,12 +45,12 @@ function obterSetores() {
                                     <p>${resposta[i].setoresAtivos} sensores <span>ativos</span></p>
                                 </div>
                                 <div class="status statusManutencao">
-                                    <div></div>
-                                    <p>${resposta[i].setoresManutencao} sensores <span>em manutenção</span></p>
+                                    <div style='background-color: ${background == '#F3F565' && '#86804A'}'></div>
+                                    <p>${resposta[i].setoresManutencao} sensores <span style='color: ${background == '#F3F565' && '#86804A'}'>em manutenção</span></p>
                                 </div>
                                 <div class="status statusInativo">
-                                    <div></div>
-                                    <p>${resposta[i].setoresInativos} sensores <span>inativo</span></p>
+                                    <div style='background-color: ${background == '#FF5F5F' && '#BA3931'}'></div>
+                                    <p>${resposta[i].setoresInativos} sensores <span style='color: ${background == '#FF5F5F' && '#BA3931'}'>inativo</span></p>
                                 </div>
                             </div>
                         </a>

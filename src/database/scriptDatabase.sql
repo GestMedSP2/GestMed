@@ -95,14 +95,35 @@ CONSTRAINT pkCompostaDados PRIMARY KEY (idDados, fkSensor)
 ); 
 
 INSERT INTO dados VALUES
-	(NULL, '012344', (0.29 * 25.30) - 1.54, (0.88 * 70) - 3.92, '2023-04-15 10:15:00'), -- Simulando temperatura de medicamento termolabel com a equação (0,29 * x - 1,54) e umidade (0,88 * x - 3,92)
-    (NULL, '012358', 20.20, (0.88 * 80) - 3.92, '2023-04-15 10:20:00'),
-    (NULL, '012348', 27.40, (0.88 * 65) - 3.92, '2023-04-15 10:25:00'),
-    (NULL, '012357', 22.10, (0.88 * 75) - 3.92, '2023-04-15 10:30:00');
+	(NULL, '012344', (0.29 * 25.30) - 1.54, (0.88 * 70) - 3.92, '2023-05-29 10:15:00'), -- Simulando temperatura de medicamento termolabel com a equação (0,29 * x - 1,54) e umidade (0,88 * x - 3,92)
+    (NULL, '012358', 20.20, (0.88 * 80) - 3.92, '2023-05-29 10:20:00'),
+    (NULL, '012348', 27.40, (0.88 * 65) - 3.92, '2023-05-29 10:25:00'),
+    (NULL, '012357', 22.10, (0.88 * 75) - 3.92, '2023-05-29 10:30:00');
     
 INSERT INTO dados VALUES
-	(NULL, '012357', 21.10, (0.88 * 75) - 3.82, '2023-04-15 10:30:50');
+	(NULL, '012357', 21.10, (0.88 * 75) - 3.82, '2023-05-29 10:30:50');
+    
+INSERT INTO dados VALUES
+	(NULL, '012357', 31, (0.88 * 75) - 3.82, '2023-05-29 10:45:50');
    
 SELECT * FROM dados;
 SELECT * FROM setor;
 SELECT * FROM funcionario;
+
+SELECT nomeSetor, dataColeta, temperatura, umidade, 
+(CASE WHEN armazenaTermolabeis = TRUE THEN 7 ELSE 29 END) AS temperaturaMaxima,
+(CASE WHEN armazenaTermolabeis = TRUE THEN 9 ELSE 32 END) AS temperaturaAlertaMaxima,
+(CASE WHEN armazenaTermolabeis = TRUE THEN 1 ELSE 15 END) AS temperaturaAlertaMinima,
+(CASE WHEN armazenaTermolabeis = TRUE THEN 3 ELSE 16 END) AS temperaturaMinima FROM dados
+JOIN sensor ON fkSensor = idSensor
+JOIN setor ON fkSetor = idSetor
+JOIN empresa ON idEmpresa = fkEmpresaE;
+
+SELECT nomeSetor, dataColeta, temperatura, umidade,
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 7 ELSE 29 END) AS temperaturaMaxima,
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 9 ELSE 32 END) AS temperaturaAlertaMaxima,
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 1 ELSE 15 END) AS temperaturaAlertaMinima,
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 3 ELSE 16 END) AS temperaturaMinima FROM empresa
+        JOIN setor ON setor.fkEmpresaSetor = empresa.idEmpresa JOIN sensor ON sensor.fkSetor = setor.idSetor
+        JOIN dados ON dados.fkSensor = sensor.idSensor
+        WHERE empresa.idEmpresa = 1;
