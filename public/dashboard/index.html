@@ -53,7 +53,7 @@
         <div class="headerDashboard">
             <h2 class="empresa" id="nome_empresa">Pfizer</h2>
             <div class="setor">
-                <h1> Setor <span>Dorflex</span> </h1>
+                <h1>Setor <span id="nomeSetor"></span> </h1>
             </div>
             <div class="perfil">
                 <h4>Olá, <span id="nome_usuario">funcionário</span></h4>
@@ -76,21 +76,21 @@
                                 <div class="colunaQuadradinho">
                                     <h4>Mínimo:</h4>
                                     <div class="quadradinhoMinimo">
-                                        <h1>3°C</h1>
+                                        <h1 id="temperaturaMinima">3°C</h1>
                                     </div>
                                 </div>
 
                                 <div class="colunaQuadradinho">
                                     <h4>Máximo:</h4>
                                     <div class="quadradinhoMaximo">
-                                        <h1>7°C</h1>
+                                        <h1 id="temperaturaMaxima">7°C</h1>
                                     </div>
                                     
                                 </div>
                             </div>
                         </div>
 
-                        <div class="alerta">
+                        <div id="alertaTemperatura" class="alerta">
                             <h2>ALERTA DE TEMPERATURA</h2>
                             <p>A temperatura ideal do setor foi utrapassada exatamente ás 13:08, passando de 6°C para 10°C.</p>
                         </div>
@@ -135,7 +135,7 @@
                             </div>
                         </div>
 
-                        <div class="alertaIdeal">
+                        <div id="alertaUmidade" class="alertaIdeal">
                             <h2>UMIDADE IDEAL</h2>
                             <p>Esse setor apresenta a umidade ideal.</p>
                         </div>

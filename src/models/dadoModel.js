@@ -27,7 +27,7 @@ function buscarUltimosDados(idSetor) {
     return database.executar(instrucaoSql);
 }
 
-function buscarUltimosDadosGrafico(idSetor, horarios) {
+function buscarUltimosDadosGrafico(idSetor) {
     instrucaoSql = ''
 
     /* if (process.env.AMBIENTE_PROCESSO == "producao") {
@@ -41,10 +41,10 @@ function buscarUltimosDadosGrafico(idSetor, horarios) {
                     order by id desc`;
     } */
     if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `SELECT DATE_FORMAT(dataColeta, '%H:%i') AS DataColeta, TRUNCATE(AVG(temperatura), 1) AS Temperatura, TRUNCATE(AVG(umidade), 1) as Umidade FROM dados JOIN sensor
+        instrucaoSql = `SELECT DATE_FORMAT(dataColeta, '%H:%i:%s') AS DataColeta, TRUNCATE(temperatura, 1) AS Temperatura, TRUNCATE(umidade, 1) as Umidade FROM dados JOIN sensor
         ON idSensor = fkSensor JOIN setor
         ON idSetor = fkSetor
-        WHERE DATE_FORMAT(dataColeta, '%H:%i') IN ('${horarios.replaceAll(",", "','")}') AND idSetor = ${idSetor} GROUP BY DATE_FORMAT(dataColeta, '%H:%i') ORDER BY dataColeta;`;
+        WHERE idSetor = ${idSetor} ORDER BY dataColeta DESC LIMIT 6;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return;
@@ -68,10 +68,10 @@ function buscarUltimoDadoGrafico(idSetor) {
                     order by id desc`;
     } */
     if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `SELECT DATE_FORMAT(dataColeta, '%H:%i') AS DataColeta, TRUNCATE(AVG(temperatura), 1) AS Temperatura, TRUNCATE(AVG(umidade), 1) as Umidade FROM dados JOIN sensor
+        instrucaoSql = `SELECT DATE_FORMAT(dataColeta, '%H:%i:%s') AS DataColeta, TRUNCATE(temperatura, 1) AS Temperatura, TRUNCATE(umidade, 1) as Umidade FROM dados JOIN sensor
         ON idSensor = fkSensor JOIN setor
         ON idSetor = fkSetor
-        WHERE idSetor = ${idSetor} GROUP BY DATE_FORMAT(dataColeta, '%H:%i') ORDER BY dataColeta DESC LIMIT 1;`;
+        WHERE idSetor = ${idSetor} ORDER BY dataColeta DESC LIMIT 1;`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return;

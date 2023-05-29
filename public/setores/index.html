@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../css/simulador.css">
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(); obterSetores();">
   <button class="criarSetor" onclick="abrirModal()">
     <span class="iconify" data-icon="mingcute:add-fill"></span>
   </button>
@@ -95,85 +95,8 @@
         <button><span class="iconify" data-icon="material-symbols:filter-list-rounded"></span></button>
 
       </div>
-      <div class="containerSetores">
-        <a href="../dashboard/index.html" class="containerSetor setorAtivo">
-          <h2>Setor Dorflex</h2>
-          <p>Av. das rosas, 160</p>
-          <div class="statusContainer">
-            <div class="status statusAtivo">
-              <div></div>
-              <p>10 sensores <span>ativos</span></p>
-            </div>
-            <div class="status statusManutencao">
-              <div></div>
-              <p>10 sensores <span>em manutenção</span></p>
-            </div>
-            <div class="status statusInativo">
-              <div></div>
-              <p>10 sensores <span>inativo</span></p>
-            </div>
-          </div>
-
-        </a>
-
-        <a href="../dashboard/index.html" class="containerSetor setorManutencao">
-          <h2>Setor Neosaldina</h2>
-          <p>Av. das rosas, 160</p>
-          <div class="statusContainer">
-            <div class="status statusAtivo">
-              <div></div>
-              <p>10 sensores <span>ativos</span></p>
-            </div>
-            <div class="status statusManutencao">
-              <div></div>
-              <p>10 sensores <span>em manutenção</span></p>
-            </div>
-            <div class="status statusInativo">
-              <div></div>
-              <p>10 sensores <span>inativo</span></p>
-            </div>
-          </div>
-
-        </a>
-
-        <a href="../dashboard/index.html" class="containerSetor setorInativo">
-          <h2>Setor Engov</h2>
-          <p>Av. das rosas, 160</p>
-          <div class="statusContainer">
-            <div class="status statusAtivo">
-              <div></div>
-              <p>10 sensores <span>ativos</span></p>
-            </div>
-            <div class="status statusManutencao">
-              <div></div>
-              <p>10 sensores <span>em manutenção</span></p>
-            </div>
-            <div class="status statusInativo">
-              <div></div>
-              <p>10 sensores <span>inativo</span></p>
-            </div>
-          </div>
-
-        </a>
-        <a href="../dashboard/index.html" class="containerSetor setorInativo">
-          <h2>Setor Engov</h2>
-          <p>Av. das rosas, 160</p>
-          <div class="statusContainer">
-            <div class="status statusAtivo">
-              <div></div>
-              <p>10 sensores <span>ativos</span></p>
-            </div>
-            <div class="status statusManutencao">
-              <div></div>
-              <p>10 sensores <span>em manutenção</span></p>
-            </div>
-            <div class="status statusInativo">
-              <div></div>
-              <p>10 sensores <span>inativo</span></p>
-            </div>
-          </div>
-
-        </a>
+      <div id="containerSetores" class="containerSetores">
+        
       </div>
 
     </div>

@@ -7,7 +7,7 @@ router.get("/ultimos/:idSetor", function (req, res) {
     dadoController.buscarUltimosDados(req, res);
 });
 
-router.get("/graficosLinha/:idSetor/:horarios", function (req, res) {
+router.get("/graficosLinha/:idSetor", function (req, res) {
     dadoController.buscarUltimosDadosGrafico(req, res);
 });
 

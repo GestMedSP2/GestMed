@@ -27,6 +27,52 @@ function criar(req, res) {
     }
 }
 
+function listar(req, res) {
+    var { idEmpresa } = req.params;
+
+    if (idEmpresa == undefined) {
+        res.status(400).send("O id da empresa não está indefinido!");
+    } else {
+        setorModel.listar(idEmpresa)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            )
+            .catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function detalhar(req, res) {
+    var { idSetor } = req.params;
+
+    if (idSetor == undefined) {
+        res.status(400).send("O id do setor não está indefinido!");
+    } else {
+        setorModel.detalhar(idSetor)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            )
+            .catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     criar,
+    listar,
+    detalhar
 }

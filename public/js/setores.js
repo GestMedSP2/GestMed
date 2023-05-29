@@ -15,6 +15,50 @@ overlay.addEventListener('click', (event) => {
     }
 });
 
+function obterSetores() {
+    var idEmpresa = sessionStorage.ID_EMPRESA;
+    var containerSetores = document.getElementById('containerSetores');
+
+    fetch(`/setor/listar/${idEmpresa}`, {
+        method: 'GET'
+    }).then((response) => {
+        if(response.ok) {
+            response.json().then((resposta) => {
+                console.log(resposta);
+
+                for(var i = 0; i < resposta.length; i++) {
+                    containerSetores.innerHTML += `
+                        <a href="../dashboard/index.html?idSetor=${resposta[i].idSetor}" class="containerSetor setorAtivo">
+                            <h2>${resposta[i].nomeSetor}</h2>
+                            <p>${resposta[i].enderecoSetor}</p>
+                            <div class="statusContainer">
+                                <div class="status statusAtivo">
+                                    <div></div>
+                                    <p>${resposta[i].setoresAtivos} sensores <span>ativos</span></p>
+                                </div>
+                                <div class="status statusManutencao">
+                                    <div></div>
+                                    <p>${resposta[i].setoresManutencao} sensores <span>em manutenção</span></p>
+                                </div>
+                                <div class="status statusInativo">
+                                    <div></div>
+                                    <p>${resposta[i].setoresInativos} sensores <span>inativo</span></p>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                }
+            })
+        } else if (response.status == 404) {
+            return alert('Du 404!')
+        } else {
+            throw ("Houve um erro ao tentar buscar os setores: " + response.status);
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+}
+
 function criarSetor() {
     // FAZER VALIDAÇÕES -- NÃO ESQUECE
 

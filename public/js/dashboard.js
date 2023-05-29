@@ -4,10 +4,21 @@ var graficoBarra;
 var textoTemperaturaMaisAltaObtida = document.getElementById('temperaturaMaisAltaObtida');
 var textoUmidadeMaisAltaObtida = document.getElementById('umidadeMaisAltaObtida');
 
+var idSetor = Number(window.location.search.replace('?idSetor=', ''));
+
+var nomeSetor = document.getElementById('nomeSetor');
+
+var temperaturaMax;
+var temperaturaMin;
+
+var alertaTemperatura = document.getElementById('alertaTemperatura');
+var alertaUmidade = document.getElementById('alertaUmidade');
+
 function chamarDados() {
     obterUltimosDados();
     obterUltimosDadosGraficoLinha();
     obterDadosSemana();
+    detalharSetor(idSetor);
 
     document.getElementById('select_periodo').addEventListener('change', () => {
         var select = document.getElementById('select_periodo');
@@ -22,8 +33,6 @@ function chamarDados() {
 }
 
 function obterUltimosDados() {
-    var idSetor = 1;
-
     fetch(`/dado/ultimos/${idSetor}`, {
         method: 'GET',
         headers: {
@@ -51,30 +60,8 @@ function obterUltimosDados() {
     });
 }
 
-function gerarHorarios() {
-    var horarios = [];
-
-    var dataAtual = new Date();
-
-    for(var i = 1; i <= 4; i++) {
-        var hora = new Date(dataAtual).getHours() > 9 ? new Date(dataAtual).getHours() : '0' + new Date(dataAtual).getHours();
-        var minuto = new Date(dataAtual).getMinutes() > 9 ? new Date(dataAtual).getMinutes() : '0' + new Date(dataAtual).getMinutes();
-        var horario = hora + ':' + minuto;
-
-        horarios.push(horario);
-
-        dataAtual.setMinutes(dataAtual.getMinutes() - 15);
-    }
-    
-    return horarios;
-}
-
 function obterUltimosDadosGraficoLinha() {
-    var idSetor = 1;
-
-    var horarios = gerarHorarios();
-
-    fetch(`/dado/graficosLinha/${idSetor}/${horarios}`, {
+    fetch(`/dado/graficosLinha/${idSetor}`, {
         method: 'GET',
         headers: {
             "Content-Type": "application/json"
@@ -94,10 +81,12 @@ function obterUltimosDadosGraficoLinha() {
                     umidade.push(resposta[i].Umidade);
                 }
 
+                verificarCondicao(temperatura[temperatura.length - 1], temperatura[temperatura.length - 2], umidade[umidade.length - 1], umidade[umidade.length - 2]);
+
                 //Linha pontilhada
 
                 const horizontalDottedLine = {
-                    id: 'horizontalDottedLine', 
+                    id: 'horizontalDottedLineTemperatura', 
                     beforeDatasetsDraw(chart, args, options) {
                         const { ctx, chartArea: { top, right, bottom, left, width, height },
                             scales: { x, y } } = chart;
@@ -109,15 +98,16 @@ function obterUltimosDadosGraficoLinha() {
                         var min = 0;
 
                         if(chartId == 'chartTemperatura') {
-                            max = 8;
-                            min = 2;
+                            max = temperaturaMax;
+                            min = temperaturaMin;
                         } else if (chartId ==  'chartUmidade') {
                             max = 70;
                             min = 40;
                         }
 
                         ctx.strokeStyle = 'red';
-                        ctx.setLineDash([15, 10]);
+
+                        ctx.setLineDash([10, 15]);
                         ctx.strokeRect(left, y.getPixelForValue(max), width, 0);
                         ctx.strokeRect(left, y.getPixelForValue(min), width, 0);
                         ctx.restore();
@@ -141,7 +131,7 @@ function obterUltimosDadosGraficoLinha() {
                         scales: {
                             y: {
                                 min: -10,
-                                max: 40,
+                                max: 50,
                             }
                         }
                     },
@@ -175,7 +165,7 @@ function obterUltimosDadosGraficoLinha() {
                 var graficoTemperatura = new Chart(document.getElementById('chartTemperatura'), dadoTemperatura);
                 var graficoUmidade = new Chart(document.getElementById('chartUmidade'), dadoUmidade);
 
-                setTimeout(() => atualizarGraficoLinha(1, graficoUmidade, graficoTemperatura, dadoUmidade, dadoTemperatura), 900000);
+                setTimeout(() => atualizarGraficoLinha(idSetor, graficoUmidade, graficoTemperatura, dadoUmidade, dadoTemperatura), 4000);
             })    
         } else if (response.status == 404) {
             window.alert("Deu 404!");
@@ -188,8 +178,6 @@ function obterUltimosDadosGraficoLinha() {
 }
 
 function obterDadosSemana() {
-    var idSetor = 1;
-
     var diaSemana = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'];
 
     fetch(`/dado/semana/${idSetor}`, {
@@ -201,6 +189,8 @@ function obterDadosSemana() {
         if (response.ok) {
 
             response.json().then(function (resposta) {
+                console.log(resposta);
+
                 var labels = [];
                 var temperaturas = [];
                 var umidades = [];
@@ -261,8 +251,6 @@ function obterDadosSemana() {
 }
 
 function obterDadosUltimas12Horas() {
-    var idSetor = 1;
-
     fetch(`/dado/ultimas12horas/${idSetor}`, {
         method: 'GET',
         headers: {
@@ -314,8 +302,6 @@ function obterDadosUltimas12Horas() {
 }
 
 function atualizarDadosSemana() {
-    var idSetor = 1;
-
     var diaSemana = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'];
 
     fetch(`/dado/semana/${idSetor}`, {
@@ -391,12 +377,16 @@ function atualizarGraficoLinha(idSetor, graficoUmidade, graficoTemperatura, dado
                     // tirando e colocando valores no gráfico
                     dadoUmidade.data.labels.shift(); // apagar o primeiro
                     dadoUmidade.data.labels.push(novoRegistro[0].DataColeta); // incluir um novo momento
-
+                    
+                    var umidadeAntiga = dadoUmidade.data.datasets[0].data[dadoUmidade.data.datasets[0].data.length - 1];
                     dadoUmidade.data.datasets[0].data.shift();  // apagar o primeiro de umidade
                     dadoUmidade.data.datasets[0].data.push(novoRegistro[0].Umidade); // incluir uma nova medida de umidade
-
+                    
+                    var temperaturaAntiga = dadoTemperatura.data.datasets[0].data[dadoTemperatura.data.datasets[0].data.length - 1];
                     dadoTemperatura.data.datasets[0].data.shift();  // apagar o primeiro de temperatura
                     dadoTemperatura.data.datasets[0].data.push(novoRegistro[0].Temperatura); // incluir uma nova medida de temperatura
+
+                    verificarCondicao(novoRegistro[0].Temperatura, temperaturaAntiga, novoRegistro[0].Umidade, umidadeAntiga);
 
                     graficoUmidade.update();
                     graficoTemperatura.update();
@@ -415,4 +405,59 @@ function atualizarGraficoLinha(idSetor, graficoUmidade, graficoTemperatura, dado
         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
     });
 
+}
+
+function detalharSetor(idSetor) {
+    fetch(`/setor/detalhar/${idSetor}`, {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                nomeSetor.innerHTML = resposta[0].nomeSetor;
+                
+                temperaturaMax = resposta[0].temperaturaMaxima;
+                temperaturaMin = resposta[0].temperaturaMinima;
+
+                temperaturaMaxima.innerHTML = temperaturaMax + 'ºC';
+                temperaturaMinima.innerHTML = temperaturaMin + 'ºC';
+            })
+
+        } else if (response.status == 404) {
+            window.alert("Deu 404!");
+        } else {
+            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + response.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
+
+function verificarCondicao(temperaturaAtual, temperaturaAntiga, umidadeAtual, umidadeAntiga) {
+    console.log(alertaTemperatura);
+
+    if(temperaturaAtual > temperaturaMax) {
+        alertaTemperatura.style.backgroundColor = '#FF4B4B';
+        
+        alertaTemperatura.innerHTML = `
+            <h2>ALERTA DE TEMPERATURA</h2>
+            <p>A temperatura máxima do setor foi utrapassada, passando de ${temperaturaAntiga}°C para ${temperaturaAtual}°C.</p>
+        `;
+    } else if (temperaturaAtual < temperaturaMin) {
+        alertaTemperatura.style.backgroundColor = '#FF4B4B';
+
+        alertaTemperatura.innerHTML = `
+            <h2>ALERTA DE TEMPERATURA</h2>
+            <p>A temperatura mínima do setor foi utrapassada, passando de ${temperaturaAntiga}°C para ${temperaturaAtual}°C.</p>
+        `;
+    } else {
+        alertaTemperatura.style.backgroundColor = '#50C37E';
+
+        alertaTemperatura.innerHTML = `
+            <h2>TEMPERATURA IDEAL</h2>
+            <p>Este setor apresenta temperatura ideal</p>
+        `;
+    }
 }
