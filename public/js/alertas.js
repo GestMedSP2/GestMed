@@ -3,6 +3,12 @@ var alertasContainer = document.getElementById('alertasContainer');
 var alertasCriticos = [];
 var alertasAtencao = [];
 
+var umidadeCriticaMax = 74;
+var umidadeCriticaMin = 31;
+
+var umidadeAtencaoMax = 70;
+var umidadeAtencaoMin = 40;
+
 function buscarAlertas() {
     var idEmpresa = sessionStorage.ID_EMPRESA;
 
@@ -21,10 +27,28 @@ function buscarAlertas() {
                 alertasAtencao = [];
 
                 for(var i = 0; i < resposta.length; i++) {
-                    if (resposta[i].temperatura > resposta[i].temperaturaAlertaMaxima || resposta[i].umidade > resposta[i].umidadeAlertaMaxima) {
+                    if (resposta[i].temperatura > resposta[i].temperaturaCriticaMaxima || resposta[i].umidade > umidadeCriticaMax || resposta[i].temperatura < resposta[i].temperaturaCriticaMinima || resposta[i].umidade < umidadeCriticaMin) {          
+                        var temperaturaIncorreta = false;
+                        var umidadeIncorreta = false;
+
+                        if(resposta[i].temperatura > resposta[i].temperaturaCriticaMaxima || resposta[i].temperatura < resposta[i].temperaturaCriticaMinima) {
+                            temperaturaIncorreta = true;
+                        } else {
+                            umidadeIncorreta = true;
+                        }
+                        
+                        var mensagem = '';
+
+                        if(temperaturaIncorreta && umidadeIncorreta) {
+                            mensagem = `Temperatura (${resposta[i].temperatura}°C) e umidade (${resposta[i].umidade}%) impróprias`;
+                        } else if (temperaturaIncorreta) {
+                            mensagem = `Temperatura (${resposta[i].temperatura}°C) imprópria`;
+                        } else {
+                            mensagem = `Umidade (${resposta[i].umidade}%) imprópria`;
+                        }
+
                         alertasContainer.innerHTML += `
                             <tr>
-                                <td><input type="checkbox"></td>
                                 <td>${resposta[i].nomeSetor}</td>
                                 <td class="centralizarPrioridade">
                                     <div class="caixaPrioridade prioridadeCritica">
@@ -32,16 +56,35 @@ function buscarAlertas() {
                                     </div>
                                 </td>
                                 <td>${new Date(resposta[i].dataColeta).toLocaleString()}</td>
-                                <td>Temperatura ultrapassada para ${resposta[i].temperatura}ºC</td>
-                                <td><img src="../assets/img/iconLixeira.svg"></td>
+                                <td>${mensagem}</td>     
                             </tr>
                         `;
 
                         alertasCriticos.push(resposta[i]);
-                    } else if (resposta[i].temperatura > resposta[i].temperaturaMaxima || resposta[i].umidade > resposta[i].umidadeMaxima) {
+                    } else if (resposta[i].temperatura > resposta[i].temperaturaAtencaoMaxima || resposta[i].umidade > umidadeAtencaoMax || resposta[i].temperatura < resposta[i].temperaturaAtencaoMinima || resposta[i].umidade < umidadeAtencaoMin) {
+                        
+                        var temperaturaIncorreta = false;
+                        var umidadeIncorreta = false;
+
+                        if(resposta[i].temperatura > resposta[i].temperaturaAtencaoMaxima || resposta[i].temperatura < resposta[i].temperaturaAtencaoMinima) {
+                            temperaturaIncorreta = true;
+                        } else {
+                            umidadeIncorreta = true;
+                        }
+                        
+                        var mensagem = '';
+
+                        if(temperaturaIncorreta && umidadeIncorreta) {
+                            mensagem = `Temperatura (${resposta[i].temperatura}°C) e umidade (${resposta[i].umidade}%) próximas de níveis impróprios`;
+                        } else if (temperaturaIncorreta) {
+                            mensagem = `Temperatura (${resposta[i].temperatura}°C) próxima de níveis impróprios`;
+                        } else {
+                            mensagem = `Umidade (${resposta[i].umidade}%) próxima de níveis impróprios`;
+                        }
+                        
                         alertasContainer.innerHTML += `
                             <tr>
-                                <td><input type="checkbox"></td>
+                
                                 <td>${resposta[i].nomeSetor}</td>
                                 <td class="centralizarPrioridade">
                                     <div class="caixaPrioridade prioridadeUrgente">
@@ -49,7 +92,7 @@ function buscarAlertas() {
                                     </div>
                                 </td>
                                 <td>${new Date(resposta[i].dataColeta).toLocaleString()}</td>
-                                <td>Temperatura ultrapassada para ${resposta[i].temperatura}ºC</td>
+                                <td>${mensagem}</td>
                                 <td><img src="../assets/img/iconLixeira.svg"></td>
                             </tr>
                         `;
@@ -72,7 +115,6 @@ function filtrarPorAtencao() {
     for(var i = 0; i < alertasAtencao.length; i++) {
         alertasContainer.innerHTML += `
             <tr>
-                <td><input type="checkbox"></td>
                 <td>${alertasAtencao[i].nomeSetor}</td>
                 <td class="centralizarPrioridade">
                     <div class="caixaPrioridade prioridadeUrgente">
@@ -81,7 +123,7 @@ function filtrarPorAtencao() {
                 </td>
                 <td>${new Date(alertasAtencao[i].dataColeta).toLocaleString()}</td>
                 <td>Temperatura ultrapassada para ${alertasAtencao[i].temperatura}ºC</td>
-                <td><img src="../assets/img/iconLixeira.svg"></td>
+                
             </tr>
         `;
     }
@@ -93,7 +135,6 @@ function filtrarPorCritico() {
     for(var i = 0; i < alertasCriticos.length; i++) {
         alertasContainer.innerHTML += `
             <tr>
-                <td><input type="checkbox"></td>
                 <td>${alertasCriticos[i].nomeSetor}</td>
                 <td class="centralizarPrioridade">
                     <div class="caixaPrioridade prioridadeCritica">
@@ -102,7 +143,7 @@ function filtrarPorCritico() {
                 </td>
                 <td>${new Date(alertasCriticos[i].dataColeta).toLocaleString()}</td>
                 <td>Temperatura ultrapassada para ${alertasCriticos[i].temperatura}ºC</td>
-                <td><img src="../assets/img/iconLixeira.svg"></td>
+                
             </tr>
         `;
     }

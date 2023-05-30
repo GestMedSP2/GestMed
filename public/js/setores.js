@@ -3,6 +3,12 @@ const overlay = document.querySelector('#modalCriarSetor .overlay');
 
 var setores = [];
 
+var umidadeCriticaMax = 74;
+var umidadeCriticaMin = 31;
+
+var umidadeAtencaoMax = 70;
+var umidadeAtencaoMin = 40;
+
 function abrirModal() {
     modal.style.display = 'block';
 }
@@ -102,9 +108,9 @@ function preencherTela(vetor) {
     for(var i = 0; i < vetor.length; i++) {
         var background;
 
-        if (vetor[i].Temperatura > vetor[i].temperaturaCriticaMaxima || vetor[i].Umidade > vetor[i].UmidadeAlertaMaxima) {
+        if (vetor[i].Temperatura > vetor[i].temperaturaCriticaMaxima || vetor[i].Umidade > umidadeCriticaMax || vetor[i].Umidade < umidadeCriticaMin || vetor[i].Temperatura < vetor[i].temperaturaCriticaMinima) {
             background = '#FF5F5F';
-        } else if (vetor[i].Temperatura > vetor[i].temperaturaAtencaoMaxima || vetor[i].Umidade > vetor[i].umidadeMaxima) {
+        } else if (vetor[i].Temperatura > vetor[i].temperaturaAtencaoMaxima || vetor[i].Umidade > umidadeAtencaoMax || vetor[i].Temperatura < vetor[i].temperaturaAtencaoMinima || vetor[i].Umidade < umidadeAtencaoMin) {
             background = '#f7cf60';
         } else {
             background = '#50C37E';

@@ -10,9 +10,13 @@ var nomeSetor = document.getElementById('nomeSetor');
 
 var temperaturaCriticaMax;
 var temperaturaCriticaMin;
+var umidadeCriticaMax = 74;
+var umidadeCriticaMin = 31;
 
 var temperaturaAtencaoMax;
 var temperaturaAtencaoMin;
+var umidadeAtencaoMax = 70;
+var umidadeAtencaoMin = 40;
 
 var alertaTemperatura = document.getElementById('alertaTemperatura');
 var alertaUmidade = document.getElementById('alertaUmidade');
@@ -480,6 +484,43 @@ function verificarCondicao(temperaturaAtual, temperaturaAntiga, umidadeAtual, um
         alertaTemperatura.innerHTML = `
             <h2>TEMPERATURA IDEAL</h2>
             <p>Este setor apresenta temperatura ideal</p>
+        `;
+    }
+
+    if(umidadeAtual > umidadeCriticaMax) {
+        alertaUmidade.style.backgroundColor = '#FF4B4B';
+        
+        alertaUmidade.innerHTML = `
+            <h2>ALERTA DE UMIDADE</h2>
+            <p>A umidade máxima do setor foi utrapassada, passando de ${umidadeAntiga}% para ${umidadeAtual}%.</p>
+        `;
+    } else if (umidadeAtual > umidadeAtencaoMax) {
+        alertaUmidade.style.backgroundColor = '#f7cf60';
+        
+        alertaUmidade.innerHTML = `
+            <h2>ALERTA DE UMIDADE</h2>
+            <p>A umidade máxima do setor está próxima de ser utrapassada</p>
+        `;
+    } else if (umidadeAtual < umidadeAtencaoMin && umidadeAtual > umidadeCriticaMin) {
+        alertaUmidade.style.backgroundColor = '#f7cf60';
+        
+        alertaUmidade.innerHTML = `
+            <h2>ALERTA DE umidade</h2>
+            <p>A umidade mínima do setor está próxima de ser utrapassada</p>
+        `;
+    } else if (umidadeAtual < umidadeCriticaMin) {
+        alertaUmidade.style.backgroundColor = '#FF4B4B';
+
+        alertaUmidade.innerHTML = `
+            <h2>ALERTA DE UMIDADE</h2>
+            <p>A umidade mínima do setor foi utrapassada, passando de ${umidadeAntiga}% para ${umidadeAtual}%.</p>
+        `;
+    } else {
+        alertaUmidade.style.backgroundColor = '#50C37E';
+
+        alertaUmidade.innerHTML = `
+            <h2>UMIDADE IDEAL</h2>
+            <p>Este setor apresenta umidade ideal</p>
         `;
     }
 }
