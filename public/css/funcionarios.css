@@ -3,95 +3,50 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-.form {
-    overflow-y: scroll;
-    height: 85vh;
+:root {
+    --blue: #3F53AA;
+    --lightBlue: #91A6FF;
+    --green: #50C37E; 
+    --white: #FFF;
 }
 
-.filtragem {
-    display: flex;
-    width: 100%;
-    gap: 1rem;
-    
+html {
+    scroll-behavior: smooth;
 }
 
-.filtragem button {
-    width:50px;
-    height: 50px;
-    border-radius: 10px;
-    border: 2px solid var(--lightBlue);
-    background-color: white;
-    cursor: pointer;
-} 
-
-.filtragem .filtroPesquisa .iconify {
-    color: var(--lightBlue);
-    font-size: 1.5rem;
-}
-
-
-.filtragem .BarraPesquisa {
-    border: 2px solid var(--lightBlue);
-    border-radius: 10px;
-    height: 50px;
+.container{
     width: 100%;
     display: flex;
-    align-items: center;
-    
-}
-
-.filtragem .BarraPesquisa input {
-    padding: 0;
-    border: 0;
-    width: 100%;
-    height: 100%;
-    color: var(--lightBlue);
-    font-family: 'Poppins', sans-serif;
-    box-shadow: none !important;
-}
-
-.filtragem .BarraPesquisa .iconify {
-    font-size: 1.2rem;
-    color: var(--lightBlue);
-    padding-inline: .8rem;
-}
-.form .containerFuncionario {
-display: flex;
-flex-direction: column;
-
-
-}
-
-.form .container {
-    width: 35%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.form::-webkit-scrollbar {
-    width: 10px;              
-}
-  
-.form::-webkit-scrollbar-track {
-    background: #becaff;        
-}
-  
-.form::-webkit-scrollbar-thumb {
-    background-color: #3F53AA;   
-    border-radius: 20px;      
-    border: 2px solid #becaff;  
-}
-
-.form h1 {
+.titulo {
     color: var(--lightBlue);
-    margin: 0;
-    font-size: 3rem;    
-}
-
-.form p {
-    color: #383838;
     text-align: center;
 }
+
+.titulo p{
+    font-size: 1.5rem;
+    color: black;
+}
+
+.tabelaFuncionarios table {
+    border-radius: 15px;
+    box-shadow: -6px 6px 4px #8888;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1rem;
+    background-color: rgb(248, 248, 248);
+}
+
+.tabelaFuncionarios th{
+    color: var(--lightBlue);
+    padding: 1rem;
+}
+
+.tabelaFuncionarios tr{
+    border-bottom: var(--lightBlue) solid 2px;
+}
+
