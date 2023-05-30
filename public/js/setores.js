@@ -1,6 +1,8 @@
 const modal = document.getElementById('modalCriarSetor');
 const overlay = document.querySelector('#modalCriarSetor .overlay');
 
+var setores = [];
+
 function abrirModal() {
     modal.style.display = 'block';
 }
@@ -23,39 +25,13 @@ function obterSetores() {
         method: 'GET'
     }).then((response) => {
         if (response.ok) {
+            containerSetores.innerHTML = '';
+
+            setores = [];
+
             response.json().then((resposta) => {
-                for (var i = 0; i < resposta.length; i++) {
-                    var background;
-
-                    if (resposta[i].Temperatura > resposta[i].temperaturaAlertaMaxima || resposta[i].Umidade > resposta[i].UmidadeAlertaMaxima) {
-                        background = '#FF5F5F';
-                    } else if (resposta[i].Temperatura > resposta[i].temperaturaMaxima || resposta[i].Umidade > resposta[i].umidadeMaxima) {
-                        background = '#F3F565';
-                    } else {
-                        background = '#50C37E';
-                    }
-
-                    containerSetores.innerHTML += `
-                        <a style='background-color: ${background}' href="../dashboard/index.html?idSetor=${resposta[i].idSetor}" class="containerSetor setorAtivo">
-                            <h2>${resposta[i].nomeSetor}</h2>
-                            <p>${resposta[i].enderecoSetor}</p>
-                            <div class="statusContainer">
-                                <div class="status statusAtivo">
-                                    <div></div>
-                                    <p>${resposta[i].setoresAtivos} sensores <span>ativos</span></p>
-                                </div>
-                                <div class="status statusManutencao">
-                                    <div style='background-color: ${background == '#F3F565' && '#86804A'}'></div>
-                                    <p>${resposta[i].setoresManutencao} sensores <span style='color: ${background == '#F3F565' && '#86804A'}'>em manutenção</span></p>
-                                </div>
-                                <div class="status statusInativo">
-                                    <div style='background-color: ${background == '#FF5F5F' && '#BA3931'}'></div>
-                                    <p>${resposta[i].setoresInativos} sensores <span style='color: ${background == '#FF5F5F' && '#BA3931'}'>inativo</span></p>
-                                </div>
-                            </div>
-                        </a>
-                    `;
-                }
+                preencherTela(resposta);
+                setores = resposta;
             })
         } else if (response.status == 404) {
             return alert('Du 404!')
@@ -104,4 +80,56 @@ function criarSetor() {
     });
 
     return false;
+}
+
+document.getElementById('inputPesquisa').addEventListener('input', (event) => {
+    var text = event.target.value;
+
+    console.log();
+
+    var setoresPesquisados = setores.filter(item => item.nomeSetor.includes(text));
+
+    if(text.length > 0) {
+        preencherTela(setoresPesquisados);
+    } else {
+        preencherTela(setores);
+    }
+});
+
+function preencherTela(vetor) {
+    containerSetores.innerHTML = '';
+
+    for(var i = 0; i < vetor.length; i++) {
+        var background;
+
+        if (vetor[i].Temperatura > vetor[i].temperaturaCriticaMaxima || vetor[i].Umidade > vetor[i].UmidadeAlertaMaxima) {
+            background = '#FF5F5F';
+        } else if (vetor[i].Temperatura > vetor[i].temperaturaAtencaoMaxima || vetor[i].Umidade > vetor[i].umidadeMaxima) {
+            background = '#f7cf60';
+        } else {
+            background = '#50C37E';
+        }
+
+
+        containerSetores.innerHTML += `
+            <a style='background-color: ${background}' href="../dashboard/index.html?idSetor=${vetor[i].idSetor}" class="containerSetor setorAtivo">
+                <h2>${vetor[i].nomeSetor}</h2>
+                <p>${vetor[i].enderecoSetor}</p>
+                <div class="statusContainer">
+                    <div class="status statusAtivo">
+                        <div></div>
+                        <p>${vetor[i].setoresAtivos} sensores <span>ativos</span></p>
+                    </div>
+                    <div class="status statusManutencao">
+                        <div></div>
+                        <p>${vetor[i].setoresManutencao} sensores <span>em manutenção</span></p>
+                    </div>
+                    <div class="status statusInativo">
+                        <div style='background-color: ${background == '#FF5F5F' && '#BA3931'}'></div>
+                        <p>${vetor[i].setoresInativos} sensores <span style='color: ${background == '#FF5F5F' && '#BA3931'}'>inativo</span></p>
+                    </div>
+                </div>
+            </a>
+        `;
+    }
 }

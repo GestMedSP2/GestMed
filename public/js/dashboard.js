@@ -8,8 +8,11 @@ var idSetor = Number(window.location.search.replace('?idSetor=', ''));
 
 var nomeSetor = document.getElementById('nomeSetor');
 
-var temperaturaMax;
-var temperaturaMin;
+var temperaturaCriticaMax;
+var temperaturaCriticaMin;
+
+var temperaturaAtencaoMax;
+var temperaturaAtencaoMin;
 
 var alertaTemperatura = document.getElementById('alertaTemperatura');
 var alertaUmidade = document.getElementById('alertaUmidade');
@@ -98,8 +101,8 @@ function obterUltimosDadosGraficoLinha() {
                         var min = 0;
 
                         if(chartId == 'chartTemperatura') {
-                            max = temperaturaMax;
-                            min = temperaturaMin;
+                            max = temperaturaCriticaMax;
+                            min = temperaturaCriticaMin;
                         } else if (chartId ==  'chartUmidade') {
                             max = 70;
                             min = 40;
@@ -416,13 +419,18 @@ function detalharSetor(idSetor) {
     }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
+                console.log(resposta)
+
                 nomeSetor.innerHTML = resposta[0].nomeSetor;
                 
-                temperaturaMax = resposta[0].temperaturaMaxima;
-                temperaturaMin = resposta[0].temperaturaMinima;
+                temperaturaCriticaMax = resposta[0].temperaturaCriticaMaxima;
+                temperaturaCriticaMin = resposta[0].temperaturaCriticaMinima;
 
-                temperaturaMaxima.innerHTML = temperaturaMax + 'ºC';
-                temperaturaMinima.innerHTML = temperaturaMin + 'ºC';
+                temperaturaAtencaoMax = resposta[0].temperaturaAtencaoMaxima;
+                temperaturaAtencaoMin = resposta[0].temperaturaAtencaoMinima;
+
+                temperaturaMaxima.innerHTML = temperaturaAtencaoMax + 'ºC';
+                temperaturaMinima.innerHTML = temperaturaAtencaoMin + 'ºC';
             })
 
         } else if (response.status == 404) {
@@ -438,14 +446,28 @@ function detalharSetor(idSetor) {
 function verificarCondicao(temperaturaAtual, temperaturaAntiga, umidadeAtual, umidadeAntiga) {
     console.log(alertaTemperatura);
 
-    if(temperaturaAtual > temperaturaMax) {
+    if(temperaturaAtual > temperaturaCriticaMax) {
         alertaTemperatura.style.backgroundColor = '#FF4B4B';
         
         alertaTemperatura.innerHTML = `
             <h2>ALERTA DE TEMPERATURA</h2>
             <p>A temperatura máxima do setor foi utrapassada, passando de ${temperaturaAntiga}°C para ${temperaturaAtual}°C.</p>
         `;
-    } else if (temperaturaAtual < temperaturaMin) {
+    } else if (temperaturaAtual > temperaturaAtencaoMax) {
+        alertaTemperatura.style.backgroundColor = '#f7cf60';
+        
+        alertaTemperatura.innerHTML = `
+            <h2>ALERTA DE TEMPERATURA</h2>
+            <p>A temperatura máxima do setor está próxima de ser utrapassada</p>
+        `;
+    } else if (temperaturaAtual < temperaturaAtencaoMin && temperaturaAtual > temperaturaCriticaMin) {
+        alertaTemperatura.style.backgroundColor = '#f7cf60';
+        
+        alertaTemperatura.innerHTML = `
+            <h2>ALERTA DE TEMPERATURA</h2>
+            <p>A temperatura mínima do setor está próxima de ser utrapassada</p>
+        `;
+    } else if (temperaturaAtual < temperaturaCriticaMin) {
         alertaTemperatura.style.backgroundColor = '#FF4B4B';
 
         alertaTemperatura.innerHTML = `

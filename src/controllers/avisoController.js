@@ -6,7 +6,7 @@ function testar(req, res) {
 }
 
 function listar(req, res) {
-    var { idEmpresa } = req.body; 
+    var { idEmpresa } = req.params; 
 
     if (idEmpresa == undefined) {
         res.status(400).send("O id da empresa está indefinido!");

@@ -13,10 +13,10 @@ function listar(idEmpresa) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ");
     var instrucao = `
         SELECT s.idSetor, s.nomeSetor, CONCAT(endereco.logradouro, ', ', endereco.numero) as enderecoSetor, 
-        (CASE WHEN armazenaTermolabeis = TRUE THEN 7 ELSE 29 END) AS temperaturaMaxima,
-        (CASE WHEN armazenaTermolabeis = TRUE THEN 9 ELSE 32 END) AS temperaturaAlertaMaxima,
-        (CASE WHEN armazenaTermolabeis = TRUE THEN 1 ELSE 15 END) AS temperaturaAlertaMinima,
-        (CASE WHEN armazenaTermolabeis = TRUE THEN 3 ELSE 16 END) AS temperaturaMinima,
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 7 ELSE 29 END) AS temperaturaAtencaoMaxima,
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 9 ELSE 32 END) AS temperaturaCriticaMaxima,
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 1 ELSE 15 END) AS temperaturaCriticaMinima,
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 3 ELSE 16 END) AS temperaturaAtencaoMinima,
         SUM(CASE WHEN sa.status = 'Ativo' THEN 1 ELSE 0 END)setoresAtivos, 
         SUM(CASE WHEN sa.status = 'Inativo' THEN 1 ELSE 0 END)setoresInativos, 
         SUM(CASE WHEN sa.status = 'Em manutenção' THEN 1 ELSE 0 END)setoresManutencao,
@@ -42,10 +42,10 @@ function listar(idEmpresa) {
 function detalhar(idSetor) {
     var instrucao = `
         SELECT nomeSetor, 
-        (CASE WHEN armazenaTermolabeis = TRUE THEN 7 ELSE 29 END) AS temperaturaMaxima,
-        (CASE WHEN armazenaTermolabeis = TRUE THEN 9 ELSE 32 END) AS temperaturaAlertaMaxima,
-        (CASE WHEN armazenaTermolabeis = TRUE THEN 1 ELSE 15 END) AS temperaturaAlertaMinima,
-        (CASE WHEN armazenaTermolabeis = TRUE THEN 3 ELSE 16 END) AS temperaturaMinima
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 7 ELSE 29 END) AS temperaturaAtencaoMaxima,
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 9 ELSE 32 END) AS temperaturaCriticaMaxima,
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 1 ELSE 15 END) AS temperaturaCriticaMinima,
+        (CASE WHEN armazenaTermolabeis = TRUE THEN 3 ELSE 16 END) AS temperaturaAtencaoMinima
         FROM setor
         WHERE idSetor = ${idSetor};
     `;
