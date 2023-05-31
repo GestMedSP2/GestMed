@@ -271,3 +271,57 @@ body {
 .modalCriarSetorInativo {
     display: none;
 }
+
+#conteudoFiltro {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: absolute;
+    color: #91A6FF;
+    width: 18rem;
+    height: 15rem;
+    background-color: #fdfbfb;
+    box-shadow: 5px 5px 4px #E3E3E3;
+    top: 210px;
+    right: 110px;
+    border-radius: 15px;
+    z-index: 1;
+    padding: 10px;
+    border: 3px solid var(--lightBlue);
+}
+
+#conteudoFiltro h4 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.inputFiltragem {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.areaBotaoFiltro {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+#botaoAplicarFiltro {
+    background-color: #91A6FF;
+    width: 100px;
+    height: 30px;
+}
+
+#botaoFecharFiltro {
+    background-color: #ff9191;
+    width: 100px;
+    height: 30px;
+    border: none;
+}
+
+.checkboxFiltro {
+    width: 20px;
+}

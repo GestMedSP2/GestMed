@@ -92,7 +92,24 @@
           <span class="iconify" data-icon="mingcute:search-line"></span>
           <input id="inputPesquisa" type="text" placeholder="Insira o nome do setor">
         </div>
-        <button><span class="iconify" data-icon="material-symbols:filter-list-rounded"></span></button>
+        <button onclick="abrirModalFiltro()"><span class="iconify" data-icon="material-symbols:filter-list-rounded"></span></button>
+
+        <div id="conteudoFiltro">
+          <h4>Exibir</h4>
+          <div class="inputFiltragem">
+            <input class="checkboxFiltro" type="checkbox"><span>Setores críticos</span>
+          </div>
+          <div class="inputFiltragem">
+            <input class="checkboxFiltro" type="checkbox"><span>Setores em alerta</span>
+          </div>
+          <div class="inputFiltragem">
+            <input class="checkboxFiltro" type="checkbox"><span>Setores em situações ideais</span>
+          </div>
+          <div class="areaBotaoFiltro">
+            <button id="botaoAplicarFiltro">Aplicar</button>
+            <button onclick="fecharModalFiltro()" id="botaoFecharFiltro">Fechar</button>
+          </div> 
+        </div>
 
       </div>
       <div id="containerSetores" class="containerSetores">

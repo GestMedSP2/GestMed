@@ -139,3 +139,11 @@ function preencherTela(vetor) {
         `;
     }
 }
+
+function abrirModalFiltro() {
+    document.getElementById('conteudoFiltro').style.display = "flex"
+ }
+ 
+ function fecharModalFiltro() {
+     document.getElementById('conteudoFiltro').style.display = "none"
+ }
