@@ -68,8 +68,8 @@
                             <span id="qtdAlertasCriticos">-</span>
                         </div>
                         <div>
-                            <button onclick="filtrarPorCritico()" class="btnFiltrar">Filtrar</button>
-                            <button onclick="" class="btnFiltrar">Cancelar</button>
+                            <button onclick="filtrarPorCritico()" id="btnFiltrarCritico" class="btnFiltrar">Filtrar</button>
+                            <button style="display: none;" onclick="cancelarFiltragem()" id="btnCancelarFiltragemCritico" class="btnFiltrar">Cancelar</button>
                         </div>
                     </div>
 
@@ -79,8 +79,8 @@
                             <span id="qtdAlertasAtencao">-</span>
                         </div>
                         <div>
-                            <button onclick="filtrarPorAtencao()" class="btnFiltrar">Filtrar</button>
-                            <button onclick="" class="btnFiltrar">Cancelar</button>
+                            <button onclick="filtrarPorAtencao()" id="btnFiltragemAtencao" class="btnFiltrar">Filtrar</button>
+                            <button style="display: none;" onclick="cancelarFiltragem()" id="btnCancelarFiltragemAtencao" class="btnFiltrar">Cancelar</button>
                         </div>
                         
                     </div>

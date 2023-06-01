@@ -60,7 +60,7 @@ function buscarAlertas() {
                             </tr>
                         `;
 
-                        alertasCriticos.push(resposta[i]);
+                        alertasCriticos.push({...resposta[i], mensagem: mensagem});
                     } else if (resposta[i].temperatura > resposta[i].temperaturaAtencaoMaxima || resposta[i].umidade > umidadeAtencaoMax || resposta[i].temperatura < resposta[i].temperaturaAtencaoMinima || resposta[i].umidade < umidadeAtencaoMin) {
                         
                         var temperaturaIncorreta = false;
@@ -93,13 +93,12 @@ function buscarAlertas() {
                                 </td>
                                 <td>${new Date(resposta[i].dataColeta).toLocaleString()}</td>
                                 <td>${mensagem}</td>
-                                <td><img src="../assets/img/iconLixeira.svg"></td>
                             </tr>
                         `;
-                        alertasAtencao.push(resposta[i]);
+                        alertasAtencao.push({...resposta[i], mensagem: mensagem});
                     }
                 }
-
+                
                 qtdAlertasCriticos.innerHTML = alertasCriticos.length;
                 qtdAlertasAtencao.innerHTML = alertasAtencao.length;
             })
@@ -112,26 +111,34 @@ function buscarAlertas() {
 function filtrarPorAtencao() {
     alertasContainer.innerHTML = '';
 
+    btnFiltragemAtencao.style.display = 'none';
+    btnCancelarFiltragemAtencao.style.display = 'flex';
+    btnFiltrarCritico.style.display = 'none';
+    
     for(var i = 0; i < alertasAtencao.length; i++) {
         alertasContainer.innerHTML += `
             <tr>
                 <td>${alertasAtencao[i].nomeSetor}</td>
                 <td class="centralizarPrioridade">
-                    <div class="caixaPrioridade prioridadeUrgente">
-                        <text>Atenção</text>
-                    </div>
+                <div class="caixaPrioridade prioridadeUrgente">
+                <text>Atenção</text>
+                </div>
                 </td>
                 <td>${new Date(alertasAtencao[i].dataColeta).toLocaleString()}</td>
-                <td>Temperatura ultrapassada para ${alertasAtencao[i].temperatura}ºC</td>
+                <td>${alertasAtencao[i].mensagem}</td>
                 
             </tr>
         `;
     }
 }
-
+    
 function filtrarPorCritico() {
     alertasContainer.innerHTML = '';
 
+    btnFiltrarCritico.style.display = 'none';
+    btnCancelarFiltragemCritico.style.display = 'flex';
+    btnFiltragemAtencao.style.display = 'none';
+    
     for(var i = 0; i < alertasCriticos.length; i++) {
         alertasContainer.innerHTML += `
             <tr>
@@ -142,7 +149,48 @@ function filtrarPorCritico() {
                     </div>
                 </td>
                 <td>${new Date(alertasCriticos[i].dataColeta).toLocaleString()}</td>
-                <td>Temperatura ultrapassada para ${alertasCriticos[i].temperatura}ºC</td>
+                <td>${alertasCriticos[i].mensagem}</td>
+                
+            </tr>
+        `;
+    }   
+}
+
+function cancelarFiltragem() {
+    alertasContainer.innerHTML = '';
+
+    btnFiltrarCritico.style.display = 'flex';
+    btnCancelarFiltragemCritico.style.display = 'none';
+    btnFiltragemAtencao.style.display = 'flex';
+    btnCancelarFiltragemAtencao.style.display = 'none';
+    
+    for(var i = 0; i < alertasCriticos.length; i++) {
+        alertasContainer.innerHTML += `
+            <tr>
+                <td>${alertasCriticos[i].nomeSetor}</td>
+                <td class="centralizarPrioridade">
+                    <div class="caixaPrioridade prioridadeCritica">
+                        <text>Crítico</text>
+                    </div>
+                </td>
+                <td>${new Date(alertasCriticos[i].dataColeta).toLocaleString()}</td>
+                <td>${alertasCriticos[i].mensagem}</td>
+                
+            </tr>
+        `;
+    } 
+
+    for(var i = 0; i < alertasAtencao.length; i++) {
+        alertasContainer.innerHTML += `
+            <tr>
+                <td>${alertasAtencao[i].nomeSetor}</td>
+                <td class="centralizarPrioridade">
+                <div class="caixaPrioridade prioridadeUrgente">
+                <text>Atenção</text>
+                </div>
+                </td>
+                <td>${new Date(alertasAtencao[i].dataColeta).toLocaleString()}</td>
+                <td>${alertasAtencao[i].mensagem}</td>
                 
             </tr>
         `;
