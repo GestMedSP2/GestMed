@@ -1,6 +1,10 @@
 const modal = document.getElementById('modalCriarSetor');
 const overlay = document.querySelector('#modalCriarSetor .overlay');
 
+var checkSetoresCriticos = document.getElementById('checkSetoresCriticos');
+var checkSetoresAtencao = document.getElementById('checkSetoresAtencao');
+var checkSetoresIdeais = document.getElementById('checkSetoreIdeais');
+
 var setores = [];
 
 var umidadeCriticaMax = 74;
@@ -91,9 +95,7 @@ function criarSetor() {
 document.getElementById('inputPesquisa').addEventListener('input', (event) => {
     var text = event.target.value;
 
-    console.log();
-
-    var setoresPesquisados = setores.filter(item => item.nomeSetor.includes(text));
+    var setoresPesquisados = setores.filter(item => item.nomeSetor.toLowerCase().includes(text.toLowerCase()));
 
     if(text.length > 0) {
         preencherTela(setoresPesquisados);
@@ -107,43 +109,59 @@ function preencherTela(vetor) {
 
     for(var i = 0; i < vetor.length; i++) {
         var background;
+        var tipoSetor;
+
+        var filtro = {
+            Critico: checkSetoresCriticos ? checkSetoresCriticos.checked : true,
+            Atencao: checkSetoresAtencao ? checkSetoresAtencao.checked : true,
+            Ideal: checkSetoresIdeais ? checkSetoresIdeais.checked : true 
+        }
 
         if (vetor[i].Temperatura > vetor[i].temperaturaCriticaMaxima || vetor[i].Umidade > umidadeCriticaMax || vetor[i].Umidade < umidadeCriticaMin || vetor[i].Temperatura < vetor[i].temperaturaCriticaMinima) {
             background = '#FF5F5F';
+            tipoSetor = 'Critico';
         } else if (vetor[i].Temperatura > vetor[i].temperaturaAtencaoMaxima || vetor[i].Umidade > umidadeAtencaoMax || vetor[i].Temperatura < vetor[i].temperaturaAtencaoMinima || vetor[i].Umidade < umidadeAtencaoMin) {
             background = '#f7cf60';
+            tipoSetor = 'Atencao';
         } else {
             background = '#50C37E';
+            tipoSetor = 'Ideal'
         }
 
-
-        containerSetores.innerHTML += `
-            <a style='background-color: ${background}' href="../dashboard/index.html?idSetor=${vetor[i].idSetor}" class="containerSetor setorAtivo">
-                <h2>${vetor[i].nomeSetor}</h2>
-                <p>${vetor[i].enderecoSetor}</p>
-                <div class="statusContainer">
-                    <div class="status statusAtivo">
-                        <div></div>
-                        <p>${vetor[i].setoresAtivos} sensores <span>ativos</span></p>
+        if(filtro[tipoSetor]) {
+            containerSetores.innerHTML += `
+                <a style='background-color: ${background}' href="../dashboard/index.html?idSetor=${vetor[i].idSetor}" class="containerSetor setorAtivo">
+                    <h2>${vetor[i].nomeSetor}</h2>
+                    <p>${vetor[i].enderecoSetor}</p>
+                    <div class="statusContainer">
+                        <div class="status statusAtivo">
+                            <div></div>
+                            <p>${vetor[i].setoresAtivos} sensores <span>ativos</span></p>
+                        </div>
+                        <div class="status statusManutencao">
+                            <div></div>
+                            <p>${vetor[i].setoresManutencao} sensores <span>em manutenção</span></p>
+                        </div>
+                        <div class="status statusInativo">
+                            <div style='background-color: ${background == '#FF5F5F' && '#BA3931'}'></div>
+                            <p>${vetor[i].setoresInativos} sensores <span style='color: ${background == '#FF5F5F' && '#BA3931'}'>inativo</span></p>
+                        </div>
                     </div>
-                    <div class="status statusManutencao">
-                        <div></div>
-                        <p>${vetor[i].setoresManutencao} sensores <span>em manutenção</span></p>
-                    </div>
-                    <div class="status statusInativo">
-                        <div style='background-color: ${background == '#FF5F5F' && '#BA3931'}'></div>
-                        <p>${vetor[i].setoresInativos} sensores <span style='color: ${background == '#FF5F5F' && '#BA3931'}'>inativo</span></p>
-                    </div>
-                </div>
-            </a>
-        `;
+                </a>
+            `;
+        }
     }
 }
 
 function abrirModalFiltro() {
     document.getElementById('conteudoFiltro').style.display = "flex"
- }
+}
  
  function fecharModalFiltro() {
-     document.getElementById('conteudoFiltro').style.display = "none"
- }
+    document.getElementById('conteudoFiltro').style.display = "none"
+}
+
+function filtrar() {
+    preencherTela(setores);
+    fecharModalFiltro();
+}

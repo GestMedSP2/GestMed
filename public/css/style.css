@@ -665,22 +665,43 @@ textarea:focus {
     align-items: center;
 }
 
-.perfil div {
-    width: 35px;
-    height: 35px;
-    background-color: #F5F5F5;
-    border-radius: 5px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-left: 10px;
+.perfil span {
     color: var(--green);
 }
 
-.perfil span {
-    color: var(--green);
+#conteudoPerfil {
+    background-color: #ffff;
+    width: 100%;
+    height: 30px;
+    margin: 0;
+}
+
+details {
+    height: 20px;
+}
+
+#conteudoPerfil a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding-top: 5px;
+}
+
+#conteudoPerfil h4 {
+    color: #ff4040;
+    margin: 0;
+}
+
+summary{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 20px;
+}
+
+summary h4 {
+    margin: 0;
 }
 
 @media(max-width: 1400px) {

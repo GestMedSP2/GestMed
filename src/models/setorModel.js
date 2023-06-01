@@ -3,7 +3,7 @@ var database = require("../database/config");
 function criar(idEmpresa, nomeSetor, armazenaTermolabeis) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ");
     var instrucao = `
-        INSERT INTO setor (fkEmpresaS, nomeSetor, armazenaTermolabeis) VALUES (${idEmpresa}, '${nomeSetor}', ${armazenaTermolabeis});
+        INSERT INTO setor (fkEmpresaSetor, nomeSetor, armazenaTermolabeis) VALUES (${idEmpresa}, '${nomeSetor}', ${armazenaTermolabeis});
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -29,9 +29,9 @@ function listar(idEmpresa) {
         ON setor2.idSetor = sensor2.fkSetor
         WHERE idSetor = s.idSetor ORDER BY dataColeta DESC LIMIT 1) AS Umidade
         FROM setor as s
-        JOIN empresa as e ON s.fkEmpresaSetor = e.idEmpresa
-        JOIN endereco ON idEndereco = fkEndereco
-        JOIN sensor as sa ON s.idSetor = sa.fkSetor
+        LEFT JOIN empresa as e ON s.fkEmpresaSetor = e.idEmpresa
+        LEFT JOIN endereco ON idEndereco = fkEndereco
+        LEFT JOIN sensor as sa ON s.idSetor = sa.fkSetor
         WHERE idEmpresa = ${idEmpresa}
         GROUP BY s.idSetor, s.nomeSetor, endereco.logradouro;
     `;

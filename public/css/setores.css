@@ -313,13 +313,8 @@ body {
     background-color: #91A6FF;
     width: 100px;
     height: 30px;
-}
 
-#botaoFecharFiltro {
-    background-color: #ff9191;
-    width: 100px;
-    height: 30px;
-    border: none;
+    margin-top: 1rem;
 }
 
 .checkboxFiltro {
