@@ -4,6 +4,23 @@ var graficoBarra;
 var textoTemperaturaMaisAltaObtida = document.getElementById('temperaturaMaisAltaObtida');
 var textoUmidadeMaisAltaObtida = document.getElementById('umidadeMaisAltaObtida');
 
+const modal = document.getElementById('modalCriarSensor');
+const overlay = document.querySelector('#modalCriarSensor .overlay');
+
+function abrirModal() {
+    modal.style.display = 'block';
+}
+
+function fecharModal() {
+    modal.style.display = 'none';
+}
+
+overlay.addEventListener('click', (event) => {
+    if (event.target.className == 'overlay') {
+        fecharModal();
+    }
+});
+
 var idSetor = Number(window.location.search.replace('?idSetor=', ''));
 
 var nomeSetor = document.getElementById('nomeSetor');
@@ -162,7 +179,7 @@ function obterUltimosDadosGraficoLinha() {
                         scales: {
                             y: {
                                 min: 25,
-                                max: 80,
+                                max: 100,
                             }
                         }
                     },
@@ -448,8 +465,6 @@ function detalharSetor(idSetor) {
 }
 
 function verificarCondicao(temperaturaAtual, temperaturaAntiga, umidadeAtual, umidadeAntiga) {
-    console.log(alertaTemperatura);
-
     if(temperaturaAtual > temperaturaCriticaMax) {
         alertaTemperatura.style.backgroundColor = '#FF4B4B';
         

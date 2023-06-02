@@ -338,6 +338,109 @@ h3, .conteudo h4, h1{
     font-size: 18px;
 }
 
+.criarSensor {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
+    position: absolute;
+    z-index: 2;
+    right: 2rem;
+    bottom: 2rem;
+
+    background-color: var(--lightBlue);
+    color: var(--white);
+    border: 0;
+    border-radius: 100%;
+
+    width: 4rem;
+    height: 4rem;
+
+    font-size: 1.6rem;
+
+    opacity: .6;
+    transition: .5s;
+}
+
+.criarSensor:hover {
+    opacity: 1;
+}
+
+.modalCriarSensor .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    z-index: 3;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #00000030;
+}
+
+.modalCriarSensor .modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 30%;
+    background-color: var(--white);
+    border-radius: 15px;
+}
+
+.modal::before {
+    content: '';
+
+    background-color: var(--green);
+    border-radius: 15px 15px 0 0;
+
+    width: 100%;
+    height: 3rem;
+}
+
+.modal .modalContainer {
+    flex-direction: column;
+    padding: 0rem 4rem 4rem 4rem;
+}
+
+.modal h2 {
+    text-align: center;
+    font-size: 3rem;
+    margin-block: 1rem;
+    color: var(--lightBlue);
+}
+
+.modal input {
+    width: calc(100% - 48px);
+}
+
+.modal select {
+    width: 100%;
+}
+
+.modal div {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 1.5rem;
+}
+
+.modalCriarSensorAtivo {
+    display: flex;
+}
+
+.modalCriarSensorInativo {
+    display: none;
+}
+
+
 @media (max-width: 1284px) {
     .areaGrafico div {
         width: 95%;

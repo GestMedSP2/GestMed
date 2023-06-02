@@ -8,6 +8,7 @@
     <title>GestMed | Dashboard</title>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/simulador.css">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/validarSessao.js" defer></script>
     <script src="../js/charts.js" defer></script>
@@ -16,6 +17,25 @@
 
 </head>
 <body onload="{validarSessao(); chamarDados()}">
+    <button class="criarSensor" onclick="abrirModal()">
+        <span class="iconify" data-icon="mingcute:add-fill"></span>
+    </button>
+
+    <div class="modalCriarSensor modalCriarSensorInativo" id="modalCriarSensor">
+        <div class="overlay">
+          <div class="modal">
+            <div class="modalContainer">
+              <h2>Cadastro de sensores</h2>
+              <input type="text" placeholder="Identificação do sensor" id="idSensor">
+              <div>
+                <button id="buttonCadastrar" class="botaoVerde" onclick="criarSetor()">Cadastrar</button>
+                <button id="buttonCancelar" class="botaoVermelho" onclick="fecharModal()">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
     <div class="menu">
         <img src="../assets/img/logosemtexto.svg" alt="logo">
         <nav class="opcoes">
