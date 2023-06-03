@@ -17,6 +17,7 @@
             <input placeholder="E-mail" type="text" name="" id="input_email">
             <input placeholder="Senha" type="password" name="" id="input_senha">
             <p>Precisa de ajuda?</p>
+            <div id="divAviso"></div>
             <button onclick="acessar()">Entrar</button>
         </div>
     </div>
@@ -35,15 +36,15 @@
         var senha = input_senha.value;
 
         if (email == "" || senha == "") {
-            alert("Por favor, preencha todos os campos");
+            divAviso.innerHTML ="Por favor, preencha todos os campos";
         }
 
         else if (!email.includes("@")) {
-            alert("Por favor, informe um E-mail válido");
+            divAviso.innerHTML ="Por favor, informe um E-mail válido";
         }
 
         else if (senha.length < 8) {
-            alert("A senha deve conter pelo menos 8 caracteres");
+            divAviso.innerHTML ="A senha deve conter pelo menos 8 caracteres";
         }
         else {
             fetch("/usuarios/autenticar", {
@@ -72,13 +73,14 @@
                         sessionStorage.ID_EMPRESA = json.idEmpresa;
 
                         setTimeout(function () {
+                            divAviso.innerHTML = "Seja Bem vindo(a)"
                             window.location = "../setores/index.html";
                         }, 1000); // apenas para exibir o loading
 
                     });
 
                 } else {
-
+                    divAviso.innerHTML = "E-mail ou senha inexistente"
                     console.log("Houve um erro ao tentar realizar o login!");
 
                     resposta.text().then(texto => {

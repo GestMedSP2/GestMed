@@ -32,6 +32,130 @@ html {
     color: black;
 }
 
+.filtragem {
+    display: flex;
+    width: 80%;
+    gap: 1rem; 
+    margin-bottom: 1rem;  
+}
+
+.filtragem button .iconify {
+    color: var(--lightBlue);
+    font-size: 1.5rem;
+}
+
+.filtragem .BarraPesquisa{
+     border: 2px solid var(--lightBlue);
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+.filtragem .BarraPesquisa input {
+    padding: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--lightBlue);
+    font-family: 'Poppins', sans-serif;
+    box-shadow: none !important;
+}
+
+.filtragem .BarraPesquisa .iconify {
+    font-size: 1.2rem;
+    color: var(--lightBlue);
+    padding-inline: .8rem;
+}
+
+.btnCadastro{
+    display: flex;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--green);
+}
+
+.btnCadastro button .iconify{
+    color: #FFF;
+    font-size: 1.5rem;
+}
+
+
+.filtragem .btnmodal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50px;
+    height: 50px;
+
+    margin: 0;
+    padding: 0;
+
+    border-radius: 10px;
+    border: 2px solid var(--lightBlue);
+    background-color: white;
+    cursor: pointer;
+} 
+
+#conteudoFiltro {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    color: #91A6FF;
+    width: 10rem;
+    height: fit-content;
+    background-color: #fdfbfb;
+    box-shadow: 5px 5px 4px #E3E3E3;
+    top: 22rem;
+    right: 21rem;
+    border-radius: 15px;
+    z-index: 1;
+    padding: 1rem;
+    border: 3px solid var(--lightBlue);
+}
+
+#conteudoFiltro h4 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.inputFiltragem {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.areaBotaoFiltro {  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;    
+}
+
+#botaoAplicarFiltro {
+    font-family: 'Poppins';
+    color: #fff;
+    background-color: #91A6FF;
+    width: 100px;
+    height: 30px;
+    margin-top: 1rem;
+}
+
+.checkboxFiltro {
+    width: 20px;
+}
+
+
 .tabelaFuncionarios table {
     border-radius: 15px;
     box-shadow: -6px 6px 4px #8888;
@@ -50,3 +174,25 @@ html {
     border-bottom: var(--lightBlue) solid 2px;
 }
 
+.btnEditar{
+    border: none;
+    background-color:rgb(248, 248, 248);
+    cursor: pointer;
+}
+
+
+
+.btnEditar :hover{
+    border: var(--blue);
+    background-color:rgb(248, 248, 248);
+}
+
+.btnFiltrar {
+    background-color: #F8F8F8;
+    border: 1px solid #939393;
+    border-radius: 4px;
+    width: 80px;
+    height: 22px;
+    font-size: 15px;
+    font-weight: 600;
+}

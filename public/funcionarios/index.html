@@ -5,47 +5,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GestMed | Cadastro</title>
+    <link rel="shortcut icon" href="../assets/img/logosemtexto.svg" type="image/x-icon">
+    <title>GestMed | Funcionários</title>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="../js/funcionarios.js" defer></script>
     <script src="../js/validarSessao.js" defer></script>
-    <link rel="stylesheet" href="../css/cadastro.css">
+    <link rel="stylesheet" href="../css/funcionarios.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body onload="validarSessao()">
+<body onload="validarSessao(); buscarFuncionarios()">
+
     <div class="menu">
         <img src="../assets/img/logosemtexto.svg" alt="logo">
         <nav class="opcoes">
-            <ul>
+            <ul> 
                 <li>
-                    <a href="../setores/index.html">
-                        <span class="iconify" data-icon="ci:chart-bar-vertical-01" data-width="30"></span>
-                        <h4>Setores</h4>
-                    </a>
+                   <a href="../setores/index.html"> <span class="iconify" data-icon="ci:chart-bar-vertical-01" data-width="30"></span>
+                    <h4>Setores</h4>
+                  </a>
                 </li>
                 <li>
-                    <a href="">
-                        <span class="iconify" data-icon="ci:bell-ring" data-width="30"></span>
-                        <h4>Alertas</h4>
-                    </a>
+                    <a href="../alertas/index.html"><span class="iconify" data-icon="ci:bell-ring" data-width="30"></span>
+                    <h4>Alertas</h4>
+                  </a>
                 </li>
                 <li>
-                    <a href="../Cadastro/index.html">
-                        <span class="iconify" data-icon="ci:user-add" data-width="30"></span>
-                        <h4>Funcionários</h4>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span class="iconify" data-icon="ci:car-auto" data-width="30"></span>
-                        <h4>Transporte</h4>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span class="iconify" data-icon="ci:settings" data-width="30"></span>
-                        <h4>Configurações</h4>
-                    </a>
+                   <a href="../funcionarios/index.html">
+                      <span class="iconify" data-icon="ci:user" data-width="30"></span>
+                      <h4>Funcionários</h4>
+                    </a> 
                 </li>
             </ul>
         </nav>
@@ -53,101 +42,63 @@
 
     <div class="conteudo">
         <div class="headerDashboard">
-            <h2 id="nome_empresa"> Pfizer</h2>
-            <div class="perfil">
-                <h4>Olá, <span id="nome_usuario">funcionário</span></h4>
-                <div>
-                    <span class="iconify" data-icon="majesticons:settings-cog-line" data-width="20"></span>
-                </div>
-            </div>
 
+            <h2 id="nome_empresa"> Pfizer</h2>
+            <details class="perfil">
+              <summary>
+                <h4>Olá, <span id="nome_usuario">funcionário</span></h4>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 10l5 5m0 0l5-5"/></svg>
+                </summary>
+                <div id="conteudoPerfil">
+                  <a href="../index.html">
+                  <h4>Sair</h4> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#ff4040" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12h-9.5m7.5 3l3-3l-3-3m-5-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-1"/></svg>
+                  </a>
+                </div>
+            </details>
+      
+          </div>
+        <div class="container">
+        <div class="titulo">
+            <h1>Consulta de funcionários</h1>
+            <p>Cadastre, visualize e configure seus funcionários.</p>
         </div>
 
-        <div class="form">
-            <div class="container">
-                <h1>Cadastro de funcionário</h1>
-                <p>Insira os dados do funcionário para cadastrá-lo no sistema.</p>
-                <input type="text" placeholder="Identificação" id="input_identificacao">
-                <input type="text" placeholder="Nome" id="input_nome">
-                <input type="text" placeholder="Sobrenome" id="input_sobrenome">
-                <select name="select" id="select_cargo">
-                    <option value="Cargo" disabled selected hidden>Cargo</option>
-                    <option value="ADM">Administrador</option>
-                    <option value="CMM">Comum</option>
-                </select>
-                <input type="text" placeholder="Email" id="input_email">
-                <input type="password" placeholder="Senha" id="input_senha">
-                <input type="password" placeholder="Confirmar senha" id="input_conf">
-                <button onclick="logar()">Cadastrar</button>
-                </d>
+        <div class="filtragem">
+            <div class="BarraPesquisa">
+              <span class="iconify" data-icon="mingcute:search-line"></span>
+              <input id="inputPesquisa" type="text" placeholder="Insira o nome ou identificação do funcionário">
             </div>
+
+            <button class="btnmodal" onclick="abrirModalFiltro()"><span class="iconify" data-icon="material-symbols:filter-list-rounded"></span></button>
+            <div id="conteudoFiltro">
+              <h4>Exibir</h4>
+              <div class="inputFiltragem">
+                <input id="checkADM" checked class="checkboxFiltro" type="checkbox"><span>ADM</span>
+              </div>
+              <div class="inputFiltragem">
+                <input id="checkCMM" checked class="checkboxFiltro" type="checkbox"><span>CMM</span>
+              </div>
+              <div class="areaBotaoFiltro">
+                <button  class="btnmodal" onclick="filtrar()" id="botaoAplicarFiltro">Aplicar</button>
+              </div> 
+            </div>
+            <button class="btnCadastro" onclick=" window.location = `cadastro.html`">Cadastrar novo funcionário <span class="iconify" data-icon="ci:user-add" data-width="30" style="color: white;"></span></button>
+          </div>
+        <div class="tabelaFuncionarios">
+            <table>
+                <thead>
+                    <tr>
+                        <th id="idColunaIdentificacao">Identificação</th> 
+                        <th id="idColunaNome">Nome</th>
+                        <th id="idColunaNome">Cargo</th>
+                        <th id="idColunaNome">Email</th>
+                        <th>Configuração</th>
+                    </tr>
+                </thead>
+                <tbody id="idBodyFuncionarios"></tbody>
+            </table>
+        </div>
         </div>
 </body>
 
 </html>
-
-<script>
-    function logar() {
-        var idFuncionario = input_identificacao.value;
-        var idEmpresa = sessionStorage.ID_EMPRESA;
-        var nome = input_nome.value;
-        var sobrenome = input_sobrenome.value;
-        var email = input_email.value;
-        var senha = input_senha.value;
-        var confSenha = input_conf.value;
-
-        var select = document.getElementById('select_cargo');
-        var cargo = select.options[select.selectedIndex].value;
-
-        if (idFuncionario == "" || nome == "" || sobrenome == "" || email == "" || senha == "" || confSenha == "" || cargo == "Cargo") {
-            alert("Preencha todos os campos")
-        }
-
-        else if (!email.includes("@")) {
-            alert("Insera um E-mail válido")
-        }
-
-        else if (senha.length < 8) {
-            alert("Senha fraca, tente novamente")
-        }
-
-        else if (confSenha != senha) {
-            alert("Senhas diferentes, corrija o campo de confirmação")
-        }
-
-        else {
-            fetch("/usuarios/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
-                    idFuncionario,
-                    idEmpresa,
-                    nome,
-                    sobrenome,
-                    cargo,
-                    email,
-                    senha
-                })
-            }).then(function (resposta) {
-
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    alert('Funcionário cadastrado com sucesso!');
-
-                    //limparFormulario();
-                    //finalizarAguardar();
-                } else {
-                    throw ("Houve um erro ao tentar realizar o cadastro!");
-                }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                //finalizarAguardar();
-            });
-        }
-    }
-</script>
