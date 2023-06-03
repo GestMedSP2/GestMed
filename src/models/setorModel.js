@@ -54,8 +54,17 @@ function detalhar(idSetor) {
     return database.executar(instrucao);
 }
 
+function adicionarSensor(idSetor, idEmpresa, idSensor) {
+    var instrucao = `
+        INSERT INTO sensor (idSensor, fkSetor, fkEmpresaE, status) VALUES
+        ('${idSensor}', ${idSetor}, ${idEmpresa}, 'Ativo');`;
+
+    return database.executar(instrucao);
+}
+
 module.exports = {
     criar,
     listar,
-    detalhar
+    detalhar,
+    adicionarSensor
 }

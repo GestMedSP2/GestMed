@@ -7,6 +7,10 @@ router.post("/criar/:idEmpresa", function (req, res) {
     setorController.criar(req, res);
 });
 
+router.post("/:idSetor/adicionarSensor", function(req, res) {
+    setorController.adicionarSensor(req, res);
+})
+
 router.get('/listar/:idEmpresa', function (req, res) {
     setorController.listar(req, res);
 });

@@ -4,6 +4,7 @@ const overlay = document.querySelector('#modalCriarSetor .overlay');
 var checkSetoresCriticos = document.getElementById('checkSetoresCriticos');
 var checkSetoresAtencao = document.getElementById('checkSetoresAtencao');
 var checkSetoresIdeais = document.getElementById('checkSetoreIdeais');
+var checkSetoresInativos = document.getElementById('checkSetoreInativos');
 
 var setores = [];
 
@@ -54,12 +55,19 @@ function obterSetores() {
 }
 
 function criarSetor() {
-    // FAZER VALIDAÇÕES -- NÃO ESQUECE
-
+    
     var idEmpresa = sessionStorage.ID_EMPRESA;
     var nome = document.getElementById('nome_setor').value;
     var select = document.getElementById('selectTipoSetor');
     var armazenaTermolabeis = select.options[select.selectedIndex].value == 'tempAmbiente' ? false : true;
+    
+    if(nome == '') {
+        return alert('Insira o nome do setor');
+    }
+
+    if(select.options[select.selectedIndex].value == 'Cargo') {
+        return alert('Informe o tipo do setor');
+    }
 
     var setor = {
         nome,
@@ -77,8 +85,9 @@ function criarSetor() {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-            window.alert("Post realizado com sucesso pelo usuario de ID: " + idEmpresa + "!");
-            // window.location = "/dashboard/mural.html";
+            alert("Setor criado com sucesso");
+            fecharModal();
+            obterSetores();
         } else if (resposta.status == 404) {
             window.alert("Deu 404!");
         } else {
@@ -114,10 +123,14 @@ function preencherTela(vetor) {
         var filtro = {
             Critico: checkSetoresCriticos ? checkSetoresCriticos.checked : true,
             Atencao: checkSetoresAtencao ? checkSetoresAtencao.checked : true,
-            Ideal: checkSetoresIdeais ? checkSetoresIdeais.checked : true 
+            Ideal: checkSetoresIdeais ? checkSetoresIdeais.checked : true,
+            Inativo: checkSetoresInativos ? checkSetoresInativos.checked : true
         }
 
-        if (vetor[i].Temperatura > vetor[i].temperaturaCriticaMaxima || vetor[i].Umidade > umidadeCriticaMax || vetor[i].Umidade < umidadeCriticaMin || vetor[i].Temperatura < vetor[i].temperaturaCriticaMinima) {
+        if(vetor[i].setoresAtivos == 0) {
+            background = '#CDCDCD';
+            tipoSetor = 'Inativo';
+        } else if (vetor[i].Temperatura > vetor[i].temperaturaCriticaMaxima || vetor[i].Umidade > umidadeCriticaMax || vetor[i].Umidade < umidadeCriticaMin || vetor[i].Temperatura < vetor[i].temperaturaCriticaMinima) {
             background = '#FF5F5F';
             tipoSetor = 'Critico';
         } else if (vetor[i].Temperatura > vetor[i].temperaturaAtencaoMaxima || vetor[i].Umidade > umidadeAtencaoMax || vetor[i].Temperatura < vetor[i].temperaturaAtencaoMinima || vetor[i].Umidade < umidadeAtencaoMin) {

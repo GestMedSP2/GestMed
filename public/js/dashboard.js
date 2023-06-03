@@ -38,6 +38,39 @@ var umidadeAtencaoMin = 40;
 var alertaTemperatura = document.getElementById('alertaTemperatura');
 var alertaUmidade = document.getElementById('alertaUmidade');
 
+function criarSensor() {
+    var idEmpresa = sessionStorage.ID_EMPRESA;
+    var idSensor = document.getElementById('idSensor').value;
+
+    if(idSensor == '') {
+        return alert('Preencha a identificação do sensor');
+    }
+
+    fetch(`/setor/${idSetor}/adicionarSensor`, {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ idSensor, idEmpresa })
+    }).then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            alert("Sensor criado com sucesso");
+            fecharModal();
+        } else if (resposta.status == 404) {
+            window.alert("Deu 404!");
+        } else {
+            throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+    });
+
+    return false;
+}
+
 function chamarDados() {
     obterUltimosDados();
     obterUltimosDadosGraficoLinha();
