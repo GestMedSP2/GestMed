@@ -23,7 +23,9 @@ body > div {
     color: var(--lightBlue);
 }
 
-.form p {
+.form a {
+    cursor: pointer;
+
     text-align: right;
     color: var(--green);
     margin-top: 0;

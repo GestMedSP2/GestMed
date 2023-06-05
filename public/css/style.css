@@ -681,6 +681,7 @@ details {
 }
 
 #conteudoPerfil a {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -689,6 +690,7 @@ details {
 }
 
 #conteudoPerfil h4 {
+    cursor: pointer;
     color: #ff4040;
     margin: 0;
 }

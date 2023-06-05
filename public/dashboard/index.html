@@ -14,9 +14,9 @@
     <script src="../js/charts.js" defer></script>
     <script src="../js/dashboard.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    <link rel="shortcut icon" href="../assets/img/logosemtexto.svg" type="image/x-icon">
 </head>
-<body onload="{validarSessao(); chamarDados()}">
+<body onload="validarSessao(); chamarDados()">
     <button class="criarSensor" onclick="abrirModal()">
         <span class="iconify" data-icon="mingcute:add-fill"></span>
     </button>
@@ -56,6 +56,12 @@
                       <h4>Funcionários</h4>
                     </a> 
                 </li>
+                <li>
+                    <a href="https://app.pipefy.com/public/form/oE11CDTa">
+                       <span class="iconify" data-icon="bx:support" data-width="30"></span>
+                       <h4>Suporte</h4>
+                     </a> 
+                 </li>
             </ul>
         </nav>
     </div>
@@ -64,13 +70,16 @@
         <div class="headerDashboard">
 
             <h2 id="nome_empresa"> Pfizer</h2>
+            <div class="setor">
+                <h1>Setor <span id="nomeSetor"></span> </h1>
+            </div>
             <details class="perfil">
               <summary>
                 <h4>Olá, <span id="nome_usuario">funcionário</span></h4>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 10l5 5m0 0l5-5"/></svg>
                 </summary>
                 <div id="conteudoPerfil">
-                  <a href="../index.html">
+                  <a onclick="sair()">
                   <h4>Sair</h4> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#ff4040" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12h-9.5m7.5 3l3-3l-3-3m-5-2V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-1"/></svg>
                   </a>
                 </div>
