@@ -98,7 +98,7 @@ function buscarDadosSemana(idSetor) {
         instrucaoSql = `SELECT WEEKDAY(dataColeta) as DataColeta, TRUNCATE(AVG(temperatura), 1) as Temperatura, TRUNCATE(AVG(umidade), 1) as Umidade FROM dados JOIN sensor 
         ON idSensor = fkSensor
         JOIN setor ON idSetor = fkSetor
-        WHERE DAY(dataColeta) > DAY(CURRENT_DATE()) - 7 AND idSetor = ${idSetor} GROUP BY WEEKDAY(dataColeta) ORDER BY WEEKDAY(dataColeta);`;
+        WHERE DAY(dataColeta) > DAY(CURRENT_DATE()) - 7 AND idSetor = ${idSetor} GROUP BY WEEKDAY(dataColeta) ORDER BY dataColeta DESC`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return;

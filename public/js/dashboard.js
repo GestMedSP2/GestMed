@@ -72,10 +72,10 @@ function criarSensor() {
 }
 
 function chamarDados() {
+    detalharSetor(idSetor);
     obterUltimosDados();
     obterUltimosDadosGraficoLinha();
     obterDadosSemana();
-    detalharSetor(idSetor);
 
     document.getElementById('select_periodo').addEventListener('change', () => {
         var select = document.getElementById('select_periodo');
@@ -498,6 +498,12 @@ function detalharSetor(idSetor) {
 }
 
 function verificarCondicao(temperaturaAtual, temperaturaAntiga, umidadeAtual, umidadeAntiga) {
+    if(!temperaturaAntiga)
+        temperaturaAntiga = 0;
+        
+    if(!umidadeAntiga)
+        umidadeAntiga = 0;
+
     if(temperaturaAtual > temperaturaCriticaMax) {
         alertaTemperatura.style.backgroundColor = '#FF4B4B';
         
