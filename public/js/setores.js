@@ -3,8 +3,8 @@ const overlay = document.querySelector('#modalCriarSetor .overlay');
 
 var checkSetoresCriticos = document.getElementById('checkSetoresCriticos');
 var checkSetoresAtencao = document.getElementById('checkSetoresAtencao');
-var checkSetoresIdeais = document.getElementById('checkSetoreIdeais');
-var checkSetoresInativos = document.getElementById('checkSetoreInativos');
+var checkSetoresIdeais = document.getElementById('checkSetoresIdeais');
+var checkSetoresInativos = document.getElementById('checkSetoresInativos');
 
 var setores = [];
 
@@ -126,6 +126,8 @@ function preencherTela(vetor) {
             Ideal: checkSetoresIdeais ? checkSetoresIdeais.checked : true,
             Inativo: checkSetoresInativos ? checkSetoresInativos.checked : true
         }
+
+        console.log(filtro);
 
         if(vetor[i].setoresAtivos == 0) {
             background = '#CDCDCD';
